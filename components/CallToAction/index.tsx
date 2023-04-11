@@ -19,7 +19,7 @@ const CallToAction = () => {
         </Styled.Button>
         <Styled.JoinDiscord className={DMSans700.className}>
           <img src='/discord-colored.svg' alt='discord logo' />
-          Join Discord
+          Join our Discord
         </Styled.JoinDiscord>
       </Styled.ButtonsContainer>
 
