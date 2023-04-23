@@ -15,12 +15,24 @@ import {
 } from '../components/sharedstyles';
 
 export default function Home() {
+  console.log('You should consider working with us, email lorimer@othent.io')
   return (
     <SectionOne>
       <Head>
-        <title>Othent</title>
+        <title>Othent - Merging Web2 to Web3 user logins with a familiar and simple interface.</title>
         <meta name='description' content='Merging Web2 to Web3 user logins with a familiar and simple interface.' />
         <link rel='icon' href='/favicon.ico' />
+        <meta property="og:title" content=">Othent - Merging Web2 to Web3 user logins with a familiar and simple interface."/>
+        <meta property="og:url" content="http://Othent.io/"/>
+        <meta property="og:image" content="/favicon.ico"/>
+        <meta property="og:image:width" content="200"/>
+        <meta property="og:image:height" content="200"/>
+        <meta name="keywords" content="Othent, Smart Contract Wallets, Web3, JWT Transactions, Arweave, Community Labs"></meta>
+        <meta name="author" content="Othent.io"></meta>
+        <meta name="robots" content="index, follow"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="apple-mobile-web-app-capable" content="yes"></meta>
+        <meta name="theme-color" content="#2375EF"></meta>
       </Head>
 
       <main>
