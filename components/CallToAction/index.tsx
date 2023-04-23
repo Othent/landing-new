@@ -12,13 +12,13 @@ const CallToAction = () => {
   return (
     <Styled.Container>
       <Styled.HeaderText className={SpaceGrotesk700.className}>
-        Start onboarding your users <span>from web2 to web3</span>
+        Start onboarding your users <span>from Web2 to Web3</span>
       </Styled.HeaderText>
       <Styled.ButtonsContainer>
-        <Button>
+        <Button href='https://docs.othent.io' target='_blank'>
           Get Started
         </Button>
-        <Button secondary>
+        <Button secondary href='https://discord.gg/WPPBPtKbbN' target='_blank'>
           <img src='/discord-colored.svg' alt='discord logo' draggable={false} />
           Join our Discord
         </Button>

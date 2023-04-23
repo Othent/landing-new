@@ -6,20 +6,25 @@ const Nav = () => {
   return (
     <Styled.NavBar>
       <Styled.NavLogo>
-        <div className='toggle'>
-          <div></div>
-        </div>
-        <p className={DMSans700.className}>Othent</p>
+        <a href='/' className='site-a-warp'>
+          <div className='toggle'>
+            <div></div>
+          </div>
+          <p className={DMSans700.className}>Othent</p>
+        </a>
       </Styled.NavLogo>
 
       <Styled.Menu>
-        <a href='' className={`${DMSans700.className} devs`}>
+        <a href='https://mobile.othent.io' target='_blank' className={`${DMSans700.className} devs`}>
+          Mobile
+        </a>
+        <a href='https://docs.othent.io/developers/sdk' target='_blank' className={`${DMSans700.className} devs`}>
           Developers
         </a>
-        <a href='/blog' className={DMSans700.className}>
+        <a href='https://blog.othent.io' target='_blank' className={DMSans700.className}>
           Blog
         </a>
-        <Button>Contact Us</Button>
+        <Button href='mailto:hello@othent.io'>Contact Us</Button>
       </Styled.Menu>
     </Styled.NavBar>
   );

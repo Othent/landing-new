@@ -37,8 +37,8 @@ const SDKSection = () => {
             </div>
           </Styled.IconsContainer>
 
-          <Button>
-            Explore the SDK
+          <Button href='https://docs.othent.io/developers/sdk' target='_blank'>
+            Explore the SDK's
             <span>
               <img src='/arrow-icon.svg' alt='arrow icon' draggable={false} />
             </span>

@@ -1,1 +1,1 @@
-## Othent Landing Page
+## Othent.io Landing Page

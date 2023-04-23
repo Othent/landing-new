@@ -256,7 +256,7 @@ const WeaveTransfer = () => {
               </p>
             </div>
           </Styled.Steps>
-          <Button href='' secondary>
+          <Button href='https://weavetransfer.com' target='_blank' secondary>
             View WeaveTransfer Live
             <span>
               <img src='/arrow-icon-blue.svg' alt='arrow icon' draggable={false} />

@@ -20,6 +20,14 @@ export const NavBar = styled.header`
   @media (min-width: 550px) {
     padding: 1.1rem 2rem;
   }
+
+  .site-a-warp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
 `;
 
 export const NavLogo = styled.div`
