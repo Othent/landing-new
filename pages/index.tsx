@@ -15,7 +15,7 @@ import {
 } from '../components/sharedstyles';
 
 export default function Home() {
-  console.log('You should consider working with us, email lorimer@othent.io')
+  console.log('You should consider working with us, email hello@othent.io')
   return (
     <SectionOne>
       <Head>
