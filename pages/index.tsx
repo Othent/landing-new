@@ -23,7 +23,7 @@ export default function Home() {
         <meta name='description' content='Merging Web2 to Web3 user logins with a familiar and simple interface.' />
         <link rel='icon' href='/favicon.ico' />
         <meta property="og:title" content=">Othent - Merging Web2 to Web3 user logins with a familiar and simple interface."/>
-        <meta property="og:url" content="http://Othent.io/"/>
+        <meta property="og:url" content="http://Othent.io"/>
         <meta property="og:image" content="/favicon.ico"/>
         <meta property="og:image:width" content="200"/>
         <meta property="og:image:height" content="200"/>
