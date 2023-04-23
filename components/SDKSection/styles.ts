@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { FeaturesContainer, LinkButton } from '../common';
+import { FeaturesContainer } from '../common';
+import Button from "../Button";
 
 export const MainContainer = styled(FeaturesContainer)`
   display: flex;
@@ -43,6 +44,16 @@ export const Onboard = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  ${Button} {
+    padding: 9px 1rem;
+    margin: 1.5rem 0;
+
+    @media (min-width: 550px) {
+      margin: auto;
+      padding: 9px .6rem;
+    }
   }
 `;
 
@@ -106,45 +117,6 @@ export const IconsContainer = styled.div`
       margin: 0.1rem 0;
       line-height: 24px;
     }
-  }
-`;
-
-export const Button = styled.button`
-  border: none;
-  cursor: pointer;
-  padding: 12px 1rem;
-  color: #ffffff;
-  border-radius: 8px;
-  background: #2375ef;
-
-  margin: 1.5rem 0;
-  gap: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 1rem;
-  line-height: 24px;
-  text-align: center;
-
-  span {
-    img {
-      margin-top: 8.8px;
-      width: 15px;
-      height: 15px;
-    }
-  }
-
-  &:hover {
-    opacity: 0.85;
-  }
-
-  @media (min-width: 550px) {
-    margin: auto;
-  }
-
-  @media (min-width: 1024px) {
-    padding: 5px 1rem;
   }
 `;
 

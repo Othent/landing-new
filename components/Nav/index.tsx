@@ -1,5 +1,6 @@
 import * as Styled from './styles';
 import { DMSans700 } from '../../utils/fonts';
+import Button from '../Button'
 
 const Nav = () => {
   return (
@@ -11,15 +12,15 @@ const Nav = () => {
         <p className={DMSans700.className}>Othent</p>
       </Styled.NavLogo>
 
-      <Styled.NavButton>
+      <Styled.Menu>
         <a href='' className={`${DMSans700.className} devs`}>
           Developers
         </a>
         <a href='/blog' className={DMSans700.className}>
           Blog
         </a>
-        <button className={DMSans700.className}>Contact Us</button>
-      </Styled.NavButton>
+        <Button>Contact Us</Button>
+      </Styled.Menu>
     </Styled.NavBar>
   );
 };

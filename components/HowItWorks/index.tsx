@@ -1,6 +1,7 @@
 import * as Styled from './styles';
 import { FeatureTextSmall } from '../common';
 import { SpaceGrotesk700, DMSans700 } from '../../utils/fonts';
+import Button from '../Button';
 
 export default function HowItWorks() {
   return (
@@ -11,15 +12,15 @@ export default function HowItWorks() {
         blockchain
       </Styled.HeaderText>
 
-      <Styled.ReadDocs href='/'>
-        <p className={DMSans700.className}>Read the docs</p>
+      <Button href='/'>
+        Read the docs
         <span>
-          <img src='/arrow-icon.svg' alt='arrow icon' />
+          <img src='/arrow-icon.svg' alt='arrow icon' draggable={false} />
         </span>
-      </Styled.ReadDocs>
+      </Button>
 
-      <img src='/works-mobile.svg' alt='' className='works-mobile' />
-      <img src='/works-desktop.svg' alt='' className='works-desktop' />
+      <img src='/works-mobile.svg' alt='' className='works-mobile' draggable={false} />
+      <img src='/works-desktop.svg' alt='' className='works-desktop' draggable={false} />
     </Styled.Container>
   );
 }

@@ -1,10 +1,11 @@
+import { SpaceGrotesk700, DMSans700, SpaceGrotesk600 } from '../../utils/fonts';
 import * as Styled from './styles';
-import { SpaceGrotesk700, DMSans700 } from '../../utils/fonts';
+import Button from '../Button';
 
 const HeroSection = () => {
   return (
     <Styled.HeroSection>
-      <h2 className={SpaceGrotesk700.className}>
+      <h2 className={SpaceGrotesk600.className}>
         Merging Web2 to Web3 user logins with a familiar and simple interface
       </h2>
 
@@ -15,22 +16,22 @@ const HeroSection = () => {
           <div className='items-container'>
             <span className='discord'>Discord</span>
             <span className='special'>
-              <img src='/figma.svg' alt='figma' />
+              <img src='/figma.svg' alt='figma' draggable={false} />
             </span>
             <span className='dribble'>Dribble</span>
             <span className='special'>
-              <img src='/slack.svg' alt='slack' />
+              <img src='/slack.svg' alt='slack' draggable={false} />
             </span>
             <span className='twitch'>Twitch</span>
             <span className='spotify'>Spotify</span>
             <span className='vimeo'>Vimeo</span>
             <span className='special'>
-              <img src='/google.svg' alt='google' />
+              <img src='/google.svg' alt='google' draggable={false} />
             </span>
             <span className='facebook'>Facebook</span>
             <span className='apple'>Apple</span>
             <span className='special'>
-              <img src='/microsoft.svg' alt='microsoft' />
+              <img src='/microsoft.svg' alt='microsoft' draggable={false} />
             </span>
             <span className='linkedin'>LinkedIn</span>
             <span className='github'>Github</span>
@@ -44,10 +45,10 @@ const HeroSection = () => {
       </Styled.Tagline>
 
       <Styled.ButtonsWrapper>
-        <Styled.Button getStarted className={DMSans700.className}>
+        <Button>
           Get Started
-        </Styled.Button>
-        <Styled.Button className={DMSans700.className}>Demo</Styled.Button>
+        </Button>
+        <Button secondary>Demo</Button>
       </Styled.ButtonsWrapper>
     </Styled.HeroSection>
   );

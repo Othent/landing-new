@@ -4,6 +4,8 @@ export const HeroSection = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 0 1.5rem;
+  gap: 1.5rem;
 
   @media (min-width: 550px) {
     width: 65%;
@@ -14,16 +16,14 @@ export const HeroSection = styled.div`
   }
 
   h2 {
-    padding: 1.5rem;
     font-size: 2rem;
     line-height: 40px;
-    margin-bottom: 0.5rem;
     letter-spacing: 0.02em;
+    margin: 0;
 
     @media (min-width: 550px) {
       min-width: 90%;
       max-width: 92%;
-      padding: 0rem 1.5rem;
       font-size: 2.3rem;
       align-self: flex-start;
     }
@@ -150,18 +150,10 @@ export const HeroSection = styled.div`
 export const Tagline = styled.div`
   font-size: 1.25rem;
   color: #4a505a;
-  padding: 0rem 3rem 0rem 1.5rem;
-  margin-bottom: 1rem;
-
-  @media (min-width: 550px) {
-    margin: 0;
-    margin-top: 0.5rem;
-  }
 
   @media (min-width: 1100px) {
     width: 75%;
     font-size: 1.2rem;
-    margin: 1rem 0rem;
     align-self: flex-start;
   }
 `;
@@ -247,7 +239,6 @@ export const SocialLogins = styled.div`
 
 export const ButtonsWrapper = styled.div`
   width: 100%;
-  margin-top: 1rem;
 
   display: flex;
   align-items: center;
@@ -258,36 +249,3 @@ export const ButtonsWrapper = styled.div`
     flex-direction: row;
   }
 `;
-
-export const Button = styled.button<ButtonProps>`
-  width: 90%;
-  border: none;
-  cursor: pointer;
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  border: ${(props) => (props.getStarted ? 'none' : '1.2px solid #2375ef')};
-  font-size: 1rem;
-
-  color: ${(props) => (props.getStarted ? '#fff' : '#2375ef')};
-  background: ${(props) => (props.getStarted ? '#2375ef' : '#f2f2f2')};
-
-  &:hover {
-    opacity: 0.85;
-  }
-
-  @media (min-width: 550px) {
-    width: ${(props) => (props.getStarted ? '30%' : '20%')};
-    padding: 12px 1rem;
-    /* font-size: 1rem; */
-    margin-left: 1rem;
-  }
-
-  @media (min-width: 1024px) {
-    width: ${(props) => (props.getStarted ? '20%' : '13%')};
-  }
-`;
-
-interface ButtonProps {
-  getStarted?: boolean;
-}

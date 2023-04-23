@@ -6,6 +6,7 @@ import {
   DMSans500,
   DMSans400,
 } from '../../utils/fonts';
+import Button from '../Button';
 
 const CallToAction = () => {
   return (
@@ -14,17 +15,17 @@ const CallToAction = () => {
         Start onboarding your users <span>from web2 to web3</span>
       </Styled.HeaderText>
       <Styled.ButtonsContainer>
-        <Styled.Button primary className={DMSans700.className}>
+        <Button>
           Get Started
-        </Styled.Button>
-        <Styled.JoinDiscord className={DMSans700.className}>
-          <img src='/discord-colored.svg' alt='discord logo' />
+        </Button>
+        <Button secondary>
+          <img src='/discord-colored.svg' alt='discord logo' draggable={false} />
           Join our Discord
-        </Styled.JoinDiscord>
+        </Button>
       </Styled.ButtonsContainer>
 
       <Styled.MailboxContainer>
-        <img src='/backdrop.svg' alt='mailbox' className='mailbox-img' />
+        <img src='/backdrop.svg' alt='mailbox' className='mailbox-img' draggable={false} />
 
         <Styled.CTATextContainer>
           <Styled.CTAHeader className={`${SpaceGrotesk700.className} test`}>
@@ -41,9 +42,9 @@ const CallToAction = () => {
               placeholder='no@spam.com'
               className={DMSans400.className}
             />
-            <Styled.Button primary className={DMSans700.className}>
+            <Button>
               Subscribe
-            </Styled.Button>
+            </Button>
           </Styled.MailButtonsWrapper>
         </Styled.CTATextContainer>
       </Styled.MailboxContainer>

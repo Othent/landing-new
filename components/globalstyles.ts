@@ -25,6 +25,10 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+
+  img {
+    user-select: none;
+  }
 `;
 
 export default GlobalStyle;

@@ -28,7 +28,7 @@ export default function Home() {
           <HeroSectionWrapper>
             <HeroSection />
             <DemoGif>
-              <img src='/demo-gif.gif' alt='demo-gif' />
+              <img src='/demo-gif.gif' alt='demo-gif' draggable={false} />
             </DemoGif>
           </HeroSectionWrapper>
           <Features

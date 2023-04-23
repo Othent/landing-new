@@ -11,7 +11,7 @@ export default function FeatureCard(props: Props) {
   return (
     <Styled.Container img={props.imgsrc}>
       <div>
-        <img src={props.imgsrc} alt='illustration' />
+        <img src={props.imgsrc} alt='illustration' draggable={false} />
       </div>
 
       <Styled.Title className={SpaceGrotesk700.className}>

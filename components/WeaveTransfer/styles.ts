@@ -44,7 +44,7 @@ export const Container = styled.div`
 export const WTContainer = styled.div`
   width: 90%;
   margin: auto;
-  padding: 1rem;
+  padding: 1.25rem;
   margin-bottom: 1rem;
   border-radius: 1rem;
   border: 1px solid #d3e3fc;
@@ -78,7 +78,7 @@ export const WTContainer = styled.div`
   }
 
   .wt-text {
-    margin-top: 1rem;
+    margin: 1rem 0;
     text-align: center;
 
     color: #4a505a;
@@ -91,7 +91,7 @@ export const WTContainer = styled.div`
   }
 
   input {
-    width: 90%;
+    width: calc(100% - 1.5px * 2);
     outline: none;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -111,7 +111,7 @@ export const WTContainer = styled.div`
 
   .txn-id {
     align-self: flex-start;
-    width: 90%;
+    width: 100%;
     margin: auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -159,7 +159,7 @@ export const UploadDemo = styled.div<Props>`
   align-items: center;
   justify-content: space-between;
 
-  width: 90%;
+  width: calc(100% - 1px * 2);
   padding: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -184,7 +184,7 @@ export const UploadDemo = styled.div<Props>`
 `;
 
 export const UploadMenu = styled.div<MenuProps>`
-  width: 90%;
+  width: 97%;
   margin-top: 2rem;
 
   gap: 1rem;
@@ -224,35 +224,20 @@ export const UploadMenu = styled.div<MenuProps>`
   }
 
   .progress {
-    display: flex;
+    position: relative;
     width: 100%;
-    height: 1.8px;
+    height: 2px;
     border: none;
     background: #80808030;
 
-    .upload,
-    .download {
-      display: block;
+    .indicator {
+      position: absolute;
+      background-color: #2375ef;
       width: 50%;
       height: 100%;
-    }
-
-    .upload {
-      color: ${(props) => (props.active === 'upload' ? '#2375ef' : 'none')};
-    }
-
-    .download {
-      color: ${(props) => (props.active === 'download' ? '#2375ef' : 'none')};
-    }
-
-    .upload {
-      background: ${(props) =>
-        props.active === 'upload' ? '#2375ef' : 'none'};
-    }
-
-    .download {
-      background: ${(props) =>
-        props.active === 'download' ? '#2375ef' : 'none'};
+      top: 0;
+      left: ${props => props.active === "upload" ? "0" : "50%"};
+      transition: all .23s ease-in-out;
     }
   }
 `;
@@ -389,50 +374,6 @@ export const Steps = styled.div`
 
       .special {
         border: 1.5px solid #d3e3fc;
-      }
-    }
-  }
-`;
-
-export const WTLink = styled.a`
-  width: 90%;
-  padding: 1rem;
-  margin: auto;
-  margin-bottom: 1rem;
-
-  gap: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #2375ef;
-  border-radius: 8px;
-  border: 1px solid #2375ef;
-  background: #f2f2f2;
-
-  font-size: 1rem;
-  line-height: 24px;
-
-  &:hover {
-    color: #fff;
-    background: #2375ef;
-  }
-
-  span {
-    margin-top: 3.5px;
-  }
-
-  @media (min-width: 550px) {
-    width: 70%;
-  }
-
-  @media (min-width: 1100px) {
-    width: 85%;
-    padding: 14px 1rem;
-
-    span {
-      img {
-        display: none;
       }
     }
   }

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Button from '../Button'
 import { FeaturesContainer, FeatureHeaderText, LinkButton } from '../common';
 
 export const Container = styled(FeaturesContainer)`
@@ -38,47 +39,14 @@ export const ButtonsContainer = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  /* flex-direction: column; */
-  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
 
-  @media (min-width: 550px) {
-    gap: 1rem;
-    width: 50%;
-    flex-direction: row;
-    align-items: flex-start;
-  }
-
-  @media (min-width: 1024px) {
-    width: 35%;
-  }
-`;
-
-export const Button = styled.button<ButtonProps>`
-  width: 90%;
-  margin: auto;
-  cursor: pointer;
-  padding: 10px 14px;
-  border: none;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  line-height: 24px;
-  color: ${(props) => (props.primary ? '#fff' : '#2375ef')};
-  background: ${(props) => (props.primary ? '#2375ef' : 'none')};
-
-  &:hover {
-    opacity: 0.85;
-  }
-
-  @media (min-width: 550px) {
-    width: ${(props) => (props.primary ? '162px' : '90%')} !important;
-    align-self: flex-end;
-    font-size: 0.875rem;
-    padding: 10px 14px;
-  }
-
-  @media (min-width: 1024px) {
-    width: 1652px;
+  ${Button} {
+    img {
+      height: 18px;
+      width: 18px;
+    }
   }
 `;
 
@@ -110,10 +78,9 @@ export const JoinDiscord = styled(LinkButton)`
 export const MailboxContainer = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column;
 
-  @media (min-width: 550px) {
-    flex-direction: row;
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
   }
 
   .mailbox-img {

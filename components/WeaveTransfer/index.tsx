@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { FeatureTextSmall } from '../common';
 
 import { DMSans700, SpaceGrotesk700, DMSans500 } from '../../utils/fonts';
+import { AnimatePresence, motion } from 'framer-motion';
 import * as Styled from './styles';
+import Button from '../Button'
 
 const WeaveTransfer = () => {
   const [testMail, setTestMail] = useState('');
@@ -35,18 +37,20 @@ const WeaveTransfer = () => {
     return (
       <Styled.UploadModalContainer>
         {uploadClicked ? (
-          <img src='/upload-container-blue.svg' alt='upload container' />
+          <img src='/upload-container-blue.svg' alt='upload container' draggable={false} />
         ) : (
           <>
             <img
               src='/upload-container.svg'
               alt='upload container'
               className='upload-mobile-svg'
+              draggable={false}
             />
             <img
               src='/browse-files.svg'
               alt='upload container'
               className='upload-desktop-svg'
+              draggable={false}
             />
           </>
         )}
@@ -90,7 +94,7 @@ const WeaveTransfer = () => {
       <Styled.Container>
         <Styled.WTContainer>
           <div className='weave-transfer'>
-            <img src='/wt-logo.svg' alt='weave transfer logo'></img>
+            <img src='/wt-logo.svg' alt='weave transfer logo' draggable={false} />
             <p className={SpaceGrotesk700.className}>Weave Transfer</p>
           </div>
 
@@ -99,12 +103,21 @@ const WeaveTransfer = () => {
             Othent walletless protocol.
           </p>
 
-          {menuActive === 'upload' ? (
-            <Styled.Button className={DMSans700.className}>
-              <img src='/wt-google.svg' alt='wt google' />
-              Sign with Google
-            </Styled.Button>
-          ) : null}
+          <AnimatePresence initial={false}>
+            {menuActive === 'upload' && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                style={{ width: '100%', overflow: 'hidden' }}
+              >
+                <Button fullWidth>
+                  <img src='/wt-google.svg' alt='wt google' draggable={false} />
+                  Sign with Google
+                </Button>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <Styled.UploadMenu active={menuActive}>
             <div className='menu-items'>
@@ -125,8 +138,7 @@ const WeaveTransfer = () => {
               </p>
             </div>
             <div className='progress'>
-              <span className='upload'></span>
-              <span className='download'></span>
+              <div className='indicator' />
             </div>
           </Styled.UploadMenu>
 
@@ -138,7 +150,7 @@ const WeaveTransfer = () => {
 
                   {uploadClicked ? (
                     <div onClick={handleUploadClose}>
-                      <img src='/x-close.svg' alt='upload container' />
+                      <img src='/x-close.svg' alt='upload container' draggable={false} />
                     </div>
                   ) : null}
                 </Styled.UploadDemo>
@@ -176,16 +188,16 @@ const WeaveTransfer = () => {
                 value={testMail}
               />
 
-              <Styled.Button className={DMSans700.className}>
-                <img src='/upload-icon.svg' alt='upload icon' />
+              <Button fullWidth>
+                <img src='/upload-icon.svg' alt='upload icon' draggable={false} />
                 Upload
-              </Styled.Button>
+              </Button>
             </>
           ) : (
             <>
               <p className='txn-id'>Transaction ID: </p>
               {downloadDemo ? (
-                <img src='/downloading.svg' alt='' />
+                <img src='/downloading.svg' alt='' draggable={false} />
               ) : (
                 <input
                   readOnly
@@ -199,14 +211,10 @@ const WeaveTransfer = () => {
                 />
               )}
 
-              <Styled.Button
-                onClick={handleDownloadDemo}
-                bkg={downloadDemo}
-                className={DMSans700.className}
-              >
-                <img src='/download.svg' alt='upload icon' />
+              <Button onClick={handleDownloadDemo} fullWidth>
+                <img src='/download.svg' alt='upload icon' draggable={false} />
                 Download
-              </Styled.Button>
+              </Button>
             </>
           )}
         </Styled.WTContainer>
@@ -248,12 +256,12 @@ const WeaveTransfer = () => {
               </p>
             </div>
           </Styled.Steps>
-          <Styled.WTLink href='' className={DMSans700.className}>
+          <Button href='' secondary>
             View WeaveTransfer Live
             <span>
-              <img src='/arrow-icon-blue.svg' alt='arrow icon' />
+              <img src='/arrow-icon-blue.svg' alt='arrow icon' draggable={false} />
             </span>
-          </Styled.WTLink>
+          </Button>
         </Styled.StepsContainer>
       </Styled.Container>
     </Styled.MainWrapper>

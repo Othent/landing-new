@@ -1,6 +1,7 @@
-import * as Styled from './styles';
 import { FeatureTextSmall, CustomHeaderText } from '../common';
 import { SpaceGrotesk700, DMSans700 } from '../../utils/fonts';
+import * as Styled from './styles';
+import Button from '../Button';
 
 const SDKSection = () => {
   return (
@@ -23,25 +24,25 @@ const SDKSection = () => {
 
           <Styled.IconsContainer>
             <div>
-              <img src='/link-icon.svg' alt='link icon' />
+              <img src='/link-icon.svg' alt='link icon' draggable={false} />
               <p className={DMSans700.className}>Chains</p>
             </div>
             <div>
-              <img src='/code-icon.svg' alt='link icon' />
+              <img src='/code-icon.svg' alt='link icon' draggable={false} />
               <p className={DMSans700.className}>dApps</p>
             </div>
             <div>
-              <img src='/wallet-icon.svg' alt='link icon' />
+              <img src='/wallet-icon.svg' alt='link icon' draggable={false} />
               <p className={DMSans700.className}>Wallets</p>
             </div>
           </Styled.IconsContainer>
 
-          <Styled.Button>
-            <p className={DMSans700.className}>Explore the SDK</p>
+          <Button>
+            Explore the SDK
             <span>
-              <img src='/arrow-icon.svg' alt='arrow icon' />
+              <img src='/arrow-icon.svg' alt='arrow icon' draggable={false} />
             </span>
-          </Styled.Button>
+          </Button>
         </Styled.Onboard>
 
         <Styled.CodeSnippet src='/code.svg' alt='code snippet' />

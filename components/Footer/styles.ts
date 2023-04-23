@@ -1,91 +1,30 @@
 import styled from 'styled-components';
 
 export const Container = styled.footer`
-  * {
-    margin: 0;
-    padding: 0;
-  }
-
   display: flex;
-  flex-direction: column-reverse;
+  justify-content: space-between;
+  padding: 4rem 6rem 5rem;
 
   @media (min-width: 550px) {
-    align-items: center;
     background-position: -10%;
   }
 
-  @media (min-width: 1024px) {
-    flex-direction: row;
-    justify-content: space-evenly;
-  }
-`;
-
-export const CLabs = styled.div`
-  padding: 1.5rem;
-
-  @media (min-width: 550px) {
-    width: 85%;
-  }
-
-  @media (min-width: 1024px) {
-    padding: 0;
-    padding-left: 2rem;
-    width: 20%;
-  }
-
-  .inc {
-    font-size: 1rem;
-    color: #7d8795;
-
-    margin-bottom: 1rem;
-
-    @media (min-width: 550px) {
-      margin-bottom: 0;
-    }
-  }
-
-  div {
-    gap: 0.5rem;
-    display: flex;
-    align-items: center;
-
-    .clabs-logo {
-      width: 29px;
-      height: 29px;
-    }
-
-    p {
-      font-size: 0.875rem;
-      line-height: 150%;
-      color: #7d8795;
-
-      span {
-        color: #6f3efc;
-        display: block;
-      }
-    }
-  }
-`;
-
-export const FooterItems = styled.div`
-  gap: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-
-  @media (min-width: 1024px) {
-    width: 80%;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
+  @media screen and (max-width: 720px) {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 2rem 2rem;
+    gap: 1rem 3rem;
   }
 
   ul {
-    padding: 1rem 1.5rem;
+    padding: 0;
+    margin: 0;
 
     p {
       font-size: 1rem;
       line-height: 150%;
 
-      margin-bottom: 1rem;
+      margin: 0 0 1rem;
     }
 
     li {
@@ -98,6 +37,50 @@ export const FooterItems = styled.div`
 
       color: #7d8795;
       margin-bottom: 1rem;
+    }
+  }
+`;
+
+export const CLabs = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-top: .4rem;
+
+  .othent-logo {
+    height: 50px;
+  }
+
+  .inc {
+    font-size: 1rem;
+    color: #7d8795;
+
+    @media (min-width: 550px) {
+      margin-bottom: 0;
+    }
+  }
+
+  div {
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+
+    .clabs-logo {
+      width: 50px;
+      height: 50px;
+    }
+
+    p {
+      font-size: 0.875rem;
+      line-height: 150%;
+      color: #7d8795;
+      margin: 0;
+
+      span {
+        color: #6f3efc;
+        display: block;
+      }
     }
   }
 `;
