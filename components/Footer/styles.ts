@@ -37,8 +37,27 @@ export const Container = styled.footer`
 
       color: #7d8795;
       margin-bottom: 1rem;
+
+      cursor: auto;
     }
   }
+
+  .site-a-warp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .social-a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  
+
 `;
 
 export const CLabs = styled.div`

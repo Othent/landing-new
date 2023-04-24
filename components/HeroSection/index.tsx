@@ -45,10 +45,10 @@ const HeroSection = () => {
       </Styled.Tagline>
 
       <Styled.ButtonsWrapper>
-        <Button>
+        <Button href='https://docs.othent.io' target='_blank'>
           Get Started
         </Button>
-        <Button secondary>Demo</Button>
+        <Button secondary href='https://weavetransfer.com' target='_blank'>Demo</Button>
       </Styled.ButtonsWrapper>
     </Styled.HeroSection>
   );
