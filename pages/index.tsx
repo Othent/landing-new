@@ -13,9 +13,11 @@ import {
   SectionThree,
   SectionFour,
 } from '../components/sharedstyles';
+import { useEffect } from 'react';
 
 export default function Home() {
-  console.log('You should consider working with us, email hello@othent.io')
+  useEffect(() => console.log('You should consider working with us, email hello@othent.io'), []);
+
   return (
     <SectionOne>
       <Head>
