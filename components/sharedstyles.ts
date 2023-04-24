@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-export const LandingPageContainer = styled.main``;
-
 export const SectionTwo = styled.div`
   @media (min-width: 1024px) {
     background-image: url('/bkg-circles.svg'), url('bkg-squares.svg');

@@ -7,6 +7,7 @@ import SDKSection from '../components/SDKSection';
 import HeroSection from '../components/HeroSection';
 import CallToAction from '../components/CallToAction';
 import WeaveTransfer from '../components/WeaveTransfer';
+import Page from '../components/Page';
 import {
   SectionOne,
   SectionTwo,
@@ -32,12 +33,12 @@ export default function Home() {
         <meta name="keywords" content="Othent, Smart Contract Wallets, Web3, JWT Transactions, Arweave, Community Labs"></meta>
         <meta name="author" content="Othent.io"></meta>
         <meta name="robots" content="index, follow"></meta>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge"></meta>
         <meta name="apple-mobile-web-app-capable" content="yes"></meta>
         <meta name="theme-color" content="#2375EF"></meta>
       </Head>
 
-      <main>
+      <Page>
         <SectionTwo>
           <HeroSectionWrapper>
             <HeroSection />
@@ -64,7 +65,7 @@ export default function Home() {
           <SDKSection />
           <CallToAction />
         </SectionFour>
-      </main>
+      </Page>
       <Footer />
     </SectionOne>
   );
