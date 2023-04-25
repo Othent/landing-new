@@ -19,6 +19,7 @@ import { useEffect } from 'react';
 export default function Home() {
   useEffect(() => console.log('You should consider working with us, email hello@othent.io'), []);
 
+  
   return (
     <SectionOne>
       <Head>
