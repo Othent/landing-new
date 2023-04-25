@@ -25,7 +25,7 @@ const Button = styled.a<Props>`
 
   &:hover {
     background: ${props => props.secondary ? "transparent" : `rgba(${button_theme}, .8)`};
-    border-color: rgba(${`${button_theme}, .9`});
+    border-color: ${props => props.secondary ?  `rgba(${button_theme}, .8)` : "transparent"};
     color: rgba(${(props) => (props.secondary ? `${button_theme}, .8` : '255, 255, 255, 1')});
   }
 
