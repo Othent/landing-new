@@ -19,7 +19,7 @@ const SDKSection = () => {
             Try it out!
           </Styled.TextOne>
           <Styled.TextTwo className={DMSans700.className}>
-            Onboard users to:
+            Eliminate the need for private keys, not the want, into:
           </Styled.TextTwo>
 
           <Styled.IconsContainer>
