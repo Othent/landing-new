@@ -13,7 +13,8 @@ export const Container = styled.footer`
     display: grid;
     grid-template-columns: auto auto;
     padding: 2rem 2rem;
-    gap: 1rem 3rem;
+    gap: 1rem;
+    justify-content: unset;
   }
 
   ul {
@@ -100,6 +101,24 @@ export const CLabs = styled.div`
         color: #6f3efc;
         display: block;
       }
+    }
+  }
+
+  &:first-child {
+    display: flex;
+  }
+
+  &:last-child {
+    display: none;
+  }
+
+  @media screen and (max-width: 720px) {
+    &:first-child {
+      display: none;
+    }
+
+    &:last-child {
+      display: flex;
     }
   }
 `;

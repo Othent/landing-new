@@ -4,19 +4,7 @@ import { DMSans700, SpaceGrotesk600, SpaceGrotesk500 } from '../../utils/fonts';
 const Footer = () => {
   return (
     <Styled.Container>
-      <Styled.CLabs>
-        <a href='/' className='site-a-warp'>
-          <img src='/logo.svg' alt='Othent logo' className='othent-logo' draggable={false} />
-        </a>
-        <div>
-          <a href='https://communitylabs.com' target='_blank' className='site-a-warp'>
-            <img src='/clabs-logo.svg' alt='Community Labs logo' className='clabs-logo' draggable={false} />
-            <p className={`${SpaceGrotesk600.className} inc`}>
-              Working with <span>Community Labs</span>
-            </p>
-          </a>
-        </div>
-      </Styled.CLabs>
+      <LogoSection />
 
       <ul>
         <p className={SpaceGrotesk600.className}>Resources</p>
@@ -51,28 +39,46 @@ const Footer = () => {
       </ul>
 
       <Styled.SocialChannels>
-      <p className={SpaceGrotesk600.className}>Follow us</p>
-      <li className={SpaceGrotesk500.className}>
-        <a href="https://discord.gg/WPPBPtKbbN" target='_blank' className='social-a'>
-          <img src='/discord-gray.svg' alt='discord icon' draggable={false} />
-          Discord
-        </a>
-      </li>
-      <li className={SpaceGrotesk500.className}>
-        <a href="https://github.com/othent" target='_blank' className='social-a'>
-          <img src='/github-icon.svg' alt='github icon' draggable={false} />
-          Github
-        </a>
-      </li>
-      <li className={SpaceGrotesk500.className}>
-        <a href="https://twitter.com/othent_io" target='_blank' className='social-a'>
-          <img src='/twitter-icon.svg' alt='twitter icon' draggable={false} />
-          Twitter
-        </a>
-      </li>
-    </Styled.SocialChannels>
+        <p className={SpaceGrotesk600.className}>Follow us</p>
+        <li className={SpaceGrotesk500.className}>
+          <a href="https://discord.gg/WPPBPtKbbN" target='_blank' className='social-a'>
+            <img src='/discord-gray.svg' alt='discord icon' draggable={false} />
+            Discord
+          </a>
+        </li>
+        <li className={SpaceGrotesk500.className}>
+          <a href="https://github.com/othent" target='_blank' className='social-a'>
+            <img src='/github-icon.svg' alt='github icon' draggable={false} />
+            Github
+          </a>
+        </li>
+        <li className={SpaceGrotesk500.className}>
+          <a href="https://twitter.com/othent_io" target='_blank' className='social-a'>
+            <img src='/twitter-icon.svg' alt='twitter icon' draggable={false} />
+            Twitter
+          </a>
+        </li>
+      </Styled.SocialChannels>
+
+      <LogoSection />
     </Styled.Container>
   );
 };
+
+const LogoSection = () => (
+  <Styled.CLabs>
+    <a href='/' className='site-a-warp'>
+      <img src='/logo.svg' alt='Othent logo' className='othent-logo' draggable={false} />
+    </a>
+    <div>
+      <a href='https://communitylabs.com' target='_blank' className='site-a-warp'>
+        <img src='/clabs-logo.svg' alt='Community Labs logo' className='clabs-logo' draggable={false} />
+        <p className={`${SpaceGrotesk600.className} inc`}>
+          Working with <span>Community Labs</span>
+        </p>
+      </a>
+    </div>
+  </Styled.CLabs>
+);
 
 export default Footer;
