@@ -9,7 +9,7 @@ export const NavBar = styled.header`
   width: 100%;
   display: flex;
   position: fixed;
-  padding: 1.1rem;
+  padding: 1.1rem 2rem;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
@@ -17,8 +17,9 @@ export const NavBar = styled.header`
   backdrop-filter: blur(20px);
   z-index: 999;
 
-  @media (min-width: 550px) {
-    padding: 1.1rem 2rem;
+  @media (max-width: 720px) {
+    padding: 1.1rem;
+    gap: 1rem;
   }
 
   .site-a-warp {
@@ -81,10 +82,10 @@ export const Menu = styled.nav`
   gap: 1.75rem;
 
   ${Button} {
-    padding: 12px 16px;
+    padding: 8px 14px;
 
-    @media (min-width: 1024px) {
-      padding: 8px 14px;
+    @media screen and (max-width: 720px) {
+      padding: 6px 14px;
     }
   }
 

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Button from '../Button'
 import { FeatureHeaderText, FeaturesContainer } from '../common';
 
 interface Props {
@@ -151,6 +152,12 @@ export const StepsContainer = styled.div`
   @media (min-width: 1024px) {
     width: 45%;
   }
+
+  @media screen and (max-width: 720px) {
+    ${Button} {
+      margin: 0 1.25rem;
+    }
+  }
 `;
 
 export const UploadDemo = styled.div<Props>`
@@ -239,33 +246,6 @@ export const UploadMenu = styled.div<MenuProps>`
       left: ${props => props.active === "upload" ? "0" : "50%"};
       transition: all .23s ease-in-out;
     }
-  }
-`;
-
-export const Button = styled.button<ButtonProps>`
-  width: 90%;
-  border: none;
-  cursor: pointer;
-  margin-top: 0.8rem;
-  border-radius: 8px;
-  padding: 12px 16px;
-  background: ${(props) => (props.bkg ? '#B1B7BF' : '#2375ef')};
-
-  font-size: 1rem;
-  color: #ffffff;
-  line-height: 24px;
-
-  gap: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    opacity: 0.85;
-  }
-
-  @media (min-width: 1024px) {
-    padding: 12px 16px;
   }
 `;
 

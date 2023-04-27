@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Button from '../Button'
 
 export const HeroSection = styled.div`
   display: flex;
@@ -6,13 +7,11 @@ export const HeroSection = styled.div`
   flex-direction: column;
   padding: 0 1.5rem;
   gap: 1.5rem;
+  width: 50%;
 
-  @media (min-width: 550px) {
-    width: 65%;
-  }
-
-  @media (min-width: 1100px) {
-    width: 50%;
+  @media screen and (max-width: 720px) {
+    width: 100%;
+    padding: 5.5rem 1.5rem 2rem;
   }
 
   h2 {
@@ -242,10 +241,14 @@ export const ButtonsWrapper = styled.div`
 
   display: flex;
   align-items: center;
-  flex-direction: column;
+  gap: 1rem;
+  flex-direction: row;
 
-  @media (min-width: 550px) {
-    gap: 1rem;
-    flex-direction: row;
+  @media (max-width: 720px) {
+    flex-direction: column;
+
+    ${Button} {
+      width: 100%;
+    }
   }
 `;
