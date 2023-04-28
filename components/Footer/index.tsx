@@ -21,9 +21,9 @@ const Footer = () => {
 
       <ul>
         <p className={SpaceGrotesk600.className}>Company</p>
-        <li className={SpaceGrotesk500.className}>
+        {/* <li className={SpaceGrotesk500.className}>
           <a href="https://blog.othent.io" target='_blank'>Blog</a>
-        </li>
+        </li> */}
         <li className={SpaceGrotesk500.className}>
           <a href="mailto:hello@.othent.io">Careers</a>
         </li>

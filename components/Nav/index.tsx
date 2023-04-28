@@ -21,9 +21,9 @@ const Nav = () => {
         <a href='https://docs.othent.io/developers/sdk' target='_blank' className={`${DMSans700.className} devs`}>
           Developers
         </a>
-        <a href='https://blog.othent.io' target='_blank' className={DMSans700.className}>
+        {/* <a href='https://blog.othent.io' target='_blank' className={DMSans700.className}>
           Blog
-        </a>
+        </a> */}
         <Button href='mailto:hello@othent.io'>Contact Us</Button>
       </Styled.Menu>
     </Styled.NavBar>
