@@ -15,9 +15,9 @@ const Nav = () => {
       </Styled.NavLogo>
 
       <Styled.Menu>
-        <a href='https://mobile.othent.io' target='_blank' className={`${DMSans700.className} devs`}>
+        {/* <a href='https://mobile.othent.io' target='_blank' className={`${DMSans700.className} devs`}>
           Mobile
-        </a>
+        </a> */}
         <a href='https://docs.othent.io/developers/sdk' target='_blank' className={`${DMSans700.className} devs`}>
           Developers
         </a>

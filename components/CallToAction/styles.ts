@@ -175,3 +175,16 @@ export const MailButtonsWrapper = styled.div`
 interface ButtonProps {
   primary?: boolean;
 }
+
+
+export const ErrorMessage = styled.p`
+  color: red;
+  padding: 0 1.2rem;
+  font-size: 0.8rem;
+`;
+
+export const SuccessMessage = styled.p`
+  color: green;
+  padding: 0 1.2rem;
+  font-size: 0.8rem;
+`;

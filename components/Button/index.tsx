@@ -20,17 +20,17 @@ const Button = styled.a<Props>`
   ${DMSans700.style}
 
   color: rgb(${props => props.secondary ? button_theme : "255, 255, 255"});
-  background: ${props => props.secondary ? "transparent" : `rgb(${button_theme})`};
+  background: ${props => props.secondary ? "#f2f2f2" : `rgb(${button_theme})`};
   transition: all .23s ease-in-out;
 
   &:hover {
-    background: ${props => props.secondary ? "transparent" : `rgba(${button_theme}, .8)`};
-    border-color: ${props => props.secondary ?  `rgba(${button_theme}, .8)` : "transparent"};
+    background: ${props => props.secondary ? "#f2f2f2" : `rgba(${button_theme}, .8)`};
+    border-color: ${props => props.secondary ?  `rgba(${button_theme}, .8)` : "#f2f2f2"};
     color: rgba(${(props) => (props.secondary ? `${button_theme}, .8` : '255, 255, 255, 1')});
   }
 
   &:active {
-    background: ${(props) => (props.secondary ? 'transparent' : `rgba(${button_active}, 1)`)};
+    background: ${(props) => (props.secondary ? '#f2f2f2' : `rgba(${button_active}, 1)`)};
     border-color: rgba(${`${button_active}, 1`});
     color: rgba(${(props) => (props.secondary ? `${button_active}, 1` : '255, 255, 255, 1')});
   }
