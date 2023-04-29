@@ -5,82 +5,90 @@ import { DMSans700, SpaceGrotesk700, DMSans500 } from '../../utils/fonts';
 import { AnimatePresence, motion } from 'framer-motion';
 import * as Styled from './styles';
 import Button from '../Button'
+import styled from 'styled-components';
 
 const WeaveTransfer = () => {
-  const [testMail, setTestMail] = useState('');
-  const [testMessage, setTestMessage] = useState('');
+
+
+
   const [txnInputValue, setTxnInputValue] = useState('');
   const [menuActive, setMenuActive] = useState('upload');
   const [downloadDemo, setDownloadDemo] = useState(false);
-  const [uploadClicked, setUploadClicked] = useState(false);
 
-  const handleUploadClick = () => {
-    setUploadClicked(true);
-  };
 
-  const handleUploadClose = () => {
-    setTestMail('');
-    setTestMessage('');
-    setUploadClicked(false);
-  };
 
-  const handleDownloadDemo = async () => {
-    if (txnInputValue) {
-      setDownloadDemo(true);
-      setTimeout(() => {
-        setDownloadDemo(false);
-      }, 2500);
+  const [file, setFile] = useState(null);
+  const [fileName, setFileName] = useState("");
+
+
+
+  const [loading, setLoading] = useState(false);
+  const [requestStatus, setRequestStatus] = useState("");
+  const [transaction_id, setTransactionId] = useState("");
+
+
+  const sendFromEmail = 'lj'
+  const [message, setMessage] = useState("")
+  const [sendToEmail, setSendToEmail] = useState("")
+
+
+  function handleFileUpload(event) {
+    const file = event.target.files[0];
+    setFile(file);
+    setFileName(file.name);
+    console.log(file)
+  }
+
+
+
+
+  function uploadFileButton() {
+
+    if (!file) {
+      alert("No file selected to upload");
+      return;
     }
-  };
 
-  const UploadModal = () => {
-    return (
-      <Styled.UploadModalContainer>
-        {uploadClicked ? (
-          <img src='/upload-container-blue.svg' alt='upload container' draggable={false} />
-        ) : (
-          <>
-            <img
-              src='/upload-container.svg'
-              alt='upload container'
-              className='upload-mobile-svg'
-              draggable={false}
-            />
-            <img
-              src='/browse-files.svg'
-              alt='upload container'
-              className='upload-desktop-svg'
-              draggable={false}
-            />
-          </>
-        )}
+    if (!sendToEmail) {
+      alert("Please enter the recipient email");
+      return;
+    }
+  
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("message", message);
+    formData.append("sendToEmail", sendToEmail);
+    formData.append("sendFromEmail", sendFromEmail);
+  
+    fetch('https://server.othent.io/weavetransfer', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setLoading(false);
+        setTransactionId(data.transactionId);
+        setFileName("");
+        setFile(null);
+        console.log(data)
+        if (data.success === true) {
+          setRequestStatus('success');
+          setMessage("")
+          setSendToEmail("")
+        } else {
+          setRequestStatus('failed');
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        setRequestStatus('failed');
+        setLoading(false);
+      });
+  
 
-        {uploadClicked ? (
-          <div>
-            <p className={`${DMSans700.className} file-selected`}>
-              filename.jsx
-            </p>
-            <p className={`${DMSans700.className} file-size`}>8kb</p>
-          </div>
-        ) : (
-          <div className='select-upload-container'>
-            <p className={`${DMSans700.className} upload-text-mobile`}>
-              No file selected
-            </p>
-            <p className={`${DMSans700.className} browse-files-mobile`}>
-              Browse files...
-            </p>
-            <p className={`${DMSans700.className} upload-text-desktop`}>
-              Browse files
-            </p>
-            <p className={`${DMSans700.className} browse-files-desktop`}>
-              or drag it here...
-            </p>
-          </div>
-        )}
-      </Styled.UploadModalContainer>
-    );
-  };
+  }
+
+  
 
   return (
     <Styled.MainWrapper>
@@ -144,55 +152,73 @@ const WeaveTransfer = () => {
 
           {menuActive === 'upload' ? (
             <>
-              {uploadClicked ? (
-                <Styled.UploadDemo clicked={uploadClicked}>
-                  <UploadModal />
 
-                  {uploadClicked ? (
-                    <div onClick={handleUploadClose}>
-                      <img src='/x-close.svg' alt='upload container' draggable={false} />
-                    </div>
-                  ) : null}
-                </Styled.UploadDemo>
-              ) : (
-                <Styled.UploadDemo
-                  clicked={uploadClicked}
-                  onClick={handleUploadClick}
-                >
-                  <UploadModal />
-                </Styled.UploadDemo>
-              )}
+
+
+              <div
+              onDragOver={handleFileUpload}
+              onDrop={handleFileUpload}
+              className={`${DMSans700.className} file-upload`}
+              >
+                <label htmlFor="file-input">
+                <span className="upload-icon" role="img" aria-label="upload icon">
+                  {fileName ? "✅" : "📁"}
+                </span>
+                <span className="upload-text">
+                  {fileName ? fileName : "Choose a file or drag it here"}
+                </span>
+              </label>
+              <input id="file-input" type="file" onChange={handleFileUpload} />
+
+              </div>
+
+
+
+
+
+
+
+
+
+
+
 
               <input
-                readOnly
                 type='text'
                 className={`${DMSans500.className} upload-text`}
                 placeholder='Message (optional)'
-                onClick={() => {
-                  if (uploadClicked) {
-                    setTestMessage('Test message');
-                  }
-                }}
-                value={testMessage}
-              />
+                value={message} 
+                onChange={(event) => setMessage(event.target.value)} 
+                />
+
               <input
-                readOnly
                 type='text'
-                placeholder='Email'
+                placeholder='Recipient email'
                 className={`${DMSans500.className} upload-text`}
-                onClick={() => {
-                  if (uploadClicked) {
-                    setTestMail('hello@othent.io');
-                  }
-                }}
-                value={testMail}
+                value={sendToEmail} 
+                onChange={(event) => setSendToEmail(event.target.value)} 
               />
 
-              <Button fullWidth>
+
+
+              <Button fullWidth onClick={uploadFileButton}>
                 <img src='/upload-icon.svg' alt='upload icon' draggable={false} />
                 Upload
               </Button>
+
+
             </>
+
+
+
+
+
+
+
+
+
+
+
           ) : (
             <>
               <p className='txn-id'>Transaction ID: </p>
@@ -211,7 +237,7 @@ const WeaveTransfer = () => {
                 />
               )}
 
-              <Button onClick={handleDownloadDemo} fullWidth>
+              <Button fullWidth>
                 <img src='/download.svg' alt='upload icon' draggable={false} />
                 Download
               </Button>

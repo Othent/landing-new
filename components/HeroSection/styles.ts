@@ -15,6 +15,7 @@ export const HeroSection = styled.div`
   }
 
   h2 {
+
     font-size: 2rem;
     line-height: 40px;
     letter-spacing: 0.02em;

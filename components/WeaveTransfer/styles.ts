@@ -137,6 +137,50 @@ export const WTContainer = styled.div`
     font-size: 1rem;
     line-height: 24px;
   }
+
+
+
+  .file-upload {
+    color: black;
+    cursor: pointer;
+    background: rgb(242, 242, 242);
+    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: calc(100% - 2px);
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    border: 1px dashed rgb(203, 207, 213);
+  }
+
+  .file-input-text {
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .top-text {
+    color: rgb(125, 135, 149);
+  }
+  .bottom-text {
+    color: rgb(35, 117, 239);
+  }
+
+  #file-input {
+    display: none;
+  }
+
+  .upload-icon {
+    margin-right: 10px
+  }
+
+
+
+
+
 `;
 
 export const StepsContainer = styled.div`
@@ -197,6 +241,11 @@ export const UploadMenu = styled.div<MenuProps>`
   gap: 1rem;
   display: flex;
   flex-direction: column;
+
+
+  input {
+    display: none
+  }
 
   .menu-items {
     * {
@@ -447,3 +496,5 @@ export const UploadModalContainer = styled.div`
     }
   }
 `;
+
+
