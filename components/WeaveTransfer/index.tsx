@@ -50,7 +50,6 @@ const WeaveTransfer = () => {
 
 
   const [sendToEmail, setSendToEmail] = useState("")
-  const [userPicture, setUserPicture] = useState(null);
   const [userEmail, setUserEmail] = useState(null);
   function isValidEmail(email) {
     const emailRegex = /^\S+@\S+\.\S+$/;
@@ -100,8 +99,7 @@ const WeaveTransfer = () => {
         if (data.success === true) {
           setRequestStatus('success');
           setSendToEmail("")
-          setUserEmail('Sent with ' + user_details.email + '!')
-          setUserPicture(user_details.picture)
+          setUserEmail(user_details.email)
           setWalletAddress(user_details.contract_id)
         } else {
           setRequestStatus('failed');
@@ -163,61 +161,71 @@ const WeaveTransfer = () => {
 
           {menuActive === 'upload' ? (
             <>
-
+            {!(transaction_id && walletAddress) && (
+              <>
                 <label 
-                onDragOver={handleFileUpload}
-                onDrop={handleFileUpload} 
-                className={`${DMSans700.className} file-upload`} 
-                htmlFor="file-input">
+                  onDragOver={handleFileUpload}
+                  onDrop={handleFileUpload} 
+                  className={`${DMSans700.className} file-upload`} 
+                  htmlFor="file-input">
+          
+                  <span className="upload-icon" role="img" aria-label="upload icon">
+                    {fileName ? "✅" : "📁"}
+                  </span>
+                  <span className="upload-text">
+                    {fileName ? fileName : "Choose a file or drag it here"}
+                  </span>
+          
+                </label>
+                <input id="file-input" type="file" onChange={handleFileUpload} />
+          
+                <input
+                  type='text'
+                  placeholder='Recipient email'
+                  className={`${DMSans500.className} upload-text`}
+                  value={sendToEmail} 
+                  onChange={(event) => setSendToEmail(event.target.value)} 
+                />
+              </>
+            )}
+          
+            {transaction_id && walletAddress && (
+              <>
+                <p className='upload-profile'>
+                  <b>Successfully sent with, </b> 
+                  <span className='sent-with-email'>{userEmail}</span>
+                </p>
+                <p className='id-wallet-upload'>
+                  <b>Transaction ID: </b>
+                  <a className='txn-id-a' href={'https://arweave.net/' + transaction_id} target="_blank">{transaction_id}</a>
+                </p>
 
-                <span className="upload-icon" role="img" aria-label="upload icon">
-                  {fileName ? "✅" : "📁"}
-                </span>
-                <span className="upload-text">
-                  {fileName ? fileName : "Choose a file or drag it here"}
-                </span>
+                <p className='id-wallet-upload'>
+                  <b>Your Wallet Address: </b>
+                  <span>{walletAddress}</span>
+                </p>
 
-              </label>
-              <input id="file-input" type="file" onChange={handleFileUpload} />
-
-
-              <input
-                type='text'
-                placeholder='Recipient email'
-                className={`${DMSans500.className} upload-text`}
-                value={sendToEmail} 
-                onChange={(event) => setSendToEmail(event.target.value)} 
-              />
-
-              {transaction_id && walletAddress && (
-                <div className="transaction-info">
-                  <p>
-                    <b>Transaction ID: </b>
-                    <a className='txn-id-a' href={'https://arweave.net/' + transaction_id} target="_blank">{transaction_id}</a>
-                  </p>
-                  <p>
-                    <b>Your Wallet Address: </b>
-                    <span>{walletAddress}</span>
-                  </p>
-                </div>
-              )}
-
+                <Button fullWidth onClick={() => window.location.reload()}>
+                  <img src="/refresh.svg" alt="Refresh icon" draggable={false} />
+                  Send another file
+                </Button>
+              </>
               
+            )}
+          
+            {!(transaction_id && walletAddress) && (
               <Button fullWidth onClick={uploadFileButton}>
-                {userPicture ? (
-                  <img className="user-icon" src={userPicture} alt="User profile" />
-                ) : null}
-                {loading && !userPicture ? (
+                {loading ? (
                   <span>Loading...</span>
                 ) : (
                   <>
-                    {!userPicture && <img src="/wt-google.svg" alt="Google icon" draggable={false} />}
-                    {userEmail || 'Send on-chain with Google'}
+                    <img src="/wt-google.svg" alt="Google icon" draggable={false} />
+                    Send on-chain with Google
                   </>
                 )}
               </Button>
-
-            </>
+            )}
+          </>
 
 
 

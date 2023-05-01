@@ -190,12 +190,36 @@ export const WTContainer = styled.div`
     flex-direction: column;
     width: 100%;
     margin-bottom: 1rem;
+    background-color: red;
   }
 
   .txn-id-a {
     color: #2375ef;
     text-decoration: underline;
   }
+
+  .sent-with-email {
+    color: #7d8795;
+  }
+
+  .upload-profile {
+    width: 97%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #2375ef;
+    line-height: 24px;
+  }
+  .id-wallet-upload {
+    width: 97%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #7d8795;
+    line-height: 24px;
+    overflow: auto;
+  }
+
 
 
 
