@@ -29,7 +29,7 @@ export const HeaderText = styled(FeatureHeaderText)`
 `;
 
 export const Container = styled.div`
-  @media (min-width: 1024px) {
+@media (min-width: 1024px) {
     padding: 2rem;
     display: flex;
     align-items: center;
@@ -61,7 +61,7 @@ export const WTContainer = styled.div`
   }
 
   @media (min-width: 1024px) {
-    width: 42%;
+    width: 50%;
   }
 
   .weave-transfer {
@@ -81,7 +81,6 @@ export const WTContainer = styled.div`
   .wt-text {
     margin: 1rem 0;
     text-align: center;
-
     color: #4a505a;
     font-size: 1rem;
     line-height: 24px;
@@ -141,10 +140,10 @@ export const WTContainer = styled.div`
 
 
   .file-upload {
-    color: black;
+    color: grey;
     cursor: pointer;
     background: rgb(242, 242, 242);
-    gap: 0.5rem;
+    gap: 0.1rem;
     display: flex;
     align-items: center;
     justify-content: left;
@@ -152,8 +151,9 @@ export const WTContainer = styled.div`
     padding: 1rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    border-radius: 1rem;
+    border-radius: 8px;
     border: 1px dashed rgb(203, 207, 213);
+    width: 100%;
   }
 
   .file-input-text {
@@ -176,6 +176,27 @@ export const WTContainer = styled.div`
   .upload-icon {
     margin-right: 10px
   }
+
+  .user-icon {
+    border-radius: 50%;
+  }
+
+
+
+  .transaction-info {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .txn-id-a {
+    color: #2375ef;
+    text-decoration: underline;
+  }
+
 
 
 

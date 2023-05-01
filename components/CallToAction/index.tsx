@@ -9,11 +9,17 @@ import {
 import Button from '../Button';
 import { useState } from 'react';
 
+
 const CallToAction = () => {
   const [email, setEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
+
+  function isValidEmail(email) {
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    return emailRegex.test(email);
+  }
   async function saveEmail() {
     if (!isValidEmail(email)) {
       setErrorMessage('Please enter a valid email address.');
@@ -43,11 +49,6 @@ const CallToAction = () => {
 
   function handleEmailChange(event) {
     setEmail(event.target.value);
-  }
-
-  function isValidEmail(email) {
-    const emailRegex = /^\S+@\S+\.\S+$/;
-    return emailRegex.test(email);
   }
 
   return (

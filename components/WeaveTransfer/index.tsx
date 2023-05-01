@@ -6,43 +6,61 @@ import { AnimatePresence, motion } from 'framer-motion';
 import * as Styled from './styles';
 import Button from '../Button'
 import styled from 'styled-components';
+import othent from 'othent'
 
 const WeaveTransfer = () => {
 
 
 
-  const [txnInputValue, setTxnInputValue] = useState('');
+  
   const [menuActive, setMenuActive] = useState('upload');
   const [downloadDemo, setDownloadDemo] = useState(false);
 
 
+  const [downloadTransactionId, setDownloadTransactionId] = useState('');
 
-  const [file, setFile] = useState(null);
-  const [fileName, setFileName] = useState("");
 
 
 
   const [loading, setLoading] = useState(false);
   const [requestStatus, setRequestStatus] = useState("");
-  const [transaction_id, setTransactionId] = useState("");
 
 
-  const sendFromEmail = 'lj'
-  const [message, setMessage] = useState("")
-  const [sendToEmail, setSendToEmail] = useState("")
 
-
+  const [file, setFile] = useState(null);
+  const [fileName, setFileName] = useState("");
   function handleFileUpload(event) {
     const file = event.target.files[0];
     setFile(file);
     setFileName(file.name);
-    console.log(file)
+  }
+
+
+  
+
+  const [txnInputValue, setTxnInputValue] = useState(null);
+  function downloadWTLink() {
+    if (!txnInputValue) {
+      alert("Please enter a transaction id");
+      return;
+    }
+    console.log(txnInputValue)
   }
 
 
 
+  const [sendToEmail, setSendToEmail] = useState("")
+  const [userPicture, setUserPicture] = useState(null);
+  const [userEmail, setUserEmail] = useState(null);
+  function isValidEmail(email) {
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    return emailRegex.test(email);
+  }
 
-  function uploadFileButton() {
+
+  const [transaction_id, setTransactionId] = useState("");
+  const [walletAddress, setWalletAddress] = useState("");
+  async function uploadFileButton() {
 
     if (!file) {
       alert("No file selected to upload");
@@ -53,12 +71,21 @@ const WeaveTransfer = () => {
       alert("Please enter the recipient email");
       return;
     }
+
+    if (!isValidEmail(sendToEmail)) {
+      alert('Please enter a valid recipient email address');
+      return;
+    }
+
+
+    const user_details = await othent.logIn()
   
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("message", message);
     formData.append("sendToEmail", sendToEmail);
-    formData.append("sendFromEmail", sendFromEmail);
+    formData.append("sendFromEmail", user_details.email);
+
+    setLoading(true)
   
     fetch('https://server.othent.io/weavetransfer', {
       method: 'POST',
@@ -70,11 +97,12 @@ const WeaveTransfer = () => {
         setTransactionId(data.transactionId);
         setFileName("");
         setFile(null);
-        console.log(data)
         if (data.success === true) {
           setRequestStatus('success');
-          setMessage("")
           setSendToEmail("")
+          setUserEmail('Sent with ' + user_details.email + '!')
+          setUserPicture(user_details.picture)
+          setWalletAddress(user_details.contract_id)
         } else {
           setRequestStatus('failed');
         }
@@ -88,7 +116,7 @@ const WeaveTransfer = () => {
 
   }
 
-  
+
 
   return (
     <Styled.MainWrapper>
@@ -99,7 +127,7 @@ const WeaveTransfer = () => {
         Experience it yourself
       </Styled.HeaderText>
 
-      <Styled.Container>
+      <Styled.Container >
         <Styled.WTContainer>
           <div className='weave-transfer'>
             <img src='/wt-logo.svg' alt='weave transfer logo' draggable={false} />
@@ -107,25 +135,8 @@ const WeaveTransfer = () => {
           </div>
 
           <p className={`${DMSans500.className} wt-text`}>
-            Permanent file transfer and storage using the Arweave permaweb and
-            Othent walletless protocol.
+            Example app using Othent on chain file transfer without a wallet
           </p>
-
-          <AnimatePresence initial={false}>
-            {menuActive === 'upload' && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                style={{ width: '100%', overflow: 'hidden' }}
-              >
-                <Button fullWidth>
-                  <img src='/wt-google.svg' alt='wt google' draggable={false} />
-                  Sign with Google
-                </Button>
-              </motion.div>
-            )}
-          </AnimatePresence>
 
           <Styled.UploadMenu active={menuActive}>
             <div className='menu-items'>
@@ -153,43 +164,22 @@ const WeaveTransfer = () => {
           {menuActive === 'upload' ? (
             <>
 
+                <label 
+                onDragOver={handleFileUpload}
+                onDrop={handleFileUpload} 
+                className={`${DMSans700.className} file-upload`} 
+                htmlFor="file-input">
 
-
-              <div
-              onDragOver={handleFileUpload}
-              onDrop={handleFileUpload}
-              className={`${DMSans700.className} file-upload`}
-              >
-                <label htmlFor="file-input">
                 <span className="upload-icon" role="img" aria-label="upload icon">
                   {fileName ? "✅" : "📁"}
                 </span>
                 <span className="upload-text">
                   {fileName ? fileName : "Choose a file or drag it here"}
                 </span>
+
               </label>
               <input id="file-input" type="file" onChange={handleFileUpload} />
 
-              </div>
-
-
-
-
-
-
-
-
-
-
-
-
-              <input
-                type='text'
-                className={`${DMSans500.className} upload-text`}
-                placeholder='Message (optional)'
-                value={message} 
-                onChange={(event) => setMessage(event.target.value)} 
-                />
 
               <input
                 type='text'
@@ -199,13 +189,33 @@ const WeaveTransfer = () => {
                 onChange={(event) => setSendToEmail(event.target.value)} 
               />
 
+              {transaction_id && walletAddress && (
+                <div className="transaction-info">
+                  <p>
+                    <b>Transaction ID: </b>
+                    <a className='txn-id-a' href={'https://arweave.net/' + transaction_id} target="_blank">{transaction_id}</a>
+                  </p>
+                  <p>
+                    <b>Your Wallet Address: </b>
+                    <span>{walletAddress}</span>
+                  </p>
+                </div>
+              )}
 
-
+              
               <Button fullWidth onClick={uploadFileButton}>
-                <img src='/upload-icon.svg' alt='upload icon' draggable={false} />
-                Upload
+                {userPicture ? (
+                  <img className="user-icon" src={userPicture} alt="User profile" />
+                ) : null}
+                {loading && !userPicture ? (
+                  <span>Loading...</span>
+                ) : (
+                  <>
+                    {!userPicture && <img src="/wt-google.svg" alt="Google icon" draggable={false} />}
+                    {userEmail || 'Send on-chain with Google'}
+                  </>
+                )}
               </Button>
-
 
             </>
 
@@ -226,18 +236,15 @@ const WeaveTransfer = () => {
                 <img src='/downloading.svg' alt='' draggable={false} />
               ) : (
                 <input
-                  readOnly
                   type='text'
                   className='txn-input'
-                  placeholder='Enter your ID here...'
-                  value={txnInputValue}
-                  onClick={() => {
-                    setTxnInputValue('NVkSolD-1AJcJ0BMfEASJjIuak3Y...');
-                  }}
+                  placeholder='Enter your Transaction ID here...'
+                  value={downloadTransactionId} 
+                  onChange={(event) => setDownloadTransactionId(event.target.value)} 
                 />
               )}
 
-              <Button fullWidth>
+              <Button onClick={downloadWTLink} fullWidth>
                 <img src='/download.svg' alt='upload icon' draggable={false} />
                 Download
               </Button>
@@ -245,50 +252,9 @@ const WeaveTransfer = () => {
           )}
         </Styled.WTContainer>
 
-        <Styled.StepsContainer>
-          <Styled.Steps>
-            <div>
-              <p className={`${DMSans700.className} special`}>
-                <span>1</span>
-                Drag and drop a file
-              </p>
-            </div>
 
-            <div>
-              <p className={DMSans700.className}>
-                <span>2</span>
-                Recipient Email
-              </p>
-            </div>
 
-            <div>
-              <p className={DMSans700.className}>
-                <span>3</span>
-                Add a message
-              </p>
-            </div>
 
-            <div>
-              <p className={DMSans700.className}>
-                <span>4</span>
-                Upload to blockchain with Google
-              </p>
-            </div>
-
-            <div>
-              <p className={DMSans700.className}>
-                <span>5</span>
-                Share your file
-              </p>
-            </div>
-          </Styled.Steps>
-          <Button href='https://weavetransfer.com' target='_blank' secondary>
-            View WeaveTransfer Live
-            <span>
-              <img src='/arrow-icon-blue.svg' alt='arrow icon' draggable={false} />
-            </span>
-          </Button>
-        </Styled.StepsContainer>
       </Styled.Container>
     </Styled.MainWrapper>
   );
