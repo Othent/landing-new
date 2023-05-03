@@ -111,7 +111,7 @@ export const IconsContainer = styled.div`
         height: 38px;
       }
     }
-
+    
     p {
       font-size: 15px;
       margin: 0.1rem 0;
@@ -124,10 +124,13 @@ export const CodeSnippet = styled.img`
   width: 100%;
 
   @media (min-width: 550px) {
-    width: 85%;
-  }
-
-  @media (min-width: 1024px) {
     width: 50%;
   }
+
+  @media (min-width: 720px) {
+    width: 60%;
+  }
 `;
+
+
+
