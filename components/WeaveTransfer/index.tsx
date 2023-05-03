@@ -17,9 +17,6 @@ const WeaveTransfer = () => {
   const [downloadDemo, setDownloadDemo] = useState(false);
 
 
-  const [downloadTransactionId, setDownloadTransactionId] = useState('');
-
-
 
 
   const [loading, setLoading] = useState(false);
@@ -38,13 +35,14 @@ const WeaveTransfer = () => {
 
   
 
-  const [txnInputValue, setTxnInputValue] = useState(null);
+  const [txnInputValue, setTxnInputValue] = useState("");
+
+  const [downloadTransactionId, setDownloadTransactionId] = useState('');
   function downloadWTLink() {
-    if (!txnInputValue) {
+    if (!downloadTransactionId) {
       alert("Please enter a transaction id");
-      return;
     }
-    console.log(txnInputValue)
+    window.open('https://arweave.net/' + downloadTransactionId)
   }
 
 
@@ -133,7 +131,7 @@ const WeaveTransfer = () => {
           </div>
 
           <p className={`${DMSans500.className} wt-text`}>
-            Example app using Othent on chain file transfer without a wallet
+            Example app using Othent, on chain file transfer without a wallet
           </p>
 
           <Styled.UploadMenu active={menuActive}>
