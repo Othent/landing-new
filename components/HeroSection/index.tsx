@@ -48,7 +48,7 @@ const HeroSection = () => {
         <Button href='https://docs.othent.io' target='_blank'>
           Get Started
         </Button>
-        <Button secondary href='https://weavetransfer.com' target='_blank'>Demo</Button>
+        <Button secondary href='https://weavetransfer.othent.io' target='_blank'>Demo</Button>
       </Styled.ButtonsWrapper>
     </Styled.HeroSection>
   );
