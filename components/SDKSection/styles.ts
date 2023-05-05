@@ -47,12 +47,12 @@ export const Onboard = styled.div`
   }
 
   ${Button} {
-    padding: 9px 1rem;
+    padding: 12px 1rem;
     margin: 1.5rem 0;
 
     @media (min-width: 550px) {
       margin: auto;
-      padding: 9px .6rem;
+      padding: 12px 1rem;
     }
   }
 `;

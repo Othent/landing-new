@@ -2,8 +2,19 @@ import { FeatureTextSmall, CustomHeaderText } from '../common';
 import { SpaceGrotesk700, DMSans700 } from '../../utils/fonts';
 import * as Styled from './styles';
 import Button from '../Button';
+import { getAPIKeys } from 'othent';
+
 
 const SDKSection = () => {
+
+  async function getAPIKey() {
+
+    const { API_KEY, API_ID } = await getAPIKeys();
+    console.log(API_KEY, API_ID)
+
+  }
+
+
   return (
     <Styled.MainContainer>
       <FeatureTextSmall className={DMSans700.className}>
@@ -37,11 +48,8 @@ const SDKSection = () => {
             </div>
           </Styled.IconsContainer>
 
-          <Button href='https://docs.othent.io/developers/sdk' target='_blank'>
-            Explore the SDK's
-            <span>
-              <img src='/arrow-icon.svg' alt='arrow icon' draggable={false} />
-            </span>
+          <Button onClick={() => getAPIKey()}>
+            Get API Key
           </Button>
         </Styled.Onboard>
 
