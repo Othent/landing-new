@@ -120,8 +120,13 @@ export const IconsContainer = styled.div`
   }
 `;
 
-export const CodeSnippet = styled.img`
+export const CodeSnippet = styled.div`
   width: 100%;
+  background-color: #282a36;
+  color: #f8f8f2;
+  padding: 16px;
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
 
   @media (min-width: 550px) {
     width: 50%;
@@ -130,6 +135,7 @@ export const CodeSnippet = styled.img`
   @media (min-width: 720px) {
     width: 60%;
   }
+  
 `;
 
 

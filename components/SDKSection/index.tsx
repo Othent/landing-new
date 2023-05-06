@@ -1,9 +1,14 @@
+import React, { useEffect } from 'react';
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+import 'highlight.js/styles/atom-one-dark.css';
 import { FeatureTextSmall, CustomHeaderText } from '../common';
 import { SpaceGrotesk700, DMSans700 } from '../../utils/fonts';
 import * as Styled from './styles';
 import Button from '../Button';
 import { getAPIKeys } from 'othent';
 
+hljs.registerLanguage('javascript', javascript);
 
 const SDKSection = () => {
 
@@ -14,6 +19,27 @@ const SDKSection = () => {
 
   }
 
+
+  const codeString = `
+    const othent = await Othent({ API_KEY, API_ID });
+
+    const user_details = await othent.logIn();
+
+    const transaction = await othent.signTransactionArweave({
+      othentFunction: 'uploadData',
+      data: file,
+      tags: [ { name: 'Email', value: user_details.email} ]
+    });
+
+    const { transactionId } = await othent.sendTransactionArweave(transaction);
+    
+    console.log(\`\${user_details.name}, your transaction ID is : \${transactionId}\`)
+  `;
+
+
+  useEffect(() => {
+    hljs.highlightAll();
+  }, []);
 
   return (
     <Styled.MainContainer>
@@ -53,7 +79,10 @@ const SDKSection = () => {
           </Button>
         </Styled.Onboard>
 
-        <Styled.CodeSnippet src='/code.svg' alt='code snippet' />
+        <Styled.CodeSnippet>
+          <pre className="hljs javascript">{codeString}</pre>
+        </Styled.CodeSnippet>
+
       </Styled.OnboardContainer>
     </Styled.MainContainer>
   );
