@@ -140,7 +140,7 @@ export const CodeSnippet = styled.div`
 
 
 
-export const BlurredBody = styled.div<{ blur: boolean }>`
+export const BlurredBody = styled.div`
   height: 100vh;
   width: 100vw;
   position: fixed;
@@ -149,7 +149,6 @@ export const BlurredBody = styled.div<{ blur: boolean }>`
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(5px);
   z-index: 999;
-  filter: ${({ blur }) => (blur ? 'blur(5px)' : 'none')};
 `;
 
 
@@ -168,15 +167,17 @@ export const Popup = styled.div`
   margin: 1rem;
   padding: 1.2rem;
   border-radius: 16px;
+
+  border-radius: 16px;
   border: 1px solid #d3e3fc;
-  background: #f2f2f2;  
+  background: rgba(255, 255, 255, 0.8);
 `;
 
 
 export const PopupHeader = styled.h2`
   font-size: 24px;
   font-weight: bold;
-  margin: 0 0 20px;
+  margin: 20px;
 `;
 
 export const PopupBody = styled.div`

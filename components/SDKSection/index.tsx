@@ -12,31 +12,29 @@ hljs.registerLanguage('javascript', javascript);
 
 const SDKSection = () => {
 
-  
-
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [API_KEY, setAPI_KEY] = useState("");
   const [API_ID, setAPI_ID] = useState("");
-  const [blur, setBlur] = useState(false);
 
-async function getAPIKey() {
-  try {
-    let { API_KEY, API_ID } = await getAPIKeys();
-    setAPI_KEY(API_KEY);
-    setAPI_ID(API_ID);
-    setIsPopupOpen(true);
-    console.log(API_ID, API_KEY);
-    // pop up please create a account and then generate API keys button u know
-  } catch (error) {
-    console.log(error);
-    const othent = await Othent({ API_KEY: "API_KEY", API_ID: "API_ID" });
-    await othent.logIn();
-    let { API_KEY, API_ID } = await getAPIKeys();
-    setAPI_KEY(API_KEY);
-    setAPI_ID(API_ID);
-    setIsPopupOpen(true);
+  async function getAPIKey() {
+    try {
+      let { API_KEY, API_ID } = await getAPIKeys();
+      setAPI_KEY(API_KEY);
+      setAPI_ID(API_ID);
+      setIsPopupOpen(true);
+      console.log(API_ID, API_KEY);
+      // pop up please create a account and then generate API keys button u know
+    } catch (error) {
+      console.log(error);
+      const othent = await Othent({ API_KEY: "API_KEY", API_ID: "API_ID" });
+      await othent.logIn();
+      let { API_KEY, API_ID } = await getAPIKeys();
+      setAPI_KEY(API_KEY);
+      setAPI_ID(API_ID);
+      setIsPopupOpen(true);
+    }
   }
-}
+
   const codeString = `
     const othent = await Othent({ API_KEY, API_ID });
 
@@ -53,9 +51,20 @@ async function getAPIKey() {
     console.log(\`\${user_details.name}, your transaction ID is : \${transactionId}\`)
   `;
 
-
   useEffect(() => {
     hljs.highlightAll();
+
+    const handleClickOutside = (event) => {
+      if (event.target.classList.contains('popup-background')) {
+        setIsPopupOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
   }, []);
 
   return (
@@ -87,46 +96,42 @@ async function getAPIKey() {
             </div>
             <div>
               <img src='/wallet-icon.svg' alt='link icon' draggable={false} />
-              <p className={DMSans700.className}>Wallets</p>
-            </div>
-          </Styled.IconsContainer>
-
-          <Button onClick={() => getAPIKey()}>
-            Get your API Key
-          </Button>
-
-
-          {isPopupOpen && (
-            <>
-              <Styled.BlurredBody blur={blur}></Styled.BlurredBody>
-              <Styled.Popup>
-                <Styled.PopupHeader>Othent API Keys</Styled.PopupHeader>
-                <Styled.PopupBody>
-                  <Styled.ApiKeyLabel>API Key:</Styled.ApiKeyLabel>
-                  <Styled.ApiKeyValue>{API_KEY}</Styled.ApiKeyValue>
-                  <Styled.ApiKeyIdLabel>API ID:</Styled.ApiKeyIdLabel>
-                  <Styled.ApiKeyIdValue>{API_ID}</Styled.ApiKeyIdValue>
-                </Styled.PopupBody>
-                <Styled.PopupCloseButton onClick={() => setIsPopupOpen(false)}>
-                  Close
-                </Styled.PopupCloseButton>
-              </Styled.Popup>
-            </>
-          )}
+<p className={DMSans700.className}>Wallets</p>
+</div>
+</Styled.IconsContainer>
+<Button onClick={() => getAPIKey()}>
+        Get your API Key
+      </Button>
 
 
-          
-          
+      {isPopupOpen && (
+        <>
+          <Styled.BlurredBody className="popup-background"></Styled.BlurredBody>
+          <Styled.Popup>
+            <Styled.PopupHeader>Othent API Keys</Styled.PopupHeader>
+            <Styled.PopupBody>
+              <Styled.ApiKeyLabel>API Key:</Styled.ApiKeyLabel>
+              <Styled.ApiKeyValue>{API_KEY}</Styled.ApiKeyValue>
+              <Styled.ApiKeyIdLabel>API ID:</Styled.ApiKeyIdLabel>
+              <Styled.ApiKeyIdValue>{API_ID}</Styled.ApiKeyIdValue>
+            </Styled.PopupBody>
+            <Styled.PopupCloseButton onClick={() => setIsPopupOpen(false)}>
+              Close
+            </Styled.PopupCloseButton>
+          </Styled.Popup>
+        </>
+      )}
 
-        </Styled.Onboard>
 
-        <Styled.CodeSnippet>
-          <pre className="hljs javascript">{codeString}</pre>
-        </Styled.CodeSnippet>
+    </Styled.Onboard>
 
-      </Styled.OnboardContainer>
-    </Styled.MainContainer>
-  );
+    <Styled.CodeSnippet>
+      <pre className="hljs javascript">{codeString}</pre>
+    </Styled.CodeSnippet>
+
+  </Styled.OnboardContainer>
+</Styled.MainContainer>
+);
 };
 
 export default SDKSection;

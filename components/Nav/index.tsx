@@ -47,6 +47,10 @@ const Nav = () => {
     setShowDropdown(!showDropdown);
   }
 
+  function showAccount() {
+    console.log(123)
+  }
+
   return (
     <Styled.NavBar>
       <Styled.NavLogo>
@@ -73,13 +77,13 @@ const Nav = () => {
             </Styled.UserImgContainer>
             {showDropdown && (
               <Styled.Dropdown>
-                {/* <Styled.DropdownItem onClick={() => logOut()}>Account</Styled.DropdownItem> */}
+                <Styled.DropdownItem onClick={() => showAccount()}>Account</Styled.DropdownItem>
                 <Styled.DropdownItem onClick={() => logOut()}>Log Out</Styled.DropdownItem>
               </Styled.Dropdown>
             )}
           </div>
         ) : (
-          <Button onClick={() => logIn()}>Create Account</Button>
+          <Button onClick={() => logIn()}>Sign in / up</Button>
         )}
       </Styled.Menu>
     </Styled.NavBar>
