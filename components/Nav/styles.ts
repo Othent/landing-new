@@ -181,8 +181,6 @@ export const Popup = styled.div`
   border: 1px solid #d3e3fc;
   background: rgba(255, 255, 255, 0.8);
 `;
-
-
 export const PopupHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
