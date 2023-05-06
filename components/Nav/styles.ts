@@ -97,3 +97,54 @@ export const Menu = styled.nav`
     }
   }
 `;
+
+
+
+export const UserImgContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
+export const userImg = styled.img`
+  height: 32px;
+  width: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+`;
+
+export const DropdownArrow = styled.img`
+  margin-right: 5px;
+  height: 7px;
+`;
+
+export const Dropdown = styled.div`
+  position: absolute;
+  top: calc(100% + 10px);
+  right: -10px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+
+  z-index: 10;
+`;
+
+export const DropdownItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 16px;
+  color: #333333;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background-color 0.23s ease-in-out;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+`;
+
