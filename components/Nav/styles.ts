@@ -179,7 +179,7 @@ export const Popup = styled.div`
   padding: 2rem;
   border-radius: 16px;
   border: 1px solid #d3e3fc;
-  background: rgba(255, 255, 255, 0.8);
+  background: white;
 `;
 export const PopupHeaderContainer = styled.div`
   display: flex;

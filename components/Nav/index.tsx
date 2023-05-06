@@ -116,9 +116,9 @@ const Nav = () => {
             <Styled.UserImgContainer onClick={() => toggleDropdown()}>
                 <Styled.DropdownArrow 
                 src="./drop_down_arrow.svg" 
-                alt='User Profile' 
+                alt='Dropdown icon' 
                 referrerPolicy='no-referrer' />
-                <Styled.userImg src={userPicture} alt='Drop down' />
+                <Styled.userImg src={userPicture} alt='User picture' referrerPolicy='no-referrer' />
             </Styled.UserImgContainer>
             {showDropdown && (
               <Styled.Dropdown>
@@ -152,7 +152,7 @@ const Nav = () => {
             </Styled.PopupHeaderContainer>
     
             <Styled.PopupBody>
-              <Styled.UserPicture src={userPicture} alt="User picture" />
+              <Styled.UserPicture src={userPicture} alt="User picture" referrerPolicy='no-referrer' />
               <Styled.UserEmail>{userEmail}</Styled.UserEmail>
     
               <Styled.UserContractIdContainer>
@@ -163,6 +163,7 @@ const Nav = () => {
                   src="./user_contract_id_copy.svg"
                   alt="Copy contract ID"
                   onClick={handleCopy}
+                  referrerPolicy='no-referrer'
                   style={{ filter: copyClicked ? "grayscale(100%) brightness(0%)" : "none" }}
                 />
               </Styled.UserContractIdContainer>
