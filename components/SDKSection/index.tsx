@@ -123,7 +123,7 @@ const SDKSection = () => {
               </div>
           </Styled.IconsContainer>
           <Button onClick={() => getAPIKey()}>
-            Get your API Key
+            Get your API Keys
           </Button>
 
 
@@ -133,7 +133,7 @@ const SDKSection = () => {
             <Styled.Popup>
 
               <Styled.PopupHeaderContainer>
-                <Styled.PopupHeader>Othent API Keys</Styled.PopupHeader>
+                <Styled.PopupHeader>Your API Keys</Styled.PopupHeader>
                 <Styled.PopupCloseButton onClick={() => setIsPopupOpen(false)}>
                   Close
                 </Styled.PopupCloseButton>

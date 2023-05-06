@@ -187,7 +187,6 @@ export const PopupHeaderContainer = styled.div`
   align-items: center;
   width: 100%;
   margin-bottom: 2rem;
-  margin-top: 1rem;
 `;
 export const PopupHeader = styled.h2`
   font-size: 24px;
@@ -242,5 +241,4 @@ export const UserContractIdCopy = styled.img`
 
 export const ViewTransactionsButton = styled(Button)`
   margin-top: 2rem;
-  margin-bottom: 1rem;
 `;
