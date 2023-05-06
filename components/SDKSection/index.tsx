@@ -96,34 +96,34 @@ const SDKSection = () => {
             </div>
             <div>
               <img src='/wallet-icon.svg' alt='link icon' draggable={false} />
-<p className={DMSans700.className}>Wallets</p>
-</div>
-</Styled.IconsContainer>
-<Button onClick={() => getAPIKey()}>
-        Get your API Key
-      </Button>
+              <p className={DMSans700.className}>Wallets</p>
+              </div>
+          </Styled.IconsContainer>
+          <Button onClick={() => getAPIKey()}>
+            Get your API Key
+          </Button>
 
 
-      {isPopupOpen && (
-        <>
-          <Styled.BlurredBody className="popup-background"></Styled.BlurredBody>
-          <Styled.Popup>
-            <Styled.PopupHeader>Othent API Keys</Styled.PopupHeader>
-            <Styled.PopupBody>
-              <Styled.ApiKeyLabel>API Key:</Styled.ApiKeyLabel>
-              <Styled.ApiKeyValue>{API_KEY}</Styled.ApiKeyValue>
-              <Styled.ApiKeyIdLabel>API ID:</Styled.ApiKeyIdLabel>
-              <Styled.ApiKeyIdValue>{API_ID}</Styled.ApiKeyIdValue>
-            </Styled.PopupBody>
-            <Styled.PopupCloseButton onClick={() => setIsPopupOpen(false)}>
-              Close
-            </Styled.PopupCloseButton>
-          </Styled.Popup>
-        </>
-      )}
+        {isPopupOpen && (
+          <>
+            <Styled.BlurredBody className="popup-background"></Styled.BlurredBody> 
+            <Styled.Popup>
+              <Styled.PopupHeader>Othent API Keys</Styled.PopupHeader>
+              <Styled.PopupBody>
+                <Styled.ApiKeyLabel>API Key:</Styled.ApiKeyLabel>
+                <Styled.ApiKeyValue>{API_KEY}</Styled.ApiKeyValue>
+                <Styled.ApiKeyIdLabel>API ID:</Styled.ApiKeyIdLabel>
+                <Styled.ApiKeyIdValue>{API_ID}</Styled.ApiKeyIdValue>
+              </Styled.PopupBody>
+              <Styled.PopupCloseButton onClick={() => setIsPopupOpen(false)}>
+                Close
+              </Styled.PopupCloseButton>
+            </Styled.Popup>
+          </>
+        )}
 
 
-    </Styled.Onboard>
+      </Styled.Onboard>
 
     <Styled.CodeSnippet>
       <pre className="hljs javascript">{codeString}</pre>
@@ -131,6 +131,7 @@ const SDKSection = () => {
 
   </Styled.OnboardContainer>
 </Styled.MainContainer>
+
 );
 };
 
