@@ -200,7 +200,6 @@ export const PopupBody = styled.div`
 export const APIDetailsContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -215,21 +214,23 @@ export const APICopy = styled.img`
 export const ApiKeyLabel = styled.p`
   font-size: 18px;
   font-weight: bold;
+  margin-right: 10px;
 `;
 export const ApiKeyValue = styled.p`
   font-size: 16px;
   word-break: break-all;
   text-align: center;
-  width: 70%;
+  width: 60%;
 `;
 
 export const ApiKeyIdLabel = styled.p`
   font-size: 18px;
   font-weight: bold;
+  margin-right: 10px;
 `;
 export const ApiKeyIdValue = styled.p`
   font-size: 16px;
   word-break: break-all;
   text-align: center;
-  width: 70%;
+  width: 60%;
 `;

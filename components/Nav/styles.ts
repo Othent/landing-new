@@ -223,13 +223,13 @@ export const UserContractIdContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
 `;
 export const UserContractId = styled.p`
   font-size: 16px;
   color: #666;
   word-break: break-all;
   text-align: center;
+  width: 70%;
 `;
 export const UserContractIdCopy = styled.img`
   height: 15px;
