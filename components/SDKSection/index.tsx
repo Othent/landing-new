@@ -22,16 +22,9 @@ const SDKSection = () => {
       setAPI_KEY(API_KEY);
       setAPI_ID(API_ID);
       setIsPopupOpen(true);
-      console.log(API_ID, API_KEY);
-      // pop up please create a account and then generate API keys button u know
     } catch (error) {
-      console.log(error);
-      const othent = await Othent({ API_KEY: "API_KEY", API_ID: "API_ID" });
-      await othent.logIn();
-      let { API_KEY, API_ID } = await getAPIKeys();
-      setAPI_KEY(API_KEY);
-      setAPI_ID(API_ID);
-      setIsPopupOpen(true);
+      alert('Please create a Othent account (in the navbar)')
+      // if no Othent account maybe we should just create one there and then for them
     }
   }
 
