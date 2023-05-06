@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import * as Styled from './styles';
 import Button from '../Button'
 import styled from 'styled-components';
-import othent from 'othent'
+import { Othent } from 'othent'
 
 const WeaveTransfer = () => {
 
@@ -75,6 +75,7 @@ const WeaveTransfer = () => {
 
     setLoading(true)
 
+    const othent = await Othent({ API_KEY: 'API_KEY', API_ID: 'API_ID' })
 
     const user_details = await othent.logIn()
 

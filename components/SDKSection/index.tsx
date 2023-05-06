@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
 import 'highlight.js/styles/atom-one-dark.css';
@@ -6,20 +6,37 @@ import { FeatureTextSmall, CustomHeaderText } from '../common';
 import { SpaceGrotesk700, DMSans700 } from '../../utils/fonts';
 import * as Styled from './styles';
 import Button from '../Button';
-import { getAPIKeys } from 'othent';
+import { getAPIKeys, Othent } from 'othent';
 
 hljs.registerLanguage('javascript', javascript);
 
 const SDKSection = () => {
 
-  async function getAPIKey() {
+  
 
-    const { API_KEY, API_ID } = await getAPIKeys();
-    console.log(API_KEY, API_ID)
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [API_KEY, setAPI_KEY] = useState("");
+  const [API_ID, setAPI_ID] = useState("");
+  const [blur, setBlur] = useState(false);
 
+async function getAPIKey() {
+  try {
+    let { API_KEY, API_ID } = await getAPIKeys();
+    setAPI_KEY(API_KEY);
+    setAPI_ID(API_ID);
+    setIsPopupOpen(true);
+    console.log(API_ID, API_KEY);
+    // pop up please create a account and then generate API keys button u know
+  } catch (error) {
+    console.log(error);
+    const othent = await Othent({ API_KEY: "API_KEY", API_ID: "API_ID" });
+    await othent.logIn();
+    let { API_KEY, API_ID } = await getAPIKeys();
+    setAPI_KEY(API_KEY);
+    setAPI_ID(API_ID);
+    setIsPopupOpen(true);
   }
-
-
+}
   const codeString = `
     const othent = await Othent({ API_KEY, API_ID });
 
@@ -75,8 +92,32 @@ const SDKSection = () => {
           </Styled.IconsContainer>
 
           <Button onClick={() => getAPIKey()}>
-            Get API Key
+            Get your API Key
           </Button>
+
+
+          {isPopupOpen && (
+            <>
+              <Styled.BlurredBody blur={blur}></Styled.BlurredBody>
+              <Styled.Popup>
+                <Styled.PopupHeader>Othent API Keys</Styled.PopupHeader>
+                <Styled.PopupBody>
+                  <Styled.ApiKeyLabel>API Key:</Styled.ApiKeyLabel>
+                  <Styled.ApiKeyValue>{API_KEY}</Styled.ApiKeyValue>
+                  <Styled.ApiKeyIdLabel>API ID:</Styled.ApiKeyIdLabel>
+                  <Styled.ApiKeyIdValue>{API_ID}</Styled.ApiKeyIdValue>
+                </Styled.PopupBody>
+                <Styled.PopupCloseButton onClick={() => setIsPopupOpen(false)}>
+                  Close
+                </Styled.PopupCloseButton>
+              </Styled.Popup>
+            </>
+          )}
+
+
+          
+          
+
         </Styled.Onboard>
 
         <Styled.CodeSnippet>

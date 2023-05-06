@@ -140,3 +140,73 @@ export const CodeSnippet = styled.div`
 
 
 
+export const BlurredBody = styled.div<{ blur: boolean }>`
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 999;
+  filter: ${({ blur }) => (blur ? 'blur(5px)' : 'none')};
+`;
+
+
+export const Popup = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1rem;
+  padding: 1.2rem;
+  border-radius: 16px;
+  border: 1px solid #d3e3fc;
+  background: #f2f2f2;  
+`;
+
+
+export const PopupHeader = styled.h2`
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 20px;
+`;
+
+export const PopupBody = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ApiKeyLabel = styled.p`
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 10px;
+`;
+
+export const ApiKeyValue = styled.p`
+  font-size: 16px;
+  margin: 0 0 20px;
+`;
+
+export const ApiKeyIdLabel = styled.p`
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 10px;
+`;
+
+export const ApiKeyIdValue = styled.p`
+  font-size: 16px;
+  margin: 0 0 20px;
+`;
+
+export const PopupCloseButton = styled(Button)`
+  margin-top: auto;
+`;
+
