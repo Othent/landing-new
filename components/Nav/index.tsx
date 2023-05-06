@@ -141,6 +141,7 @@ const Nav = () => {
         {isPopupOpen && (
           <>
           <Styled.BlurredBody className="popup-background" />
+
           <Styled.Popup>
             <Styled.PopupHeaderContainer>
               <Styled.PopupHeader>
@@ -175,6 +176,7 @@ const Nav = () => {
               </Styled.ViewTransactionsButton>
             </Styled.PopupBody>
           </Styled.Popup>
+
         </>
         )}
 
