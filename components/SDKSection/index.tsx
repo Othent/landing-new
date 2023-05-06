@@ -67,6 +67,29 @@ const SDKSection = () => {
     };
   }, []);
 
+
+
+  const [copyAPIIDClicked, setCopyAPIIDClicked] = useState(false);
+  const handleAPIIdCopy = () => {
+    setCopyAPIIDClicked(true);
+    navigator.clipboard.writeText(API_ID);
+    setTimeout(() => {
+      setCopyAPIIDClicked(false);
+    }, 100);
+  };
+
+
+  const [copyAPIKeyClicked, setCopyAPIKeyClicked] = useState(false);
+  const handleAPIKeyCopy = () => {
+    setCopyAPIKeyClicked(true);
+    navigator.clipboard.writeText(API_KEY);
+    setTimeout(() => {
+      setCopyAPIKeyClicked(false);
+    }, 100);
+  };
+
+
+
   return (
     <Styled.MainContainer>
       <FeatureTextSmall className={DMSans700.className}>
@@ -108,16 +131,39 @@ const SDKSection = () => {
           <>
             <Styled.BlurredBody className="popup-background"></Styled.BlurredBody> 
             <Styled.Popup>
-              <Styled.PopupHeader>Othent API Keys</Styled.PopupHeader>
+
+              <Styled.PopupHeaderContainer>
+                <Styled.PopupHeader>Othent API Keys</Styled.PopupHeader>
+                <Styled.PopupCloseButton onClick={() => setIsPopupOpen(false)}>
+                  Close
+                </Styled.PopupCloseButton>
+              </Styled.PopupHeaderContainer>
+
               <Styled.PopupBody>
-                <Styled.ApiKeyLabel>API Key:</Styled.ApiKeyLabel>
-                <Styled.ApiKeyValue>{API_KEY}</Styled.ApiKeyValue>
-                <Styled.ApiKeyIdLabel>API ID:</Styled.ApiKeyIdLabel>
-                <Styled.ApiKeyIdValue>{API_ID}</Styled.ApiKeyIdValue>
+
+                <Styled.APIDetailsContainer>
+                  <Styled.ApiKeyLabel>API Key:</Styled.ApiKeyLabel>
+                  <Styled.ApiKeyValue>{API_KEY}</Styled.ApiKeyValue>
+                  <Styled.APICopy
+                    src="./user_contract_id_copy.svg"
+                    alt="Copy icon"
+                    onClick={handleAPIKeyCopy}
+                    style={{ filter: copyAPIKeyClicked ? "grayscale(100%) brightness(0%)" : "none" }}
+                  />
+                </Styled.APIDetailsContainer>
+                
+                <Styled.APIDetailsContainer>
+                  <Styled.ApiKeyIdLabel>API ID:</Styled.ApiKeyIdLabel>
+                  <Styled.ApiKeyIdValue>{API_ID}</Styled.ApiKeyIdValue>
+                  <Styled.APICopy
+                    src="./user_contract_id_copy.svg"
+                    alt="Copy icon"
+                    onClick={handleAPIIdCopy}
+                    style={{ filter: copyAPIIDClicked ? "grayscale(100%) brightness(0%)" : "none" }}
+                  />
+                </Styled.APIDetailsContainer>
+
               </Styled.PopupBody>
-              <Styled.PopupCloseButton onClick={() => setIsPopupOpen(false)}>
-                Close
-              </Styled.PopupCloseButton>
             </Styled.Popup>
           </>
         )}

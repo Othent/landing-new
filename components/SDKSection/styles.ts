@@ -48,10 +48,8 @@ export const Onboard = styled.div`
 
   ${Button} {
     padding: 12px 1rem;
-    margin: 1.5rem 0;
 
     @media (min-width: 550px) {
-      margin: auto;
       padding: 12px 1rem;
     }
   }
@@ -165,7 +163,7 @@ export const Popup = styled.div`
   justify-content: center;
   flex-direction: column;
   margin: 1rem;
-  padding: 1.2rem;
+  padding: 2rem;
   border-radius: 16px;
 
   border-radius: 16px;
@@ -174,40 +172,66 @@ export const Popup = styled.div`
 `;
 
 
+
+
+
+export const PopupHeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
+`;
 export const PopupHeader = styled.h2`
   font-size: 24px;
   font-weight: bold;
-  margin: 20px;
 `;
+export const PopupCloseButton = styled(Button)`
+  margin: 0;
+`;
+
+
 
 export const PopupBody = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
+
+
+export const APIDetailsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+`;
+export const APICopy = styled.img`
+  height: 15px;
+  margin-left: 10px;
+  cursor: pointer;
+`
+
+
 export const ApiKeyLabel = styled.p`
   font-size: 18px;
   font-weight: bold;
-  margin: 0 0 10px;
 `;
-
 export const ApiKeyValue = styled.p`
   font-size: 16px;
-  margin: 0 0 20px;
+  word-break: break-all;
+  text-align: center;
+  width: 70%;
 `;
 
 export const ApiKeyIdLabel = styled.p`
   font-size: 18px;
   font-weight: bold;
-  margin: 0 0 10px;
 `;
-
 export const ApiKeyIdValue = styled.p`
   font-size: 16px;
-  margin: 0 0 20px;
+  word-break: break-all;
+  text-align: center;
+  width: 70%;
 `;
-
-export const PopupCloseButton = styled(Button)`
-  margin-top: auto;
-`;
-

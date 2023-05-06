@@ -79,8 +79,7 @@ const Nav = () => {
   const [copyClicked, setCopyClicked] = useState(false);
   const handleCopy = () => {
     setCopyClicked(true);
-    const contractId = document.querySelector('.user-contract-id').textContent;
-    navigator.clipboard.writeText(contractId);
+    navigator.clipboard.writeText(userContractId);
     setTimeout(() => {
       setCopyClicked(false);
     }, 100);
