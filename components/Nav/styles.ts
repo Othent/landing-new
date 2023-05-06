@@ -123,11 +123,11 @@ export const DropdownArrow = styled.img`
 
 export const Dropdown = styled.div`
   position: absolute;
-  top: calc(100% + 10px);
-  right: -10px;
+  top: calc(90%);
+  right: 2rem;
   background-color: #ffffff;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+  border-radius: 5px;
   z-index: 10;
 `;
 
