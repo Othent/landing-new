@@ -12,7 +12,6 @@ export const OnboardContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-
   margin: 1rem;
   padding: 1.2rem;
   border-radius: 16px;
@@ -37,6 +36,28 @@ export const OnboardContainer = styled.div`
     width: 55%;
     padding: 3rem 1.5rem;
   }
+
+
+  .code-block {
+
+
+    word-break: break-all;
+
+
+    font-size: 5px;
+
+   /* @media (min-width: 550px) {
+     width: 50%;
+   }
+
+   @media (min-width: 720px) {
+     width: 60%;
+   } */
+  }
+
+
+
+
 `;
 
 export const Onboard = styled.div`
@@ -118,26 +139,6 @@ export const IconsContainer = styled.div`
   }
 `;
 
-
-
-
-
-export const CodeSnippet = styled.div`
-  width: 100%;
-  background-color: white;
-  color: black;
-  padding: 16px;
-  font-size: 14px;
-
-  @media (min-width: 550px) {
-    width: 50%;
-  }
-
-  @media (min-width: 720px) {
-    width: 60%;
-  }
-
-`;
 
 
 
@@ -237,3 +238,10 @@ export const ApiKeyIdValue = styled.p`
   text-align: center;
   width: 60%;
 `;
+
+
+
+
+
+
+

@@ -27,7 +27,6 @@ const SDKSection = () => {
   }
 
   const codeString = `
-
   import { Othent } from 'othent';
 
   const othent = await Othent({ API_KEY, API_ID });
@@ -43,7 +42,6 @@ const SDKSection = () => {
   const tx = await othent.sendTransactionArweave(transaction);  
 
   console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);
-
   `;
 
   useEffect(() => {
@@ -165,7 +163,8 @@ const SDKSection = () => {
 
       </Styled.Onboard>
 
-      <Highlight>
+
+      <Highlight className='code-block'>
         {codeString}
       </Highlight>
 

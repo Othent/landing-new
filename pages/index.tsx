@@ -39,7 +39,15 @@ export default function Home() {
         <meta name="theme-color" content="#2375EF"></meta>
         <meta name="twitter:site" content="@othent_io"></meta>
         <meta property="og:site_name" content="Othent"></meta>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atelier-cave-dark.min.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/monokai-sublime.min.css"/>
+
+
+
+
+
+
+
+
       </Head>
 
       <Page>
