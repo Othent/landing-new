@@ -28,21 +28,21 @@ const SDKSection = () => {
 
   const codeString = `
 
-    import { Othent } from 'othent';
+  import { Othent } from 'othent';
 
-    const othent = await Othent({ API_KEY, API_ID });
+  const othent = await Othent({ API_KEY, API_ID });
 
-    const user_details = await othent.logIn();
+  const user_details = await othent.logIn();
 
-    const transaction = await othent.signTransactionArweave({
-      othentFunction: 'uploadData',
-      data: file,
-      tags: [ { name: 'Email', value: user_details.email} ]
-    });
+  const transaction = await othent.signTransactionArweave({
+    othentFunction: 'uploadData',
+    data: file,
+    tags: [ { name: 'Email', value: user_details.email} ] 
+  });
 
-    const tx = await othent.sendTransactionArweave(transaction);
-    
-    console.log(Transaction ID is : \${tx.transactionId}\`);
+  const tx = await othent.sendTransactionArweave(transaction);  
+
+  console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);
 
   `;
 
@@ -99,7 +99,7 @@ const SDKSection = () => {
             Try it out!
           </Styled.TextOne>
           <Styled.TextTwo className={DMSans700.className}>
-            Eliminate the need for private keys, not the want, into:
+            Onboard Web2 into
           </Styled.TextTwo>
 
           <Styled.IconsContainer>

@@ -69,7 +69,7 @@ export const TextTwo = styled.p`
   font-size: 1.25rem;
   line-height: 32px;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 
   @media (min-width: 550px) {
     font-size: 1.125rem;
