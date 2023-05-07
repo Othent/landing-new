@@ -38,12 +38,58 @@ export const OnboardContainer = styled.div`
   }
 
 
-  .code-block {
-    font-size: 10px;
-    border-radius: 10px;
-  
+
+
+  .header-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .header-buttons {
+    width: 7px;
+    height: 7px;
+    margin: 5px;
+    border-radius: 50%;
+  }
+  .code-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 0;
+    background-color: black;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+
     @media (max-width: 720px) {
       margin-top: 25px;
+    }
+  }
+  .copy-code {
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    font-size: 10px;
+    gap: 5px;
+    border-radius: 3px;
+  }
+  .copy-code-img {
+    height: 10px;
+  }
+
+  .code-block {
+    padding: 15px;
+    padding-top: 8px;
+    font-size: 10px;
+    border-radius: 10px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  
+    @media (max-width: 720px) {
       font-size: 7px;
     }
 

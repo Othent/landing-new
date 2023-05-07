@@ -160,7 +160,7 @@ const Nav = () => {
                   {userContractId}
                 </Styled.UserContractId>
                 <Styled.UserContractIdCopy
-                  src="./user_contract_id_copy.svg"
+                  src="./copy.svg"
                   alt="Copy contract ID"
                   onClick={handleCopy}
                   referrerPolicy='no-referrer'

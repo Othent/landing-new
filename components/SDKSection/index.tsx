@@ -5,6 +5,8 @@ import * as Styled from './styles';
 import Button from '../Button';
 import { getAPIKeys } from 'othent';
 import Highlight from 'react-highlight';
+import 'highlight.js/styles/tomorrow-night-bright.css';
+
 
 
 
@@ -26,23 +28,24 @@ const SDKSection = () => {
     }
   }
 
-  const codeString = `
-  import { Othent } from 'othent';
 
-  const othent = await Othent({ API_KEY, API_ID });
+  const codeString = `import { Othent } from 'othent';
 
-  const user_details = await othent.logIn();
+const othent = await Othent({ API_KEY, API_ID });
 
-  const transaction = await othent.signTransactionArweave({
-    othentFunction: 'uploadData',
-    data: file,
-    tags: [ { name: 'Email', value: user_details.email} ] 
-  });
+const user_details = await othent.logIn();
 
-  const tx = await othent.sendTransactionArweave(transaction);  
+const transaction = await othent.signTransactionArweave({
+  othentFunction: 'uploadData',
+  data: file,
+  tags: [ { name: 'Email', value: user_details.email} ]
+});
 
-  console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);
-  `;
+const tx = await othent.sendTransactionArweave(transaction);
+
+console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);`
+
+  
 
   useEffect(() => {
 
@@ -79,6 +82,11 @@ const SDKSection = () => {
       setCopyAPIKeyClicked(false);
     }, 100);
   };
+
+
+  const copyCode = () => {
+    navigator.clipboard.writeText(codeString);
+  }
 
 
 
@@ -137,7 +145,7 @@ const SDKSection = () => {
                   <Styled.ApiKeyLabel>API Key:</Styled.ApiKeyLabel>
                   <Styled.ApiKeyValue>{API_KEY}</Styled.ApiKeyValue>
                   <Styled.APICopy
-                    src="./user_contract_id_copy.svg"
+                    src="./copy.svg"
                     alt="Copy icon"
                     onClick={handleAPIKeyCopy}
                     style={{ filter: copyAPIKeyClicked ? "grayscale(100%) brightness(0%)" : "none" }}
@@ -148,7 +156,7 @@ const SDKSection = () => {
                   <Styled.ApiKeyIdLabel>API ID:</Styled.ApiKeyIdLabel>
                   <Styled.ApiKeyIdValue>{API_ID}</Styled.ApiKeyIdValue>
                   <Styled.APICopy
-                    src="./user_contract_id_copy.svg"
+                    src="./copy.svg"
                     alt="Copy icon"
                     onClick={handleAPIIdCopy}
                     style={{ filter: copyAPIIDClicked ? "grayscale(100%) brightness(0%)" : "none" }}
@@ -163,10 +171,24 @@ const SDKSection = () => {
 
       </Styled.Onboard>
 
+      <div>
+        <div className='code-block-header'>
+          <div className='header-buttons-container'>
+            <div style={{ backgroundColor: 'rgb(255, 94, 87)' }} className="header-buttons"></div>
+            <div style={{ backgroundColor: 'rgb(255, 187, 46)' }} className="header-buttons"></div>
+            <div style={{ backgroundColor: 'rgb(56, 193, 73)' }} className="header-buttons"></div>
+          </div>
+          <button className='copy-code' onClick={copyCode}>
+            <img src="./copy-black.svg" alt="Copy icon" className='copy-code-img' />
+            <span>Copy</span>
+          </button>
+        </div>
+        <Highlight className='code-block'>
+          {codeString}
+        </Highlight>
+      </div>
 
-      <Highlight className='code-block'>
-        {codeString}
-      </Highlight>
+      
 
   </Styled.OnboardContainer>
 </Styled.MainContainer>
