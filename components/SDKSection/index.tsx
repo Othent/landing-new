@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import hljs from 'highlight.js/lib/core';
-import javascript from 'highlight.js/lib/languages/javascript';
-import 'highlight.js/styles/atom-one-dark.css';
 import { FeatureTextSmall, CustomHeaderText } from '../common';
 import { SpaceGrotesk700, DMSans700 } from '../../utils/fonts';
 import * as Styled from './styles';
 import Button from '../Button';
-import { getAPIKeys, Othent } from 'othent';
+import { getAPIKeys } from 'othent';
+import Highlight from 'react-highlight';
 
-hljs.registerLanguage('javascript', javascript);
+
 
 const SDKSection = () => {
 
@@ -29,6 +27,9 @@ const SDKSection = () => {
   }
 
   const codeString = `
+
+    import { Othent } from 'othent';
+
     const othent = await Othent({ API_KEY, API_ID });
 
     const user_details = await othent.logIn();
@@ -39,13 +40,13 @@ const SDKSection = () => {
       tags: [ { name: 'Email', value: user_details.email} ]
     });
 
-    const { transactionId } = await othent.sendTransactionArweave(transaction);
+    const tx = await othent.sendTransactionArweave(transaction);
     
-    console.log(\`\${user_details.name}, your transaction ID is : \${transactionId}\`)
+    console.log(Transaction ID is : \${tx.transactionId}\`);
+
   `;
 
   useEffect(() => {
-    hljs.highlightAll();
 
     const handleClickOutside = (event) => {
       if (event.target.classList.contains('popup-background')) {
@@ -164,9 +165,9 @@ const SDKSection = () => {
 
       </Styled.Onboard>
 
-    <Styled.CodeSnippet>
-      <pre className="hljs javascript">{codeString}</pre>
-    </Styled.CodeSnippet>
+      <Highlight>
+        {codeString}
+      </Highlight>
 
   </Styled.OnboardContainer>
 </Styled.MainContainer>
