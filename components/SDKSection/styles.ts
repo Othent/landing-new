@@ -12,7 +12,6 @@ export const OnboardContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-
   margin: 1rem;
   padding: 1.2rem;
   border-radius: 16px;
@@ -37,6 +36,68 @@ export const OnboardContainer = styled.div`
     width: 55%;
     padding: 3rem 1.5rem;
   }
+
+
+
+
+  .header-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .header-buttons {
+    width: 7px;
+    height: 7px;
+    margin: 5px;
+    border-radius: 50%;
+  }
+  .code-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 0;
+    background-color: black;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+
+    @media (max-width: 720px) {
+      margin-top: 25px;
+    }
+  }
+  .copy-code {
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    font-size: 10px;
+    gap: 5px;
+    border-radius: 3px;
+  }
+  .copy-code-img {
+    height: 10px;
+  }
+
+  .code-block {
+    padding: 15px;
+    padding-top: 8px;
+    font-size: 10px;
+    border-radius: 10px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  
+    @media (max-width: 720px) {
+      font-size: 7px;
+    }
+
+  }
+
+
+
+
 `;
 
 export const Onboard = styled.div`
@@ -47,12 +108,10 @@ export const Onboard = styled.div`
   }
 
   ${Button} {
-    padding: 9px 1rem;
-    margin: 1.5rem 0;
+    padding: 12px 1rem;
 
     @media (min-width: 550px) {
-      margin: auto;
-      padding: 9px .6rem;
+      padding: 12px 1rem;
     }
   }
 `;
@@ -71,7 +130,7 @@ export const TextTwo = styled.p`
   font-size: 1.25rem;
   line-height: 32px;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 
   @media (min-width: 550px) {
     font-size: 1.125rem;
@@ -120,17 +179,109 @@ export const IconsContainer = styled.div`
   }
 `;
 
-export const CodeSnippet = styled.img`
-  width: 100%;
 
-  @media (min-width: 550px) {
-    width: 50%;
-  }
 
-  @media (min-width: 720px) {
-    width: 60%;
-  }
+
+export const BlurredBody = styled.div`
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 999;
 `;
+
+
+export const Popup = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1rem;
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid #d3e3fc;
+  background: white;
+`;
+
+
+
+
+
+export const PopupHeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
+`;
+export const PopupHeader = styled.h2`
+  font-size: 24px;
+  font-weight: bold;
+`;
+export const PopupCloseButton = styled(Button)`
+  margin: 0;
+`;
+
+
+
+export const PopupBody = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+
+
+export const APIDetailsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+`;
+export const APICopy = styled.img`
+  height: 15px;
+  margin-left: 10px;
+  cursor: pointer;
+`
+
+
+export const ApiKeyLabel = styled.p`
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+`;
+export const ApiKeyValue = styled.p`
+  font-size: 16px;
+  word-break: break-all;
+  text-align: center;
+  width: 60%;
+`;
+
+export const ApiKeyIdLabel = styled.p`
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+`;
+export const ApiKeyIdValue = styled.p`
+  font-size: 16px;
+  word-break: break-all;
+  text-align: center;
+  width: 60%;
+`;
+
+
+
+
 
 
 
