@@ -39,20 +39,14 @@ export const OnboardContainer = styled.div`
 
 
   .code-block {
+    font-size: 10px;
+    border-radius: 10px;
+  
+    @media (max-width: 720px) {
+      margin-top: 25px;
+      font-size: 7px;
+    }
 
-
-    word-break: break-all;
-
-
-    font-size: 5px;
-
-   /* @media (min-width: 550px) {
-     width: 50%;
-   }
-
-   @media (min-width: 720px) {
-     width: 60%;
-   } */
   }
 
 
