@@ -75,47 +75,55 @@ const WeaveTransfer = () => {
 
     setLoading(true)
 
-    const othent = await Othent({ API_KEY: 'API_KEY', API_ID: 'API_ID' })
+    const othentInstance = await Othent({ API_KEY: 'API_KEY', API_ID: 'API_ID' })
 
-    const user_details = await othent.logIn()
+    const user_details = await othentInstance.logIn()
 
-    const signedArweaveTransaction = await othent.signTransactionArweave({
-      othentFunction: 'uploadData', 
-      data: file,
-      tags: [ {name: 'Content-Type', value: file.type} ]
-    });
+    if (user_details.message === 'new user created') {
+      alert('New Othent account created! Please re send the file')
+      setLoading(false)
+    } else {
 
-    const transaction = await othent.sendTransactionArweave(signedArweaveTransaction);
-  
-    const formData = new FormData();
-    formData.append("transaction_id", transaction.transactionId);
-    formData.append("sendToEmail", sendToEmail);
-    formData.append("sendFromEmail", user_details.email);
-  
-    fetch('https://server.othent.io/weavetransfer', {
-      method: 'POST',
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setLoading(false);
-        setFileName("");
-        setSendToEmail("")
-        setFile(null);
-        if (data.success === true) {
-          setRequestStatus('success');
-          setTransactionId(transaction.transactionId);
-          setUserEmail(user_details.email)
-          setWalletAddress(user_details.contract_id)
-        } else {
-          setRequestStatus('failed');
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        setRequestStatus('failed');
-        setLoading(false);
+      const signedArweaveTransaction = await othentInstance.signTransactionArweave({
+        othentFunction: 'uploadData', 
+        data: file,
+        tags: [ {name: 'Content-Type', value: file.type} ]
       });
+  
+      const transaction = await othentInstance.sendTransactionArweave(signedArweaveTransaction);
+    
+      const formData = new FormData();
+      formData.append("transaction_id", transaction.transactionId);
+      formData.append("sendToEmail", sendToEmail);
+      formData.append("sendFromEmail", user_details.email);
+    
+      fetch('https://server.othent.io/weavetransfer', {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setLoading(false);
+          setFileName("");
+          setSendToEmail("")
+          setFile(null);
+          if (data.success === true) {
+            setRequestStatus('success');
+            setTransactionId(transaction.transactionId);
+            setUserEmail(user_details.email)
+            setWalletAddress(user_details.contract_id)
+          } else {
+            setRequestStatus('failed');
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          setRequestStatus('failed');
+          setLoading(false);
+        });
+
+    }
+
   
 
   }
