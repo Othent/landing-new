@@ -13,6 +13,14 @@ const Nav = () => {
 
   const dropdownRef = useRef(null);
 
+  const [copiedPopup, setCopiedPopup] = useState(false);
+  const handleCopyPopup = () => {
+    setCopiedPopup(true);
+    setTimeout(() => {
+      setCopiedPopup(false);
+    }, 500);
+  };
+
   useEffect(() => {
     async function createOthentInstance() {
       const othent = await Othent({ API_KEY: 'API_KEY', API_ID: 'API_ID' });
@@ -93,21 +101,28 @@ const Nav = () => {
   const handleCopy = () => {
     setCopyClicked(true);
     navigator.clipboard.writeText(userContractId);
+    handleCopyPopup()
     setTimeout(() => {
       setCopyClicked(false);
     }, 100);
   };
 
+
   return (
   <Styled.NavBar>
-  <Styled.NavLogo>
-  <a href='/' className='site-a-warp'>
-  <div className='toggle'>
-  <div></div>
-  </div>
-  <p className={DMSans700.className}>Othent</p>
-  </a>
-  </Styled.NavLogo>
+    {copiedPopup && (
+        <Styled.copiedPopup className="popup">
+          Text copied!
+        </Styled.copiedPopup>
+      )}
+    <Styled.NavLogo>
+      <a href='/' className='site-a-warp'>
+        <div className='toggle'>
+          <div></div>
+        </div>
+        <p className={DMSans700.className}>Othent</p>
+      </a>
+    </Styled.NavLogo>
   <Styled.Menu>
     <a
       href='https://docs.othent.io/developers/sdk'

@@ -67,7 +67,7 @@ export const OnboardContainer = styled.div`
     }
   }
   .copy-code {
-    background-color: white;
+    background-color: #f2f2f2;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -76,6 +76,7 @@ export const OnboardContainer = styled.div`
     font-size: 10px;
     gap: 5px;
     border-radius: 3px;
+    border: none;
   }
   .copy-code-img {
     height: 10px;
@@ -309,10 +310,40 @@ export const AddURLButton = styled(Button)`
 
 `
 
-  export const URLMessage = styled.p `
+export const URLMessage = styled.p `
   padding-top: 1rem;
   text-align: center;
 `;
+
+
+
+export const copiedPopup = styled.div`
+  background-color: #2DD264;
+  color: white;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  margin-top: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 12px;
+  z-index: 9999;
+
+  opacity: 0;
+  animation: fade 1s ease-in-out;
+  @keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  &.hidden {
+    animation-direction: reverse;
+    @keyframes fade {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+  }
+`;
+
 
 
 

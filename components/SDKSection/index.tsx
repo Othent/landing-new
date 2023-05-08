@@ -16,6 +16,14 @@ const SDKSection = () => {
   const [API_KEY, setAPI_KEY] = useState("");
   const [API_ID, setAPI_ID] = useState("");
 
+  const [copiedPopup, setCopiedPopup] = useState(false);
+  const handleCopyPopup = () => {
+    setCopiedPopup(true);
+    setTimeout(() => {
+      setCopiedPopup(false);
+    }, 500);
+  };
+
   async function getAPIKey() {
     try {
       const othent = await Othent({ API_KEY: 'API_KEY', API_ID: 'API_ID'});
@@ -69,6 +77,7 @@ console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);`
   const handleAPIIdCopy = () => {
     setCopyAPIIDClicked(true);
     navigator.clipboard.writeText(API_ID);
+    handleCopyPopup()
     setTimeout(() => {
       setCopyAPIIDClicked(false);
     }, 100);
@@ -79,6 +88,7 @@ console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);`
   const handleAPIKeyCopy = () => {
     setCopyAPIKeyClicked(true);
     navigator.clipboard.writeText(API_KEY);
+    handleCopyPopup()
     setTimeout(() => {
       setCopyAPIKeyClicked(false);
     }, 100);
@@ -87,6 +97,7 @@ console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);`
 
   const copyCode = () => {
     navigator.clipboard.writeText(codeString);
+    handleCopyPopup()
   }
 
 
@@ -110,6 +121,11 @@ console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);`
 
   return (
     <Styled.MainContainer>
+      {copiedPopup && (
+        <Styled.copiedPopup className="popup">
+          Text copied!
+        </Styled.copiedPopup>
+      )}
       <FeatureTextSmall className={DMSans700.className}>
         Bring dApp’s from 0 to 1
       </FeatureTextSmall>
