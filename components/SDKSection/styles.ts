@@ -222,7 +222,7 @@ export const PopupHeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 `;
 export const PopupHeader = styled.h2`
   font-size: 24px;
@@ -281,7 +281,38 @@ export const ApiKeyIdValue = styled.p`
 
 
 
+export const AddURLContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+`
+export const AddURL = styled.input`
+  width: 100%;
+  outline: none;
+  padding: 1rem;
+  font-size: 1rem;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid #d3e3fc;
 
+  &::placeholder {
+    font-size: 1rem;
+    color: #7bacf5;
+    line-height: 24px;
+  }
+`;
+export const AddURLButton = styled(Button)`
+
+`
+
+  export const URLMessage = styled.p `
+  padding-top: 1rem;
+  text-align: center;
+`;
 
 
 

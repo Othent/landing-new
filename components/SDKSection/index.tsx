@@ -3,7 +3,7 @@ import { FeatureTextSmall, CustomHeaderText } from '../common';
 import { SpaceGrotesk700, DMSans700 } from '../../utils/fonts';
 import * as Styled from './styles';
 import Button from '../Button';
-import { getAPIKeys } from 'othent';
+import { Othent } from 'othent';
 import Highlight from 'react-highlight';
 import 'highlight.js/styles/tomorrow-night-bright.css';
 
@@ -18,7 +18,8 @@ const SDKSection = () => {
 
   async function getAPIKey() {
     try {
-      let { API_KEY, API_ID } = await getAPIKeys();
+      const othent = await Othent({ API_KEY: 'API_KEY', API_ID: 'API_ID'});
+      let { API_KEY, API_ID } = await othent.getAPIKeys();
       setAPI_KEY(API_KEY);
       setAPI_ID(API_ID);
       setIsPopupOpen(true);
@@ -86,6 +87,23 @@ console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);`
 
   const copyCode = () => {
     navigator.clipboard.writeText(codeString);
+  }
+
+
+  const [callbackURL, setCallbackURL] = useState('');
+  const [URLMessage, setURLMessage] = useState('');
+  async function addCallbackURL() {
+    try {
+      const othent = await Othent({ API_KEY: 'API_KEY', API_ID: 'API_ID' });
+      await othent.addCallbackURL({ callbackURL: callbackURL });
+      setURLMessage('Success');
+    } catch (error) {
+      setURLMessage('Failed, please make sure format matches https://othent.io and try again');
+    }
+  }
+  function handleCallbackURLChange(event) {
+    setCallbackURL(event.target.value);
+    setURLMessage('');
   }
 
 
@@ -162,6 +180,20 @@ console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);`
                     style={{ filter: copyAPIIDClicked ? "grayscale(100%) brightness(0%)" : "none" }}
                   />
                 </Styled.APIDetailsContainer>
+
+                <Styled.AddURLContainer>
+                <Styled.AddURL
+                  placeholder="Add callback URLs, eg https://othent.io"
+                  value={callbackURL}
+                  onChange={handleCallbackURLChange}
+                />
+                <Styled.AddURLButton onClick={addCallbackURL}>Add callback URL</Styled.AddURLButton>
+                {URLMessage && (
+                  <Styled.URLMessage style={{ color: URLMessage === 'Success' ? 'green' : 'red' }}>
+                    {URLMessage}
+                  </Styled.URLMessage>
+                )}
+              </Styled.AddURLContainer>
 
               </Styled.PopupBody>
             </Styled.Popup>
