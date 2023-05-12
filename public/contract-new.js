@@ -23,9 +23,12 @@ lY/ACXm3UhY5UsRZXEzjoAL/ymM68b6B/85N4Xypve+bUk+Zwb9Ojmwb0pU9azQE
 XxRWPy8=
 -----END CERTIFICATE-----`
 function verifyJWT(JWT, OTHENT_PUBLIC_KEY) {
-    const jsonwebtokenPackage = SmartWeave.extensions.jwt
+    console.log(SmartWeave.extensions.verify)
     try {
-        const JWT_decoded = jsonwebtokenPackage.verify(JWT, OTHENT_PUBLIC_KEY, { algorithms: ['RS256'] });
+        const JWT_decoded = SmartWeave.extensions.verify(JWT, OTHENT_PUBLIC_KEY, { 
+            algorithms: ['RS256'], 
+            clockTimestamp: SmartWeave.block.timestamp
+        });
         return {status: true, JWT_decoded: JWT_decoded}
     } catch (error) {
         return {status: false, error: error}
@@ -37,14 +40,16 @@ function verifyJWT(JWT, OTHENT_PUBLIC_KEY) {
 
 
 function verifyJWK(JWK_JWT, JWKPublicKey) {
-    const jsonwebtokenPackage = SmartWeave.extensions.jwt
     try {
         let pemKey = JWKPublicKey.replace(/\n|\s/g, '');
         pemKey = pemKey.replace(/^-----BEGINPUBLICKEY-----/, '');
         pemKey = pemKey.replace(/-----ENDPUBLICKEY-----$/, '');
         const lines = pemKey.match(/.{1,64}/g);
         const formattedKey = '-----BEGIN PUBLIC KEY-----\n' + lines.join('\n') + '\n-----END PUBLIC KEY-----';
-        const JWK_decoded = jsonwebtokenPackage.verify(JWK_JWT, formattedKey, { algorithms: ['RS256'] });
+        const JWK_decoded = SmartWeave.extensions.verify(JWK_JWT, formattedKey, { 
+            algorithms: ['RS256'],
+            clockTimestamp: SmartWeave.block.timestamp
+        });
         return {status: true, JWK_decoded: JWK_decoded}
     } catch (error) {
         return {status: false, error: error}
