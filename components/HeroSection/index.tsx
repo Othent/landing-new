@@ -75,7 +75,7 @@ const HeroSection = () => {
       <Styled.ButtonsWrapper>
         <Button onClick={() => logIn()}>
           <img src="/wt-google.svg" alt="Google icon" draggable={false} />
-          Create wallet with Google
+          Create Wallet
         </Button>
         <Button secondary href='https://docs.othent.io' target='_blank'>
           Docs
