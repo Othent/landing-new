@@ -29,7 +29,7 @@ function verifyJWT(JWT, OTHENT_PUBLIC_KEY) {
             clockTimestamp: SmartWeave.block.timestamp
         });
         console.log('HEREEEEEEE')
-        console.log(JWT_decoded)
+        console.log(SmartWeave.block.timestamp)
         return {status: true, JWT_decoded: JWT_decoded}
     } catch (error) {
         return {status: false, error: error}
