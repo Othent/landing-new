@@ -14,9 +14,6 @@ export default function HowItWorks() {
 
       <Button href='https://docs.othent.io' target='_blank'>
         Read the docs
-        <span>
-          <img src='/arrow-icon.svg' alt='arrow icon' draggable={false} />
-        </span>
       </Button>
 
       <img src='/works-mobile.svg' alt='' className='works-mobile' draggable={false} />

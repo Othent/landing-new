@@ -75,7 +75,7 @@ const WeaveTransfer = () => {
 
     setLoading(true)
 
-    const othentInstance = await Othent({ API_KEY: 'API_KEY', API_ID: 'API_ID' })
+    const othentInstance = await Othent({ API_ID: '1f73e23e3437dd623f5530e90ac1d1b2' });
 
     const user_details = await othentInstance.logIn()
 

@@ -26,7 +26,7 @@ const SDKSection = () => {
 
   async function getAPIKey() {
     try {
-      const othent = await Othent({ API_KEY: 'API_KEY', API_ID: 'API_ID'});
+      const othent = await Othent({ API_ID: '1f73e23e3437dd623f5530e90ac1d1b2' });
       let { API_KEY, API_ID } = await othent.getAPIKeys();
       setAPI_KEY(API_KEY);
       setAPI_ID(API_ID);
@@ -105,7 +105,7 @@ console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);`
   const [URLMessage, setURLMessage] = useState('');
   async function addCallbackURL() {
     try {
-      const othent = await Othent({ API_KEY: 'API_KEY', API_ID: 'API_ID' });
+      const othent = await Othent({ API_ID: '1f73e23e3437dd623f5530e90ac1d1b2' });
       await othent.addCallbackURL({ callbackURL: callbackURL });
       setURLMessage('Success');
     } catch (error) {
@@ -157,7 +157,7 @@ console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);`
               </div>
           </Styled.IconsContainer>
           <Button onClick={() => getAPIKey()}>
-            Get your API Keys
+            Get your API ID
           </Button>
 
 
@@ -167,24 +167,13 @@ console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);`
             <Styled.Popup>
 
               <Styled.PopupHeaderContainer>
-                <Styled.PopupHeader>Your API Keys</Styled.PopupHeader>
+                <Styled.PopupHeader>Your API ID</Styled.PopupHeader>
                 <Styled.PopupCloseButton onClick={() => setIsPopupOpen(false)}>
                   Close
                 </Styled.PopupCloseButton>
               </Styled.PopupHeaderContainer>
 
               <Styled.PopupBody>
-
-                <Styled.APIDetailsContainer>
-                  <Styled.ApiKeyLabel>API Key:</Styled.ApiKeyLabel>
-                  <Styled.ApiKeyValue>{API_KEY}</Styled.ApiKeyValue>
-                  <Styled.APICopy
-                    src="./copy.svg"
-                    alt="Copy icon"
-                    onClick={handleAPIKeyCopy}
-                    style={{ filter: copyAPIKeyClicked ? "grayscale(100%) brightness(0%)" : "none" }}
-                  />
-                </Styled.APIDetailsContainer>
                 
                 <Styled.APIDetailsContainer>
                   <Styled.ApiKeyIdLabel>API ID:</Styled.ApiKeyIdLabel>
