@@ -4,6 +4,7 @@ import Button from '../Button';
 import { Othent } from 'othent';
 import { useState, useEffect, useRef } from 'react';
 
+
 const Nav = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [othentInstance, setOthentInstance] = useState(null);

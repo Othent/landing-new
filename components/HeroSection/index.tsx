@@ -1,8 +1,36 @@
 import { SpaceGrotesk700, DMSans700, SpaceGrotesk600 } from '../../utils/fonts';
 import * as Styled from './styles';
 import Button from '../Button';
+import { Othent } from 'othent';
+import { useState, useEffect } from 'react';
+
 
 const HeroSection = () => {
+
+
+  const [othentInstance, setOthentInstance] = useState(null);
+  useEffect(() => {
+    async function createOthentInstance() {
+      const othent = await Othent({ API_ID: '1f73e23e3437dd623f5530e90ac1d1b2' });
+      setOthentInstance(othent);
+    }
+    createOthentInstance();
+  }, []);
+
+  async function logIn() {
+    const user_details = await othentInstance.logIn();
+    if (user_details.contract_id) {
+      alert(`Success ! 
+      \nWallet address: ${user_details.contract_id} 
+      \nEmail: ${user_details.email}
+      \nYou can now sign in, in the top right hand corner of the page.`)
+    } else {
+      alert('Please refresh the page and try again !')
+      window.location.reload();
+    }
+  }
+
+
   return (
     <Styled.HeroSection>
       <h2 className={SpaceGrotesk600.className}>
@@ -45,10 +73,13 @@ const HeroSection = () => {
       </Styled.Tagline>
 
       <Styled.ButtonsWrapper>
-        <Button href='https://docs.othent.io' target='_blank'>
-          Get Started
+        <Button onClick={() => logIn()}>
+          <img src="/wt-google.svg" alt="Google icon" draggable={false} />
+          Create wallet with Google
         </Button>
-        <Button secondary href='https://weavetransfer.othent.io' target='_blank'>Demo</Button>
+        <Button secondary href='https://docs.othent.io' target='_blank'>
+          Docs
+        </Button>
       </Styled.ButtonsWrapper>
     </Styled.HeroSection>
   );
