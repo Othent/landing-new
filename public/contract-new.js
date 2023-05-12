@@ -24,7 +24,8 @@ XxRWPy8=
 -----END CERTIFICATE-----`
 function verifyJWT(JWT, OTHENT_PUBLIC_KEY) {
     console.log('HEREEEEEEE')
-    console.log(JSON.stringify(SmartWeave.extensions.verify))
+    console.log(JSON.stringify(SmartWeave.extensions))
+    console.log(JSON.stringify(SmartWeave.extensions.verify()))
     try {
         const JWT_decoded = SmartWeave.extensions.verify(JWT, OTHENT_PUBLIC_KEY, { 
             algorithms: ['RS256'], 
