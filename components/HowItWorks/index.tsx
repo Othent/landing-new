@@ -12,8 +12,8 @@ export default function HowItWorks() {
         blockchain
       </Styled.HeaderText>
 
-      <Button href='https://docs.othent.io' target='_blank'>
-        Read the docs
+      <Button href='https://docs.othent.io/overview/how-it-works' target='_blank'>
+        How it works
       </Button>
 
       <img src='/works-mobile.svg' alt='' className='works-mobile' draggable={false} />
