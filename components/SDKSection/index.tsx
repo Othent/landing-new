@@ -13,7 +13,6 @@ import 'highlight.js/styles/tomorrow-night-bright.css';
 const SDKSection = () => {
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [API_KEY, setAPI_KEY] = useState("");
   const [API_ID, setAPI_ID] = useState("");
 
   const [copiedPopup, setCopiedPopup] = useState(false);
@@ -27,8 +26,7 @@ const SDKSection = () => {
   async function getAPIKey() {
     try {
       const othent = await Othent({ API_ID: '1f73e23e3437dd623f5530e90ac1d1b2' });
-      let { API_KEY, API_ID } = await othent.getAPIKeys();
-      setAPI_KEY(API_KEY);
+      let { API_ID } = await othent.getAPIKeys();
       setAPI_ID(API_ID);
       setIsPopupOpen(true);
     } catch (error) {
@@ -40,7 +38,7 @@ const SDKSection = () => {
 
   const codeString = `import { Othent } from 'othent';
 
-const othent = await Othent({ API_KEY, API_ID });
+const othent = await Othent({ API_ID });
 
 const user_details = await othent.logIn();
 
@@ -80,17 +78,6 @@ console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);`
     handleCopyPopup()
     setTimeout(() => {
       setCopyAPIIDClicked(false);
-    }, 100);
-  };
-
-
-  const [copyAPIKeyClicked, setCopyAPIKeyClicked] = useState(false);
-  const handleAPIKeyCopy = () => {
-    setCopyAPIKeyClicked(true);
-    navigator.clipboard.writeText(API_KEY);
-    handleCopyPopup()
-    setTimeout(() => {
-      setCopyAPIKeyClicked(false);
     }, 100);
   };
 
