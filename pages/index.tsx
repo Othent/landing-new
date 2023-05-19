@@ -60,7 +60,7 @@ export default function Home() {
           <Features
             type='simplicity'
             textSmall='Ease matters to us'
-            headerText="The next evolution of accessing web3 accounts"
+            headerText="The next evolution of accessing Web3 accounts"
           />
           <HowItWorks />
         </SectionThree>
