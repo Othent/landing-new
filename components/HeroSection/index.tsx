@@ -34,11 +34,13 @@ const HeroSection = () => {
   return (
     <Styled.HeroSection>
       <h2 className={SpaceGrotesk600.className}>
-        Merging Web2 to Web3 user logins with a familiar and simple interface
+        Simplicity is key, 
+        <br />
+        Keys aren't simple
       </h2>
 
       <Styled.Tagline className={DMSans700.className}>
-        Blockchain transactions with existing traditional social logins,{' '}
+        Web3 transactions with existing traditional social logins, {' '}
         <Styled.SocialLogins>
           like{' '}
           <div className='items-container'>
@@ -75,7 +77,7 @@ const HeroSection = () => {
       <Styled.ButtonsWrapper>
         <Button onClick={() => logIn()}>
           <img src="/wt-google.svg" alt="Google icon" draggable={false} />
-          Create wallet
+          Create account
         </Button>
         <Button secondary href='https://docs.othent.io' target='_blank'>
           Docs
