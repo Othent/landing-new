@@ -26,7 +26,7 @@ const SDKSection = () => {
   async function getAPIKey() {
     try {
       const othent = await Othent({ API_ID: '1f73e23e3437dd623f5530e90ac1d1b2' });
-      let { API_ID } = await othent.getAPIKeys();
+      let { API_ID } = await othent.getAPIID();
       setAPI_ID(API_ID);
       setIsPopupOpen(true);
     } catch (error) {
