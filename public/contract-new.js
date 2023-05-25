@@ -38,9 +38,9 @@ function verifyJWT(JWT, OTHENT_PUBLIC_KEY) {
 
 
 
-function verifyJWK(JWK_JWT, JWKPublicKey) {
+function verifyJWK(JWK_JWT, JWK_public_key_PEM) {
     try {
-        let pemKey = JWKPublicKey.replace(/\n|\s/g, '');
+        let pemKey = JWK_public_key_PEM.replace(/\n|\s/g, '');
         pemKey = pemKey.replace(/^-----BEGINPUBLICKEY-----/, '');
         pemKey = pemKey.replace(/-----ENDPUBLICKEY-----$/, '');
         const lines = pemKey.match(/.{1,64}/g);
@@ -118,7 +118,8 @@ export async function handle(state, action) {
 
                 // Backup SCW with external JWK
                 try {
-                    if (JWT_decoded.contract_input.function && action.input.function === 'initializeJWK' && state.JWK_public_key === null && state.user_id === JWT_decoded.sub) {
+                    if (JWT_decoded.contract_input.function && action.input.function === 'initializeJWK' && state.JWK_public_key_PEM === null && state.user_id === JWT_decoded.sub) {
+                        state.JWK_public_key_PEM = JWT_decoded.contract_input.data.JWK_public_key_PEM;
                         state.JWK_public_key = JWT_decoded.contract_input.data.JWK_public_key;
                         return { state }
                     }
@@ -143,7 +144,7 @@ export async function handle(state, action) {
 
     if (contractInput.encryption_type === "JWK") {
 
-        const inputJWK = verifyJWK(contractInput.jwt, state.JWK_public_key)
+        const inputJWK = verifyJWK(contractInput.jwt, state.JWK_public_key_PEM)
 
         if (inputJWK.status === true) {
 
@@ -200,11 +201,5 @@ export async function handle(state, action) {
 
     
 
-
-
-
-
-
-
-
 }
+
