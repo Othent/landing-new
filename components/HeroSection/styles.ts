@@ -3,7 +3,7 @@ import Button from '../Button'
 
 export const HeroSection = styled.div`
   display: flex;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
   padding: 0 1.5rem;
   gap: 1.5rem;
@@ -20,12 +20,12 @@ export const HeroSection = styled.div`
     line-height: 40px;
     letter-spacing: 0.02em;
     margin: 0;
+    text-align: left;
 
     @media (min-width: 550px) {
       min-width: 90%;
       max-width: 92%;
       font-size: 2.3rem;
-      align-self: flex-start;
     }
 
     @media (min-width: 1100px) {

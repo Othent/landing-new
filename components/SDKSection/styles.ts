@@ -192,14 +192,12 @@ export const BlurredBody = styled.div`
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(5px);
   z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-
 export const Popup = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 400px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
   z-index: 999;
@@ -207,13 +205,15 @@ export const Popup = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 1rem;
   padding: 2rem;
   border-radius: 16px;
   border: 1px solid #d3e3fc;
   background: white;
+  @media screen and (max-width: 600px) {
+    width: 90%;
+    max-width: 400px;
+  }
 `;
-
 
 
 

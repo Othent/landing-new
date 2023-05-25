@@ -150,45 +150,48 @@ console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);`
 
         {isPopupOpen && (
           <>
-            <Styled.BlurredBody className="popup-background"></Styled.BlurredBody> 
-            <Styled.Popup>
+            <Styled.BlurredBody className="popup-background">
+              
+              <Styled.Popup>
 
-              <Styled.PopupHeaderContainer>
-                <Styled.PopupHeader>Your API ID</Styled.PopupHeader>
-                <Styled.PopupCloseButton onClick={() => setIsPopupOpen(false)}>
-                  Close
-                </Styled.PopupCloseButton>
-              </Styled.PopupHeaderContainer>
+                <Styled.PopupHeaderContainer>
+                  <Styled.PopupHeader>Your API ID</Styled.PopupHeader>
+                  <Styled.PopupCloseButton onClick={() => setIsPopupOpen(false)}>
+                    Close
+                  </Styled.PopupCloseButton>
+                </Styled.PopupHeaderContainer>
 
-              <Styled.PopupBody>
-                
-                <Styled.APIDetailsContainer>
-                  <Styled.ApiKeyIdLabel>API ID:</Styled.ApiKeyIdLabel>
-                  <Styled.ApiKeyIdValue>{API_ID}</Styled.ApiKeyIdValue>
-                  <Styled.APICopy
-                    src="./copy.svg"
-                    alt="Copy icon"
-                    onClick={handleAPIIdCopy}
-                    style={{ filter: copyAPIIDClicked ? "grayscale(100%) brightness(0%)" : "none" }}
+                <Styled.PopupBody>
+                  
+                  <Styled.APIDetailsContainer>
+                    <Styled.ApiKeyIdLabel>API ID:</Styled.ApiKeyIdLabel>
+                    <Styled.ApiKeyIdValue>{API_ID}</Styled.ApiKeyIdValue>
+                    <Styled.APICopy
+                      src="./copy.svg"
+                      alt="Copy icon"
+                      onClick={handleAPIIdCopy}
+                      style={{ filter: copyAPIIDClicked ? "grayscale(100%) brightness(0%)" : "none" }}
+                    />
+                  </Styled.APIDetailsContainer>
+
+                  <Styled.AddURLContainer>
+                  <Styled.AddURL
+                    placeholder="Add callback URLs, eg https://othent.io"
+                    value={callbackURL}
+                    onChange={handleCallbackURLChange}
                   />
-                </Styled.APIDetailsContainer>
+                  <Styled.AddURLButton onClick={addCallbackURL}>Add callback URL</Styled.AddURLButton>
+                  {URLMessage && (
+                    <Styled.URLMessage style={{ color: URLMessage === 'Success' ? 'green' : 'red' }}>
+                      {URLMessage}
+                    </Styled.URLMessage>
+                  )}
+                </Styled.AddURLContainer>
 
-                <Styled.AddURLContainer>
-                <Styled.AddURL
-                  placeholder="Add callback URLs, eg https://othent.io"
-                  value={callbackURL}
-                  onChange={handleCallbackURLChange}
-                />
-                <Styled.AddURLButton onClick={addCallbackURL}>Add callback URL</Styled.AddURLButton>
-                {URLMessage && (
-                  <Styled.URLMessage style={{ color: URLMessage === 'Success' ? 'green' : 'red' }}>
-                    {URLMessage}
-                  </Styled.URLMessage>
-                )}
-              </Styled.AddURLContainer>
-
-              </Styled.PopupBody>
-            </Styled.Popup>
+                </Styled.PopupBody>
+              </Styled.Popup>
+            </Styled.BlurredBody> 
+            
           </>
         )}
 
