@@ -8,26 +8,27 @@
   
   <div style="background-color: #D3E3FC;font-family: Arial, sans-serif;margin: 0;height: 100vh;text-align: center;">
 
-    <div class="center" style="background-color: white;display: inline-block;text-align: left;padding: 5%; height: 100vh; width: 500px; word-wrap: break-word;">
+    <div style="background-color: white;display: inline-block;text-align: left;padding: 5%; height: 100vh; width: 500px; word-wrap: break-word;">
 
-      <div class="header" style="background-color: white;width: 100%;text-align: center;">
-        <img src="https://weavetransfer.othent.io/favicon.png" alt="WeaveTransfer Logo" class="othent-logo" style="height: 150px; margin: 0 auto;">
+      <div style="background-color: white;width: 100%;text-align: center;">
+        <img src="https://weavetransfer.othent.io/favicon.png" alt="WeaveTransfer Logo" draggable="false" style="height: 150px; margin: 0 auto;">
         <h1 style="font-size: 2.2em;font-weight: 250; margin-bottom: 30px; margin-top: 0;">
           {{sendFromEmail}} 
           <br>
           has sent you a file!</h1>
       </div>
 
-      <div class="hero" style="border-bottom: 1px solid lightgrey;border-top: 1px solid lightgrey;padding: 30px;margin-bottom: 30px;">
-        <a href="{{fileDownloadLink}}" target="_blank" style="font-weight: bold; font-size: 1.4em; color: #2375EF; text-decoration: none;">
-          Download File
-        </a>
-        <p style="font-size: 1.1em;">Thank you for using Weave Transfer!</p>
-        <p style="font-size: 1.1em;">- The Othent team</p>
+      <div style="border-bottom: 1px solid lightgrey;border-top: 1px solid lightgrey;padding: 30px;margin-bottom: 30px;">
+        <div style="font-weight: bold; font-size: 1.1em; background-color: #2375EF; border-radius: 8px; padding: 1rem; width: fit-content;">
+          <a href="{{fileDownloadLink}}" target="_blank" style="text-decoration: none; color: white;">
+            Download File
+          </a>
+        </div>
+        <p style="font-size: 1.1em; margin-top: 30px;">- Thank you for using Weave Transfer!</p>
       </div>
 
 
-      <div class="footer" style="text-align: center;">
+      <div style="text-align: center;">
         <p style="color: lightgray;">
           <span>Please reach out if you have any questions at: <br></span>
           <a style="color: #2375EF; text-decoration: none;" href="mailto:hello@weavetransfer.com">hello@weavetransfer.com</a>
@@ -53,7 +54,3 @@
 
 </html>
 
-<p class="main-text">Hi {{sendToEmail}},</p>
-
-      <p class="main-text">To access the file, simply click on the link below:</p>
-      <p class="main-text" style="font-weight: bold; text-align: center;">{{fileDownloadLink}}</p>
