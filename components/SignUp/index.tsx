@@ -38,6 +38,7 @@ const SignUpComponent = () => {
 
 
   return (
+    <>
     <Styled.MainContainer>
         {copiedPopup && (
         <Styled.copiedPopup className="popup">
@@ -87,6 +88,7 @@ const SignUpComponent = () => {
         </Styled.LogInButtonContainer>
       )}
     </Styled.MainContainer>
+    </>
   );
 };
 

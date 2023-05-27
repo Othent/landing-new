@@ -1,0 +1,59 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Weave Transfer | You've got files!</title>
+</head>
+
+<body>
+  
+  <div style="background-color: #D3E3FC;font-family: Arial, sans-serif;margin: 0;height: 100vh;text-align: center;">
+
+    <div class="center" style="background-color: white;display: inline-block;text-align: left;padding: 5%; height: 100vh">
+
+      <div class="header" style="background-color: white;width: 100%;text-align: center;">
+        <img src="https://weavetransfer.othent.io/favicon.png" alt="WeaveTransfer Logo" class="othent-logo" style="height: 150px; margin: 0 auto;">
+        <h1 style="font-size: 2.2em;font-weight: 250; margin-bottom: 30px; margin-top: 0;">
+          {{sendFromEmail}} 
+          <br>
+          has sent you a file!</h1>
+      </div>
+
+      <div class="hero" style="border-bottom: 1px solid lightgrey;border-top: 1px solid lightgrey;padding: 30px;margin-bottom: 30px;">
+        <a href="{{fileDownloadLink}}" target="_blank" style="font-weight: bold; font-size: 1.4em; color: #2375EF; text-decoration: none;">
+          Download File
+        </a>
+        <p style="font-size: 1.1em;">Thank you for using Weave Transfer!</p>
+        <p style="font-size: 1.1em;">- The Othent team</p>
+      </div>
+
+
+      <div class="footer" style="text-align: center;">
+        <p style="color: lightgray;">
+          <span>Please reach out if you have any questions at: <br></span>
+          <a style="color: #2375EF; text-decoration: none;" href="mailto:hello@weavetransfer.com">hello@weavetransfer.com</a>
+        </p>
+        <div style="display: inline-flex;align-items: center;justify-content: center;margin: 20px 0;">
+
+          <a target="_blank" href="https://twitter.com/othent_io">
+            <img src="https://othent.io/twitter.png" alt="Othent.io Twitter Logo" style="height: 20px; margin: 10px; margin-top: 0; margin-bottom: 0;">
+          </a>
+          <a target="_blank" href="https://weavetransfer.othent.io">
+            <img src="https://othent.io/website.png" alt="Othent.io Website Logo" style="height: 20px; margin: 10px; margin-top: 0; margin-bottom: 0;">
+          </a>
+        </div>
+        <p style="color: lightgray; padding-bottom: 25px;">© Weave Transfer. All rights reserved.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+
+
+</html>
+
+<p class="main-text">Hi {{sendToEmail}},</p>
+
+      <p class="main-text">To access the file, simply click on the link below:</p>
+      <p class="main-text" style="font-weight: bold; text-align: center;">{{fileDownloadLink}}</p>
