@@ -22,27 +22,20 @@ export const LogInButton = styled(Button)`
 
 
 export const AccountTab = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
   width: 100%;
-
   width: 400px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   padding: 3rem;
   border-radius: 16px;
   border: 1px solid #d3e3fc;
   background: white;
+  position: relative;
+  z-index: 2;
   @media screen and (max-width: 600px) {
     width: 90%;
     max-width: 400px;
@@ -142,3 +135,23 @@ export const copiedPopup = styled.div`
     }
   }
 `;
+
+
+export const Spinner = styled.div`
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 8px solid #ffff;
+  border-top: 8px solid #2375ef;
+  animation: spin 0.6s linear infinite;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
+
