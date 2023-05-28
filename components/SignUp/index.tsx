@@ -51,8 +51,8 @@ const SignUpComponent = () => {
         {isLoggedIn && (
           <>
             <Confetti 
-            numberOfPieces={300} 
-            gravity={0.5}
+            numberOfPieces={200} 
+            gravity={0.3}
             />
           </>
         )}
