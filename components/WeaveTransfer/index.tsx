@@ -77,8 +77,13 @@ const WeaveTransfer = () => {
 
     const othentInstance = await Othent({ API_ID: 'd7a29242f7fdede654171a0d3fd25163' });
 
-    const user_details = await othentInstance.logIn()
-
+    let user_details 
+    if (JSON.parse(localStorage.getItem('othentUserDetails'))) {
+      user_details = await othentInstance.userDetails()
+    } else {
+      user_details = await othentInstance.logIn()
+    }
+    
     if (user_details.message === 'new user created') {
       alert('New Othent account created! Please re send the file')
       setLoading(false)
