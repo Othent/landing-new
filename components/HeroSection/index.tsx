@@ -27,6 +27,7 @@ const HeroSection = () => {
         \nYou can sign out, in the top right hand corner of the page.`)
       } else {
         user_details = await othentInstance.logIn();
+        localStorage.setItem('othentUserDetails', JSON.stringify(user_details));
       if (user_details.contract_id) {
         alert(`Success! 
         \nWallet address: ${user_details.contract_id} 
