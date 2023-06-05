@@ -18,17 +18,27 @@ const HeroSection = () => {
   }, []);
 
   async function logIn() {
-    const user_details = await othentInstance.logIn();
-    if (user_details.contract_id) {
-      alert(`Success ! 
-      \nWallet address: ${user_details.contract_id} 
-      \nEmail: ${user_details.email}
-      \nYou can now sign in, in the top right hand corner of the page.`)
-    } else {
-      alert('Please refresh the page and try again !')
-      window.location.reload();
+    let user_details
+    if (JSON.parse(localStorage.getItem('othentUserDetails'))) {
+      user_details = JSON.parse(localStorage.getItem('othentUserDetails'))
+      alert(`Your already logged in! 
+        \nWallet address: ${user_details.contract_id} 
+        \nEmail: ${user_details.email}
+        \nYou can sign out, in the top right hand corner of the page.`)
+      } else {
+        user_details = await othentInstance.logIn();
+      if (user_details.contract_id) {
+        alert(`Success! 
+        \nWallet address: ${user_details.contract_id} 
+        \nEmail: ${user_details.email}
+        \nYou can sign in, in the top right hand corner of the page.`)
+      } else {
+        alert('Please refresh the page and try again !')
+        window.location.reload();
+      }
     }
   }
+
 
 
   return (
