@@ -6,6 +6,20 @@ import { useState, useEffect, useRef } from 'react';
 
 
 const Nav = () => {
+
+
+  useEffect(() => {
+    const user_details = JSON.parse(localStorage.getItem('othentUserDetails'))
+    if (user_details) {
+      setUserPicture(user_details.picture);
+      setUserName(user_details.name)
+      setUserEmail(user_details.email)
+      setUserContractId(user_details.contract_id)
+      setIsLoggedIn(true);
+    }
+
+  }, []);
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [othentInstance, setOthentInstance] = useState(null);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -51,8 +65,10 @@ const Nav = () => {
   const [userEmail, setUserEmail] = useState('');
   const [userContractId, setUserContractId] = useState('');
 
+
   async function logIn() {
     const user_details = await othentInstance.logIn();
+    localStorage.setItem('othentUserDetails', JSON.stringify(user_details));
     setUserPicture(user_details.picture);
     setUserName(user_details.name)
     setUserEmail(user_details.email)
