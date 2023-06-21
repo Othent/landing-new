@@ -174,19 +174,19 @@ console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);`
                     />
                   </Styled.APIDetailsContainer>
 
-                  <Styled.AddURLContainer>
-                  <Styled.AddURL
-                    placeholder="Add callback URLs, eg https://othent.io"
-                    value={callbackURL}
-                    onChange={handleCallbackURLChange}
-                  />
-                  <Styled.AddURLButton onClick={addCallbackURL}>Add callback URL</Styled.AddURLButton>
-                  {URLMessage && (
-                    <Styled.URLMessage style={{ color: URLMessage === 'Success' ? 'green' : 'red' }}>
-                      {URLMessage}
-                    </Styled.URLMessage>
-                  )}
-                </Styled.AddURLContainer>
+                  {/* <Styled.AddURLContainer>
+                    <Styled.AddURL
+                      placeholder="Add callback URLs, eg https://othent.io"
+                      value={callbackURL}
+                      onChange={handleCallbackURLChange}
+                    />
+                    <Styled.AddURLButton onClick={addCallbackURL}>Add callback URL</Styled.AddURLButton>
+                    {URLMessage && (
+                      <Styled.URLMessage style={{ color: URLMessage === 'Success' ? 'green' : 'red' }}>
+                        {URLMessage}
+                      </Styled.URLMessage>
+                    )}
+                  </Styled.AddURLContainer> */}
 
                 </Styled.PopupBody>
               </Styled.Popup>
