@@ -99,7 +99,14 @@ export const Menu = styled.nav`
 
   @media screen and (max-width: 720px) {
     width: 100%;
-    justify-content: space-between;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      width: 100%;
+      text-align: center;
+    }
   }
 `;
 
@@ -282,3 +289,4 @@ export const copiedPopup = styled.div`
     }
   }
 `;
+

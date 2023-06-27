@@ -66,14 +66,22 @@ const Nav = () => {
   const [userContractId, setUserContractId] = useState('');
 
 
+  const [isLoading, setIsLoading] = useState(false);
   async function logIn() {
-    const user_details = await othentInstance.logIn();
-    localStorage.setItem('othentUserDetails', JSON.stringify(user_details));
-    setUserPicture(user_details.picture);
-    setUserName(user_details.name)
-    setUserEmail(user_details.email)
-    setUserContractId(user_details.contract_id)
-    setIsLoggedIn(true);
+    setIsLoading(true); 
+    try {
+      const user_details = await othentInstance.logIn();
+      localStorage.setItem('othentUserDetails', JSON.stringify(user_details));
+      setUserPicture(user_details.picture);
+      setUserName(user_details.name);
+      setUserEmail(user_details.email);
+      setUserContractId(user_details.contract_id);
+      setIsLoggedIn(true);
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   async function logOut() {
@@ -142,16 +150,16 @@ const Nav = () => {
       </a>
     </Styled.NavLogo>
   <Styled.Menu>
-    <a
-      href='https://docs.othent.io/developers/sdk'
-      target='_blank'
-      className={`${DMSans700.className} devs`}
-    >
-      Developers
+    <a href='https://blog.othent.io' target='_blank' className={`${DMSans700.className} devs`}>
+      Blog
     </a>
     <a href='mailto:hello@othent.io' className={DMSans700.className}>
       Contact Us
     </a>
+    <a href='https://docs.othent.io/developers/sdk' target='_blank' className={`${DMSans700.className} devs`}>
+      Developers
+    </a>
+          
     {isLoggedIn ? (
       <div ref={dropdownRef}>
         <Styled.UserImgContainer onClick={() => toggleDropdown()}>
@@ -180,7 +188,13 @@ const Nav = () => {
         )}
       </div>
     ) : (
-      <Button onClick={() => logIn()}>Sign in / up</Button>
+      <Button onClick={() => logIn()}>
+          {isLoading ? (
+            <img src='/spinner.gif' alt="Loading" />
+          ) : (
+            'Sign in'
+          )}
+        </Button>
     )}
 
     {isPopupOpen && (
