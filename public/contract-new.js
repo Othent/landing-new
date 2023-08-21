@@ -25,8 +25,7 @@ XxRWPy8=
 function verifyJWT(JWT, OTHENT_PUBLIC_KEY) {
     try {
         const JWT_decoded = SmartWeave.extensions.verify(JWT, OTHENT_PUBLIC_KEY, { 
-            algorithms: ['RS256'], 
-            clockTimestamp: SmartWeave.block.timestamp
+            algorithms: ['RS256']
         });
         return {status: true, JWT_decoded: JWT_decoded}
     } catch (error) {
@@ -46,8 +45,7 @@ function verifyJWK(JWK_JWT, JWK_public_key_PEM) {
         const lines = pemKey.match(/.{1,64}/g);
         const formattedKey = '-----BEGIN PUBLIC KEY-----\n' + lines.join('\n') + '\n-----END PUBLIC KEY-----';
         const JWK_decoded = SmartWeave.extensions.verify(JWK_JWT, formattedKey, { 
-            algorithms: ['RS256'],
-            clockTimestamp: SmartWeave.block.timestamp
+            algorithms: ['RS256']
         });
         return {status: true, JWK_decoded: JWK_decoded}
     } catch (error) {
