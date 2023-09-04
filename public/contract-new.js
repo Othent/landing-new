@@ -98,12 +98,11 @@ export async function handle(state, action) {
 
                         const toContractId = JWT_decoded.contract_input.data.toContractId;
                         const toContractFunction = JWT_decoded.contract_input.data.toContractFunction;
-                        const txnData = JWT_decoded.contract_input.data.txnData;
 
                         await SmartWeave.contracts.write(toContractId, { 
                             function: toContractFunction, 
-                            txnData: txnData }
-                        ); 
+                            txnData: JWT_decoded.contract_input.data.txnData 
+                        }); 
 
                         return { state }
                     }
