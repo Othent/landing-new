@@ -68,7 +68,7 @@ const Nav = () => {
       setUserName(user_details.name);
       setUserEmail(user_details.email);
       // @ts-ignore
-      setUserContractId(user_details.wallet_address);
+      setUserContractId(user_details.walletAddress);
       setIsLoggedIn(true);
     } catch (error) {
       console.log(error)
