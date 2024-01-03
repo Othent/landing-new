@@ -1,21 +1,10 @@
 import { SpaceGrotesk700, DMSans700, SpaceGrotesk600 } from '../../utils/fonts';
 import * as Styled from './styles';
 import Button from '../Button';
-import { Othent } from 'othent';
-import { useState, useEffect } from 'react';
+import * as othent from '@othent/kms';
 
 
 const HeroSection = () => {
-
-
-  const [othentInstance, setOthentInstance] = useState(null);
-  useEffect(() => {
-    async function createOthentInstance() {
-      const othent = await Othent({ API_ID: 'd7a29242f7fdede654171a0d3fd25163' });
-      setOthentInstance(othent);
-    }
-    createOthentInstance();
-  }, []);
 
   async function logIn() {
     let user_details
@@ -26,7 +15,7 @@ const HeroSection = () => {
         \nEmail: ${user_details.email}
         \nYou can sign out, in the top right hand corner of the page.`)
       } else {
-        user_details = await othentInstance.logIn();
+        user_details = await othent.connect();
         localStorage.setItem('othentUserDetails', JSON.stringify(user_details));
       if (user_details.contract_id) {
         alert(`Success! 

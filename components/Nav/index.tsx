@@ -1,7 +1,7 @@
 import * as Styled from './styles';
 import { DMSans700 } from '../../utils/fonts';
 import Button from '../Button';
-import { Othent } from 'othent';
+import * as othent from '@othent/kms';
 import { useState, useEffect, useRef } from 'react';
 
 
@@ -21,7 +21,6 @@ const Nav = () => {
   }, []);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [othentInstance, setOthentInstance] = useState(null);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isArrowFlipped, setIsArrowFlipped] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -36,13 +35,6 @@ const Nav = () => {
     }, 500);
   };
 
-  useEffect(() => {
-    async function createOthentInstance() {
-      const othent = await Othent({ API_ID: 'd7a29242f7fdede654171a0d3fd25163' });
-      setOthentInstance(othent);
-    }
-    createOthentInstance();
-  }, []);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -70,12 +62,13 @@ const Nav = () => {
   async function logIn() {
     setIsLoading(true); 
     try {
-      const user_details = await othentInstance.logIn();
+      const user_details = await othent.connect();
       localStorage.setItem('othentUserDetails', JSON.stringify(user_details));
       setUserPicture(user_details.picture);
       setUserName(user_details.name);
       setUserEmail(user_details.email);
-      setUserContractId(user_details.contract_id);
+      // @ts-ignore
+      setUserContractId(user_details.wallet_address);
       setIsLoggedIn(true);
     } catch (error) {
       console.log(error)
@@ -85,7 +78,7 @@ const Nav = () => {
   }
 
   async function logOut() {
-    await othentInstance.logOut();
+    await othent.disconnect();
     localStorage.removeItem('othentUserDetails');
     setIsLoggedIn(false);
     setUserPicture('');
