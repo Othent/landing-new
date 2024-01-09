@@ -88,21 +88,21 @@ console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);`
   }
 
 
-  const [callbackURL, setCallbackURL] = useState('');
-  const [URLMessage, setURLMessage] = useState('');
-  async function addCallbackURL() {
-    try {
-      const othent = await Othent({ API_ID: 'd7a29242f7fdede654171a0d3fd25163' });
-      await othent.addCallbackURL({ callbackURL: callbackURL });
-      setURLMessage('Success');
-    } catch (error) {
-      setURLMessage('Failed, please make sure format matches https://othent.io and try again');
-    }
-  }
-  function handleCallbackURLChange(event) {
-    setCallbackURL(event.target.value);
-    setURLMessage('');
-  }
+  // const [callbackURL, setCallbackURL] = useState('');
+  // const [URLMessage, setURLMessage] = useState('');
+  // async function addCallbackURL() {
+  //   try {
+  //     const othent = await Othent({ API_ID: 'd7a29242f7fdede654171a0d3fd25163' });
+  //     await othent.addCallbackURL({ callbackURL: callbackURL });
+  //     setURLMessage('Success');
+  //   } catch (error) {
+  //     setURLMessage('Failed, please make sure format matches https://othent.io and try again');
+  //   }
+  // }
+  // function handleCallbackURLChange(event) {
+  //   setCallbackURL(event.target.value);
+  //   setURLMessage('');
+  // }
 
 
 
