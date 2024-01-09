@@ -66,6 +66,7 @@ const Nav = () => {
       localStorage.setItem('othentUserDetails', JSON.stringify(user_details));
       setUserPicture(user_details.picture);
       setUserName(user_details.name);
+      console.log(user_details)
       setUserEmail(user_details.email);
       // @ts-ignore
       setUserContractId(user_details.walletAddress);
