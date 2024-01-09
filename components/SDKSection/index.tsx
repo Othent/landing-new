@@ -143,9 +143,9 @@ console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);`
               <p className={DMSans700.className}>Wallets</p>
               </div>
           </Styled.IconsContainer>
-          <Button onClick={() => getAPIKey()}>
+          {/* <Button onClick={() => getAPIKey()}>
             Get your API ID
-          </Button>
+          </Button> */}
 
 
         {isPopupOpen && (
