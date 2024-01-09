@@ -8,15 +8,26 @@ import { useState, useEffect, useRef } from 'react';
 const Nav = () => {
 
 
+  const [userDetails, updateUserDetails] = useState({
+    picture: '',
+    name: '',
+    email: '',
+    walletAddress: '',
+  });
+
+
   useEffect(() => {
     const user_details = JSON.parse(localStorage.getItem('othentUserDetails'))
     if (user_details) {
-      setUserPicture(user_details.picture);
-      setUserName(user_details.name)
-      setUserEmail(user_details.email)
-      setUserContractId(user_details.contract_id)
+      updateUserDetails({
+        picture: user_details.picture,
+        name: user_details.name,
+        email: user_details.email,
+        walletAddress: user_details.walletAddress
+      });
       setIsLoggedIn(true);
     }
+  
 
   }, []);
 
@@ -52,24 +63,19 @@ const Nav = () => {
     };
   }, [dropdownRef, isArrowFlipped, isPopupOpen]);
 
-  const [userPicture, setUserPicture] = useState('');
-  const [userName, setUserName] = useState('');
-  const [userEmail, setUserEmail] = useState('');
-  const [userContractId, setUserContractId] = useState('');
-
-
   const [isLoading, setIsLoading] = useState(false);
   async function logIn() {
     setIsLoading(true); 
     try {
       const user_details = await othent.connect();
       localStorage.setItem('othentUserDetails', JSON.stringify(user_details));
-      setUserPicture(user_details.picture);
-      setUserName(user_details.name);
-      console.log(user_details)
-      setUserEmail(user_details.email);
-      // @ts-ignore
-      setUserContractId(user_details.walletAddress);
+      updateUserDetails({
+        picture: user_details.picture,
+        name: user_details.name,
+        email: user_details.email,
+        // @ts-ignore
+        walletAddress: user_details.walletAddress
+      });
       setIsLoggedIn(true);
     } catch (error) {
       console.log(error)
@@ -82,7 +88,12 @@ const Nav = () => {
     await othent.disconnect();
     localStorage.removeItem('othentUserDetails');
     setIsLoggedIn(false);
-    setUserPicture('');
+    updateUserDetails({
+      picture: '',
+      name: '',
+      email: '',
+      walletAddress: ''
+    });
   }
 
   function toggleDropdown() {
@@ -120,7 +131,7 @@ const Nav = () => {
 
   const handleCopy = () => {
     setCopyClicked(true);
-    navigator.clipboard.writeText(userContractId);
+    navigator.clipboard.writeText(userDetails.walletAddress);
     handleCopyPopup()
     setTimeout(() => {
       setCopyClicked(false);
@@ -158,7 +169,7 @@ const Nav = () => {
       <div ref={dropdownRef}>
         <Styled.UserImgContainer onClick={() => toggleDropdown()}>
           <Styled.userImg
-            src={userPicture}
+            src={userDetails.picture}
             alt='User picture'
             referrerPolicy='no-referrer'
           />
@@ -198,7 +209,7 @@ const Nav = () => {
 
           <Styled.Popup>
             <Styled.PopupHeaderContainer>
-              <Styled.PopupHeader>{userName}</Styled.PopupHeader>
+              <Styled.PopupHeader>{userDetails.name}</Styled.PopupHeader>
               <Styled.PopupCloseButton onClick={() => setIsPopupOpen(false)}>
                 Close
               </Styled.PopupCloseButton>
@@ -206,15 +217,15 @@ const Nav = () => {
 
             <Styled.PopupBody>
               <Styled.UserPicture
-                src={userPicture}
+                src={userDetails.picture}
                 alt='User picture'
                 referrerPolicy='no-referrer'
               />
-              <Styled.UserEmail>{userEmail}</Styled.UserEmail>
+              <Styled.UserEmail>{userDetails.email}</Styled.UserEmail>
 
               <Styled.UserContractIdContainer>
                 <Styled.UserContractId className='user-contract-id'>
-                  <b style={{ color: 'black' }}>Wallet Address: </b>{userContractId}
+                  <b style={{ color: 'black' }}>Wallet Address: </b>{userDetails.walletAddress}
                 </Styled.UserContractId>
                 <Styled.UserContractIdCopy
                   src='./copy.svg'
@@ -230,7 +241,7 @@ const Nav = () => {
               </Styled.UserContractIdContainer>
 
               <Styled.ViewTransactionsButton
-                href={`https://sonar.warp.cc/#/app/contract/${userContractId}`}
+                href={`https://sonar.warp.cc/#/app/contract/${userDetails.walletAddress}`}
                 target='_blank'
               >
                 View Recent Transactions
