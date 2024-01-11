@@ -60,7 +60,7 @@ const CallToAction = () => {
         <Button href='https://docs.othent.io' target='_blank'>
           Get Started
         </Button>
-        <Button secondary href='https://discord.gg/WPPBPtKbbN' target='_blank'>
+        <Button secondary href='https://discord.gg/BHprrR443t' target='_blank'>
           <img src='/discord-colored.svg' alt='discord logo' draggable={false} />
           Join our Discord
         </Button>

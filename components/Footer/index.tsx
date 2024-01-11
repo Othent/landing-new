@@ -41,7 +41,7 @@ const Footer = () => {
       <Styled.SocialChannels>
         <p className={SpaceGrotesk600.className}>Follow us</p>
         <li className={SpaceGrotesk500.className}>
-          <a href="https://discord.gg/WPPBPtKbbN" target='_blank' className='social-a'>
+          <a href="https://discord.gg/BHprrR443t" target='_blank' className='social-a'>
             <img src='/discord-gray.svg' alt='discord icon' draggable={false} />
             Discord
           </a>
