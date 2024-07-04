@@ -46,7 +46,6 @@ const Nav = () => {
     }, 500);
   };
 
-
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
