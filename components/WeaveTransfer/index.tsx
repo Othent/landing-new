@@ -81,7 +81,7 @@ const WeaveTransfer = () => {
     if (JSON.parse(localStorage.getItem('othentUserDetails'))) {
       user_details = await othentInstance.userDetails()
     } else {
-      user_details = await othentInstance.logIn()
+      user_details = await othentInstance.logIn({})
       localStorage.setItem('othentUserDetails', JSON.stringify(user_details));
     }
     
