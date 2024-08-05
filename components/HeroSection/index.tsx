@@ -7,11 +7,12 @@ import * as othent from '@othent/kms';
 const HeroSection = () => {
 
   async function logIn() {
+    // TODO: Get this from KMS instead of using localStorage here:
     let user_details
     if (JSON.parse(localStorage.getItem('othentUserDetails'))) {
       user_details = JSON.parse(localStorage.getItem('othentUserDetails'))
       alert(`Your already logged in! 
-        \nWallet address: ${user_details.contract_id} 
+        \nWallet address: ${user_details.walletAddress} 
         \nEmail: ${user_details.email}
         \nYou can sign out, in the top right hand corner of the page.`)
       } else {
@@ -19,7 +20,7 @@ const HeroSection = () => {
         localStorage.setItem('othentUserDetails', JSON.stringify(user_details));
       if (user_details.contract_id) {
         alert(`Success! 
-        \nWallet address: ${user_details.contract_id} 
+        \nWallet address: ${user_details.walletAddress} 
         \nEmail: ${user_details.email}
         \nYou can sign in, in the top right hand corner of the page.`)
       } else {

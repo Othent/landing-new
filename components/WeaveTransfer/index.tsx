@@ -8,6 +8,8 @@ import Button from '../Button'
 import styled from 'styled-components';
 import { Othent } from 'othent'
 
+// TODO: Rewrite using KMS?
+
 const WeaveTransfer = () => {
 
 
