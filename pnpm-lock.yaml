@@ -9,11 +9,14 @@ importers:
   .:
     dependencies:
       '@othent/kms':
-        specifier: file:../KeyManagementService
-        version: link:../KeyManagementService
+        specifier: ^2.0.0
+        version: 2.0.0(arweave@1.15.1)(axios@1.7.5)(warp-arbundles@1.0.4)
       arweave:
         specifier: ^1.15.1
         version: 1.15.1
+      caniuse-lite:
+        specifier: ^1.0.30001645
+        version: 1.0.30001653
       framer-motion:
         specifier: ^10.12.4
         version: 10.18.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -224,6 +227,13 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@othent/kms@2.0.0':
+    resolution: {integrity: sha512-Uwnra6z9zupYyTtl1bPttBuPxirsidPI8EkAyuWhLqWLhN67m5ccKVvt4nCoKj4Of3+hOCZuD9VtXVvjv2asxg==}
+    peerDependencies:
+      arweave: ^1.15.1
+      axios: ^1.7.4
+      warp-arbundles: ^1.0.4
+
   '@swc/counter@0.1.3':
     resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
 
@@ -354,6 +364,9 @@ packages:
   escape-string-regexp@1.0.5:
     resolution: {integrity: sha512-vbRorB5FUQWvla16U8R/qgaFIya2qGzwDrNmCZuYKrbdSUMG6I1ZCGQRefkRVhuOkIGVne7BQ35DSfo1qvJqFg==}
     engines: {node: '>=0.8.0'}
+
+  extend@3.0.2:
+    resolution: {integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==}
 
   follow-redirects@1.15.6:
     resolution: {integrity: sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==}
@@ -744,6 +757,16 @@ snapshots:
   '@next/swc-win32-x64-msvc@14.2.6':
     optional: true
 
+  '@othent/kms@2.0.0(arweave@1.15.1)(axios@1.7.5)(warp-arbundles@1.0.4)':
+    dependencies:
+      '@auth0/auth0-spa-js': 2.1.3
+      arweave: 1.15.1
+      axios: 1.7.5(debug@4.3.6(supports-color@8.1.1))
+      base64-js: 1.5.1
+      buffer: 6.0.3
+      extend: 3.0.2
+      warp-arbundles: 1.0.4
+
   '@swc/counter@0.1.3': {}
 
   '@swc/helpers@0.5.5':
@@ -903,6 +926,8 @@ snapshots:
       minimalistic-crypto-utils: 1.0.1
 
   escape-string-regexp@1.0.5: {}
+
+  extend@3.0.2: {}
 
   follow-redirects@1.15.6(debug@4.3.6(supports-color@8.1.1)):
     optionalDependencies:
