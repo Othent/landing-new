@@ -2,11 +2,9 @@ import { useState } from 'react';
 import { FeatureTextSmall } from '../common';
 
 import { DMSans700, SpaceGrotesk700, DMSans500 } from '../../utils/fonts';
-import { AnimatePresence, motion } from 'framer-motion';
 import * as Styled from './styles';
-import Button from '../Button'
-import styled from 'styled-components';
-import { Othent } from 'othent'
+import Button from '../Button';
+import { Othent } from 'othent';
 
 const WeaveTransfer = () => {
   const [menuActive, setMenuActive] = useState('upload');
@@ -68,7 +66,7 @@ const WeaveTransfer = () => {
     if (JSON.parse(localStorage.getItem('othentUserDetails'))) {
       user_details = await othentInstance.userDetails()
     } else {
-      user_details = await othentInstance.logIn()
+      user_details = await othentInstance.logIn({})
       localStorage.setItem('othentUserDetails', JSON.stringify(user_details));
     }
 

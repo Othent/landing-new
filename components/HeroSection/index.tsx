@@ -1,41 +1,37 @@
-import { SpaceGrotesk700, DMSans700, SpaceGrotesk600 } from '../../utils/fonts';
+import { DMSans700, SpaceGrotesk600 } from '../../utils/fonts';
 import * as Styled from './styles';
 import Button from '../Button';
-import * as othent from '@othent/kms';
-
+import { othent } from '../../utils/othent';
+import { useEffect, useState } from 'react';
+import { UserDetails } from '@othent/kms';
 
 const HeroSection = () => {
+  const [userDetails, updateUserDetails] = useState<UserDetails | null>(null);
 
-  async function logIn() {
-    // TODO: Get this from KMS instead of using localStorage here:
-    let user_details
-    if (JSON.parse(localStorage.getItem('othentUserDetails'))) {
-      user_details = JSON.parse(localStorage.getItem('othentUserDetails'))
-      alert(`Your already logged in! 
-        \nWallet address: ${user_details.walletAddress} 
-        \nEmail: ${user_details.email}
-        \nYou can sign out, in the top right hand corner of the page.`)
-      } else {
-        user_details = await othent.connect();
-        localStorage.setItem('othentUserDetails', JSON.stringify(user_details));
-      if (user_details.contract_id) {
-        alert(`Success! 
-        \nWallet address: ${user_details.walletAddress} 
-        \nEmail: ${user_details.email}
-        \nYou can sign in, in the top right hand corner of the page.`)
-      } else {
-        alert('Please refresh the page and try again !')
-        window.location.reload();
-      }
+  useEffect(() => {
+    return othent.addEventListener('auth', (userDetails) => {
+      updateUserDetails(userDetails);
+    });
+  }, []);
+
+  async function handleSeeUserDetailsOrConnect() {
+    let currentUserDetails = userDetails;
+
+    if (!currentUserDetails) {
+      currentUserDetails = await othent.connect();
     }
+
+    alert(`Name:\n${currentUserDetails.name}
+      \nEmail\n${currentUserDetails.email}
+      \nWallet Address:\n${currentUserDetails.walletAddress}
+      \nYou can sign out in the top right hand corner of the page.`
+    );
   }
-
-
 
   return (
     <Styled.HeroSection>
       <h2 className={SpaceGrotesk600.className}>
-        Simplicity is key, 
+        Simplicity is key,
         <br />
         Keys aren't simple
       </h2>
@@ -76,9 +72,9 @@ const HeroSection = () => {
       </Styled.Tagline>
 
       <Styled.ButtonsWrapper>
-        <Button onClick={() => logIn()}>
+        <Button onClick={handleSeeUserDetailsOrConnect}>
           <img src="/wt-google.svg" alt="Google icon" draggable={false} />
-          Create account
+          { userDetails ? 'See user Details' : 'Create Account' }
         </Button>
         <Button secondary href='https://docs.othent.io' target='_blank'>
           Docs
