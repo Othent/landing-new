@@ -6,7 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@othent/kms": "^1.0.5",
+    "@othent/kms": "^2.0.0",
+    "arweave": "^1.15.1",
     "caniuse-lite": "^1.0.30001645",
     "framer-motion": "^10.12.4",
     "next": "latest",
@@ -17,7 +18,8 @@
     "react-highlight": "^0.15.0",
     "react-icons": "^4.8.0",
     "react-use-draggable-scroll": "^0.4.7",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "warp-arbundles": "^1.0.4"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",

@@ -170,7 +170,8 @@ export const DropdownItem = styled.div`
 
 export const BlurredBody = styled.div`
   height: 100vh;
-  width: 100vw;
+  max-width: 100vw;
+  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
@@ -183,7 +184,8 @@ export const BlurredBody = styled.div`
 `;
 
 export const Popup = styled.div`
-  width: 400px;
+  position: relative;
+  max-width: 600px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
   z-index: 999;
   display: flex;
@@ -194,27 +196,30 @@ export const Popup = styled.div`
   border-radius: 16px;
   border: 1px solid #d3e3fc;
   background: white;
+
   @media screen and (max-width: 600px) {
     width: 90%;
     max-width: 400px;
   }
 `;
 
-export const PopupHeaderContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 2rem;
-`;
+export const PopupCloseButton = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  margin-left: auto;
+  border: none;
+  background: transparent;
+  font-size: 2rem;
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+  transition: transform linear 150ms;
 
-export const PopupHeader = styled.h2`
-  font-size: 24px;
-  font-weight: bold;
-`;
-
-export const PopupCloseButton = styled(Button)`
-  margin-top: auto;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const PopupBody = styled.div`
@@ -233,30 +238,33 @@ export const UserPicture = styled.img`
   margin-bottom: 1rem;
 `;
 
-export const UserEmail = styled.p`
+export const UserProperty = styled.p`
   font-size: 16px;
-  color: #666;
   margin-bottom: 0.5rem;
+  width: 100%;
 `;
 
-export const UserContractIdContainer = styled.div`
+export const UserPropertyName = styled.strong`
+  display: block;
+  color: #000;
+`;
+
+export const UserPropertyValue = styled.span`
   display: flex;
-  justify-content: center;
+  color: #666;
   align-items: center;
 `;
 
-export const UserContractId = styled.p`
-  font-size: 16px;
-  color: #666;
-  word-break: break-all;
-  text-align: center;
-  width: 70%;
-`;
-
-export const UserContractIdCopy = styled.img`
-  height: 15px;
-  margin-left: 10px;
+export const UserAddressCopyButton = styled.img`
+  padding: 2px 0 2px 10px;
+  height: 21px;
   cursor: pointer;
+  transition: transform linear 150ms;
+  filter: grayscale(100%) brightness(0%);
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const ViewTransactionsButton = styled(Button)`
