@@ -15,21 +15,26 @@ const SDKSection = () => {
   };
 
   // TODO: Replace this example with KMS usage
-  const codeString = `import { Othent } from 'othent';
+  const codeString = `import { Othent } from "@othent/kms";
+import Arweave from "arweave";
 
-const othent = await Othent({ API_ID });
+const othent = new Othent({ appInfo: {
+    name: "My App",
+    version: "1.0.0",
+    env: "production"
+} } );
 
-const user_details = await othent.logIn();
+const arweave = new Arweave({}});
 
-const transaction = await othent.signTransactionArweave({
-  othentFunction: 'uploadData',
-  data: file,
-  tags: [ { name: 'Email', value: user_details.email} ]
+let tx = await arweave.createTransaction({
+    data: "Hello world!"
 });
 
-const tx = await othent.sendTransactionArweave(transaction);
+const signedTx = await othent.sign(tx);
 
-console.log(\`Transaction ID \i\s : \${tx.transactionId}\`);`;
+await arweave.transactions.post(signedTx);
+
+console.log(\`Transaction ID: \${signedTx.id}\`);`;
 
   const copyCode = () => {
     navigator.clipboard.writeText(codeString);

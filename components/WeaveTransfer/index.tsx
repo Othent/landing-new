@@ -1,18 +1,12 @@
-import { ChangeEvent, DragEventHandler, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { FeatureTextSmall } from "../common";
 
 import { DMSans700, SpaceGrotesk700, DMSans500 } from "../../utils/fonts";
 import * as Styled from "./styles";
 import Button from "../Button";
 // import { Othent } from 'othent';
-import { Othent, AppInfo } from "@othent/kms";
+import { Othent } from "@othent/kms";
 import Arweave from "arweave";
-
-const appInfo: AppInfo = {
-  name: "WeaveTransfer",
-  version: "1.0.0",
-  env: "production",
-};
 
 const WeaveTransfer = () => {
   const [menuActive, setMenuActive] = useState("upload");
@@ -21,11 +15,7 @@ const WeaveTransfer = () => {
   const [requestStatus, setRequestStatus] = useState("");
   const [file, setFile] = useState<null | File>(null);
   const arweave = useMemo(() => {
-    return Arweave.init({
-      host: "ar-io.net",
-      port: 443,
-      protocol: "https",
-    });
+    return Arweave.init({});
   }, []);
 
   function handleFileUpload(event) {
@@ -72,7 +62,13 @@ const WeaveTransfer = () => {
 
     setLoading(true);
 
-    const othent = new Othent({ appInfo });
+    const othent = new Othent({
+      appInfo: {
+        name: "WeaveTransfer",
+        version: "1.0.0",
+        env: "production",
+      },
+    });
 
     await othent.requireAuth();
 
@@ -83,27 +79,10 @@ const WeaveTransfer = () => {
 
     const signedTx = await othent.sign(tx);
 
-    // console.log(signedTx);
-
-    console.log(
-      `The signature from 'othent.sign(tx)' is ${
-        (await arweave.transactions.verify(signedTx))
-          ? "valid ✅"
-          : "invalid ❌"
-      }`
-    );
-
-    const postedTx = await arweave.transactions.post(signedTx);
-
-    if (postedTx.status > 200) {
-      console.error(
-        `Transaction could not be posted. Response: ${postedTx.status} - ${postedTx.statusText}`
-      );
-      setRequestStatus("failed");
-      setLoading(false);
-      return;
-    }
-
+    // ---- Start Debugging -----
+    // console.log(`tx Owner:       ${tx.owner}`);
+    // console.log(`signedTx Owner: ${signedTx.owner}`);
+    // console.log(`Othent Owner:   ${await othent.getActivePublicKey()}`);
     // TEST: Set the signature in the original tx
     // tx.setSignature({
     //   id: signedTx.id,
@@ -126,6 +105,26 @@ const WeaveTransfer = () => {
     //   setLoading(false);
     //   return;
     // }
+    // console.log(signedTx);
+    console.log(
+      `The signature from 'othent.sign(tx)' is ${
+        (await arweave.transactions.verify(signedTx))
+          ? "valid ✅"
+          : "invalid ❌"
+      }`
+    );
+    // ---- End Debugging -----
+
+    const postedTx = await arweave.transactions.post(signedTx);
+
+    if (postedTx.status > 200) {
+      console.error(
+        `Transaction could not be posted. Response: ${postedTx.status} - ${postedTx.statusText}`
+      );
+      setRequestStatus("failed");
+      setLoading(false);
+      return;
+    }
 
     const user_details = await othent.getUserDetails();
 
