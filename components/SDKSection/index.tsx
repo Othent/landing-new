@@ -24,7 +24,7 @@ const othent = new Othent({ appInfo: {
     env: "production"
 } } );
 
-const arweave = new Arweave({}});
+const arweave = new Arweave( {} );
 
 let tx = await arweave.createTransaction({
     data: "Hello world!"
