@@ -9,7 +9,7 @@ const Footer = () => {
       <ul>
         <p className={SpaceGrotesk600.className}>Resources</p>
         <li className={SpaceGrotesk500.className}>
-          <a href="https://docs.othent.io/developers/sdk" target='_blank'>SDK's</a>
+          <a href="https://docs.othent.io/js-sdk/intro" target='_blank'>SDK's</a>
         </li>
         <li className={SpaceGrotesk500.className}>
           <a href="https://docs.othent.io" target='_blank'>Documentation</a>
@@ -25,7 +25,7 @@ const Footer = () => {
           <a href="https://blog.othent.io" target='_blank'>Blog</a>
         </li> */}
         <li className={SpaceGrotesk500.className}>
-          <a href="mailto:hello@.othent.io">Careers</a>
+          <a href="mailto:team@communitylabs.com">Careers</a>
         </li>
       </ul>
 

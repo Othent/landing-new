@@ -12,7 +12,7 @@ export default function HowItWorks() {
         blockchain
       </Styled.HeaderText>
 
-      <Button href='https://docs.othent.io/overview/how-it-works' target='_blank'>
+      <Button href='https://docs.othent.io/#how-does-othent-work' target='_blank'>
         How it works
       </Button>
 
