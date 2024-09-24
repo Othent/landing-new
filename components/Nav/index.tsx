@@ -117,10 +117,10 @@ const Nav = () => {
     <a href='https://blog.othent.io' target='_blank' className={`${DMSans700.className} devs`}>
       Blog
     </a>
-    <a href='mailto:teams@communitylabs.com' className={DMSans700.className}>
+    <a href='mailto:team@communitylabs.com' className={DMSans700.className}>
       Contact Us
     </a>
-    <a href='https://docs.othent.io/developers/sdk' target='_blank' className={`${DMSans700.className} devs`}>
+    <a href='https://docs.othent.io/js-sdk/intro' target='_blank' className={`${DMSans700.className} devs`}>
       Developers
     </a>
 
