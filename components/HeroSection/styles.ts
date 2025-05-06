@@ -18,6 +18,11 @@ export const HeroSection = styled.div`
     padding: 5.5rem 1.5rem 2rem;
   }
 
+  @media screen and (max-width: 430px) {
+    width: 100%;
+    padding: 7.5rem 1.5rem 2rem;
+  }
+
   h2 {
 
     font-size: 2rem;
