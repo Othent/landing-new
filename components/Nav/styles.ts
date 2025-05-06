@@ -34,7 +34,15 @@ export const Banner = styled.header`
   backdrop-filter: blur(20px);
   z-index: 9999;
   font-weight: 400;
-  font-size: .75rem;
+  font-size: 1.25rem;
+
+  @media (max-width: 1250px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: .825rem;
+  }
 
   @media (max-width: 810px) {
     font-size: .75rem;
