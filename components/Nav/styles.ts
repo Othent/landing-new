@@ -44,7 +44,7 @@ export const Banner = styled.header`
     font-size: .825rem;
   }
 
-  @media (max-width: 810px) {
+  @media (max-width: 850px) {
     font-size: .75rem;
   }
 
