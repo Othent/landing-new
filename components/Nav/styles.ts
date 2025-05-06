@@ -36,24 +36,20 @@ export const Banner = styled.header`
   font-weight: 400;
   font-size: 1.25rem;
 
-  @media (max-width: 1250px) {
+  @media (max-width: 1100px) {
     font-size: 1rem;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 800px) {
     font-size: .825rem;
   }
 
-  @media (max-width: 850px) {
+  @media (max-width: 690px) {
     font-size: .75rem;
   }
 
-  @media (max-width: 710px) {
+  @media (max-width: 640px) {
     font-size: .625rem;
-  }
-
-  @media (max-width: 500px) {
-    font-size: .5rem;
   }
 
 `;

@@ -103,14 +103,18 @@ const Nav = () => {
           <strong>Othent</strong> is being deprecated.&nbsp;
         </span>
         <span>
-          Check out <strong>Wander Connect</strong> as the new, improved
-          alternative.&nbsp;
+          Check out&nbsp;
+          <strong>
+            <a href="https://wander.app/connect" target="_blank">
+              Wander Connect
+            </a>
+          </strong>
+          &nbsp;as the new, improved alternative.&nbsp;
         </span>
         <span>
-          Learn More:&nbsp;
           <strong>
-            <a href="https://wanderapp/connect" target="_blank">
-              https://wanderapp/connect
+            <a href="https://wander.app/connect" target="_blank">
+              Learn More
             </a>
           </strong>
         </span>
