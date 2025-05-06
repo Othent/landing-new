@@ -11,7 +11,7 @@ export const HeroSectionWrapper = styled.div`
   flex-direction: column;
 
   @media (min-width: 550px) {
-    top: 5rem;
+    top: 5.5rem;
     gap: 1.5rem;
     padding: 1.25rem;
     flex-direction: row;
