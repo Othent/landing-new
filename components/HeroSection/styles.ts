@@ -9,9 +9,18 @@ export const HeroSection = styled.div`
   gap: 1.5rem;
   width: 50%;
 
+  @media screen and (max-width: 850px) {
+    padding: 4rem 1.5rem 2rem;
+  }
+
   @media screen and (max-width: 720px) {
     width: 100%;
     padding: 5.5rem 1.5rem 2rem;
+  }
+
+  @media screen and (max-width: 430px) {
+    width: 100%;
+    padding: 7.5rem 1.5rem 2rem;
   }
 
   h2 {

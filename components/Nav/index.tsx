@@ -1,15 +1,15 @@
-import * as Styled from './styles';
-import { DMSans700 } from '../../utils/fonts';
-import Button from '../Button';
-import { useState, useEffect, useRef } from 'react';
-import { othent } from '../../utils/othent';
-import { UserDetails } from '@othent/kms';
+import * as Styled from "./styles";
+import { DMSans700 } from "../../utils/fonts";
+import Button from "../Button";
+import { useState, useEffect, useRef } from "react";
+import { othent } from "../../utils/othent";
+import { UserDetails } from "@othent/kms";
 
 const Nav = () => {
   const [userDetails, updateUserDetails] = useState<UserDetails | null>(null);
 
   useEffect(() => {
-    return othent.addEventListener('auth', (userDetails) => {
+    return othent.addEventListener("auth", (userDetails) => {
       updateUserDetails(userDetails);
     });
   }, []);
@@ -30,9 +30,9 @@ const Nav = () => {
         }
       }
     }
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownRef, isArrowFlipped, isPopupOpen]);
 
@@ -44,7 +44,7 @@ const Nav = () => {
     try {
       await othent.connect();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -60,7 +60,6 @@ const Nav = () => {
     setIsArrowFlipped(!isArrowFlipped);
   }
 
-
   function showAccount() {
     setShowDropdown(false);
     setIsArrowFlipped(false);
@@ -69,7 +68,7 @@ const Nav = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (event.target.classList.contains('popup-background')) {
+      if (event.target.classList.contains("popup-background")) {
         setIsPopupOpen(false);
 
         if (!showDropdown && isArrowFlipped) {
@@ -78,10 +77,10 @@ const Nav = () => {
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
 
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, [isArrowFlipped, showDropdown]);
 
@@ -97,128 +96,161 @@ const Nav = () => {
     }, 1000);
   };
 
-
   return (
-  <Styled.NavBar>
-    {copiedPopup && (
-        <Styled.copiedPopup className="popup">
-          Text copied!
-        </Styled.copiedPopup>
-      )}
-    <Styled.NavLogo>
-      <a href='/' className='site-a-warp'>
-        <div className='toggle'>
-          <div></div>
-        </div>
-        <p className={DMSans700.className}>Othent</p>
-      </a>
-    </Styled.NavLogo>
-  <Styled.Menu>
-    <a href='https://blog.othent.io' target='_blank' className={`${DMSans700.className} devs`}>
-      Blog
-    </a>
-    <a href='mailto:team@communitylabs.com' className={DMSans700.className}>
-      Contact Us
-    </a>
-    <a href='https://docs.othent.io/js-sdk/intro' target='_blank' className={`${DMSans700.className} devs`}>
-      Developers
-    </a>
-
-    {userDetails ? (
-      <div ref={dropdownRef}>
-        <Styled.UserImgContainer onClick={() => toggleDropdown()}>
-          <Styled.userImg
-            src={userDetails.picture}
-            alt='User picture'
-            referrerPolicy='no-referrer'
-          />
-          <Styled.DropdownArrow
-            src='./drop_down_arrow.svg'
-            alt='Dropdown icon'
-            referrerPolicy='no-referrer'
-            className={isArrowFlipped ? 'rotate' : ''}
-          />
-        </Styled.UserImgContainer>
-
-        {showDropdown && (
-          <Styled.Dropdown>
-            <Styled.DropdownItem onClick={() => showAccount()}>
-              Account
-            </Styled.DropdownItem>
-            <Styled.DropdownItem onClick={() => logOut()}>
-              Log Out
-            </Styled.DropdownItem>
-          </Styled.Dropdown>
+    <Styled.NavBarContainer>
+      <Styled.Banner>
+        <span>
+          <strong>Othent</strong> is being deprecated.&nbsp;
+        </span>
+        <span>
+          Check out&nbsp;
+          <strong>
+            <a href="https://wander.app/connect" target="_blank">
+              Wander Connect
+            </a>
+          </strong>
+          &nbsp;as the new, improved alternative.&nbsp;
+        </span>
+        <span>
+          <strong>
+            <a href="https://wander.app/connect" target="_blank">
+              Learn More
+            </a>
+          </strong>
+        </span>
+      </Styled.Banner>
+      <Styled.NavBar>
+        {copiedPopup && (
+          <Styled.copiedPopup className="popup">
+            Text copied!
+          </Styled.copiedPopup>
         )}
-      </div>
-    ) : (
-      <Button onClick={() => logIn()}>
-          {isLoading ? (
-            <img src='/spinner.gif' alt="Loading" />
+        <Styled.NavLogo>
+          <a href="/" className="site-a-warp">
+            <div className="toggle">
+              <div></div>
+            </div>
+            <p className={DMSans700.className}>Othent</p>
+          </a>
+        </Styled.NavLogo>
+        <Styled.Menu>
+          <a
+            href="https://blog.othent.io"
+            target="_blank"
+            className={`${DMSans700.className} devs`}
+          >
+            Blog
+          </a>
+          <a
+            href="mailto:team@communitylabs.com"
+            className={DMSans700.className}
+          >
+            Contact Us
+          </a>
+          <a
+            href="https://docs.othent.io/js-sdk/intro"
+            target="_blank"
+            className={`${DMSans700.className} devs`}
+          >
+            Developers
+          </a>
+
+          {userDetails ? (
+            <div ref={dropdownRef}>
+              <Styled.UserImgContainer onClick={() => toggleDropdown()}>
+                <Styled.userImg
+                  src={userDetails.picture}
+                  alt="User picture"
+                  referrerPolicy="no-referrer"
+                />
+                <Styled.DropdownArrow
+                  src="./drop_down_arrow.svg"
+                  alt="Dropdown icon"
+                  referrerPolicy="no-referrer"
+                  className={isArrowFlipped ? "rotate" : ""}
+                />
+              </Styled.UserImgContainer>
+
+              {showDropdown && (
+                <Styled.Dropdown>
+                  <Styled.DropdownItem onClick={() => showAccount()}>
+                    Account
+                  </Styled.DropdownItem>
+                  <Styled.DropdownItem onClick={() => logOut()}>
+                    Log Out
+                  </Styled.DropdownItem>
+                </Styled.Dropdown>
+              )}
+            </div>
           ) : (
-            'Sign in'
+            <Button onClick={() => logIn()}>
+              {isLoading ? <img src="/spinner.gif" alt="Loading" /> : "Sign in"}
+            </Button>
           )}
-        </Button>
-    )}
 
-    {isPopupOpen && (
-      <>
+          {isPopupOpen && (
+            <>
+              <Styled.BlurredBody className="popup-background">
+                <Styled.Popup>
+                  <Styled.PopupCloseButton
+                    onClick={() => setIsPopupOpen(false)}
+                  >
+                    ×
+                  </Styled.PopupCloseButton>
 
-        <Styled.BlurredBody className='popup-background'>
+                  <Styled.PopupBody>
+                    <Styled.UserPicture
+                      src={userDetails.picture}
+                      alt="User picture"
+                      referrerPolicy="no-referrer"
+                    />
 
-          <Styled.Popup>
-            <Styled.PopupCloseButton onClick={() => setIsPopupOpen(false)}>
-              ×
-            </Styled.PopupCloseButton>
+                    <Styled.UserProperty>
+                      <Styled.UserPropertyName>Name:</Styled.UserPropertyName>
+                      <Styled.UserPropertyValue>
+                        {userDetails.name}
+                      </Styled.UserPropertyValue>
+                    </Styled.UserProperty>
 
-            <Styled.PopupBody>
-              <Styled.UserPicture
-                src={userDetails.picture}
-                alt='User picture'
-                referrerPolicy='no-referrer'
-              />
+                    <Styled.UserProperty>
+                      <Styled.UserPropertyName>E-Mail:</Styled.UserPropertyName>
+                      <Styled.UserPropertyValue>
+                        {userDetails.email}
+                      </Styled.UserPropertyValue>
+                    </Styled.UserProperty>
 
-              <Styled.UserProperty>
-                <Styled.UserPropertyName>Name:</Styled.UserPropertyName>
-                <Styled.UserPropertyValue>{userDetails.name}</Styled.UserPropertyValue>
-              </Styled.UserProperty>
+                    <Styled.UserProperty>
+                      <Styled.UserPropertyName>
+                        Wallet Address:
+                      </Styled.UserPropertyName>
+                      <Styled.UserPropertyValue>
+                        {userDetails.walletAddress}
 
-              <Styled.UserProperty>
-                <Styled.UserPropertyName>E-Mail:</Styled.UserPropertyName>
-                <Styled.UserPropertyValue>{userDetails.email}</Styled.UserPropertyValue>
-              </Styled.UserProperty>
+                        <Styled.UserAddressCopyButton
+                          role="button"
+                          src="./copy.svg"
+                          alt="Copy contract ID"
+                          onClick={handleCopy}
+                          referrerPolicy="no-referrer"
+                        />
+                      </Styled.UserPropertyValue>
+                    </Styled.UserProperty>
 
-              <Styled.UserProperty>
-                <Styled.UserPropertyName>Wallet Address:</Styled.UserPropertyName>
-                <Styled.UserPropertyValue>
-                  {userDetails.walletAddress}
-
-                  <Styled.UserAddressCopyButton
-                    role="button"
-                    src='./copy.svg'
-                    alt='Copy contract ID'
-                    onClick={handleCopy}
-                    referrerPolicy='no-referrer'
-                  />
-                </Styled.UserPropertyValue>
-              </Styled.UserProperty>
-
-              <Styled.ViewTransactionsButton
-                href={`https://sonar.warp.cc/#/app/contract/${userDetails.walletAddress}`}
-                target='_blank'
-              >
-                View Recent Transactions
-              </Styled.ViewTransactionsButton>
-            </Styled.PopupBody>
-          </Styled.Popup>
-
-        </Styled.BlurredBody>
-
-      </>
-    )}
-  </Styled.Menu>
-</Styled.NavBar>
-);
+                    <Styled.ViewTransactionsButton
+                      href={`https://sonar.warp.cc/#/app/contract/${userDetails.walletAddress}`}
+                      target="_blank"
+                    >
+                      View Recent Transactions
+                    </Styled.ViewTransactionsButton>
+                  </Styled.PopupBody>
+                </Styled.Popup>
+              </Styled.BlurredBody>
+            </>
+          )}
+        </Styled.Menu>
+      </Styled.NavBar>
+    </Styled.NavBarContainer>
+  );
 };
 
 export default Nav;

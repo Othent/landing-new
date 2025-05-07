@@ -1,6 +1,58 @@
-import styled from 'styled-components';
-import Button from '../Button';
+import styled from "styled-components";
+import Button from "../Button";
 
+export const NavBarContainer = styled.div`
+  * {
+    margin: 0;
+  }
+
+  width: 100%;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 999;
+
+
+  a {
+    display: inline-flex;
+  }
+`;
+export const Banner = styled.header`
+  * {
+    margin: 0;
+  }
+
+  width: 100%;
+  display: flex;
+  padding: 0.25rem 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background: #2375efdd;
+  color: #eeeeee;
+  backdrop-filter: blur(20px);
+  z-index: 9999;
+  font-weight: 400;
+  font-size: 1.25rem;
+
+  @media (max-width: 1100px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 800px) {
+    font-size: .825rem;
+  }
+
+  @media (max-width: 690px) {
+    font-size: .75rem;
+  }
+
+  @media (max-width: 640px) {
+    font-size: .625rem;
+  }
+
+`;
 export const NavBar = styled.header`
   * {
     margin: 0;
@@ -8,7 +60,6 @@ export const NavBar = styled.header`
 
   width: 100%;
   display: flex;
-  position: fixed;
   padding: 1.1rem 2rem;
   flex-wrap: wrap;
   align-items: center;
@@ -28,7 +79,6 @@ export const NavBar = styled.header`
     align-items: center;
     gap: 10px;
   }
-
 `;
 
 export const NavLogo = styled.div`
@@ -90,10 +140,10 @@ export const Menu = styled.nav`
   }
 
   a {
-    transition: all .23s ease-in-out;
+    transition: all 0.23s ease-in-out;
 
     &:hover {
-      opacity: .8;
+      opacity: 0.8;
     }
   }
 
@@ -109,8 +159,6 @@ export const Menu = styled.nav`
     }
   }
 `;
-
-
 
 export const UserImgContainer = styled.div`
   position: relative;
@@ -163,10 +211,6 @@ export const DropdownItem = styled.div`
     background-color: #f5f5f5;
   }
 `;
-
-
-
-
 
 export const BlurredBody = styled.div`
   height: 100vh;
@@ -272,7 +316,7 @@ export const ViewTransactionsButton = styled(Button)`
 `;
 
 export const copiedPopup = styled.div`
-  background-color: #2DD264;
+  background-color: #2dd264;
   color: white;
   padding: 1rem;
   position: fixed;
@@ -286,15 +330,22 @@ export const copiedPopup = styled.div`
   opacity: 0;
   animation: fade 1s ease-in-out;
   @keyframes fade {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   &.hidden {
     animation-direction: reverse;
     @keyframes fade {
-      from { opacity: 1; }
-      to { opacity: 0; }
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
     }
   }
 `;
-
