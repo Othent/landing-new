@@ -8,12 +8,12 @@ const Footer = () => {
 
       <ul>
         <p className={SpaceGrotesk600.className}>Resources</p>
-        <li className={SpaceGrotesk500.className}>
+        {/* <li className={SpaceGrotesk500.className}>
           <a href="https://docs.othent.io/js-sdk/intro" target='_blank'>SDK's</a>
-        </li>
-        <li className={SpaceGrotesk500.className}>
+        </li> */}
+        {/* <li className={SpaceGrotesk500.className}>
           <a href="https://docs.othent.io" target='_blank'>Documentation</a>
-        </li>
+        </li> */}
         <li className={SpaceGrotesk500.className}>
           <a href="/media-kit.zip" download>Media Kit</a>
         </li>
@@ -38,7 +38,7 @@ const Footer = () => {
         <li className={`${SpaceGrotesk500.className} no-pointer`}>Copyright © 2023</li>
       </ul>
 
-      <Styled.SocialChannels>
+      {/* <Styled.SocialChannels>
         <p className={SpaceGrotesk600.className}>Follow us</p>
         <li className={SpaceGrotesk500.className}>
           <a href="https://discord.gg/BHprrR443t" target='_blank' className='social-a'>
@@ -58,7 +58,7 @@ const Footer = () => {
             Twitter
           </a>
         </li>
-      </Styled.SocialChannels>
+      </Styled.SocialChannels> */}
 
       <LogoSection />
     </Styled.Container>
