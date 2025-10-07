@@ -14,7 +14,7 @@ const HeroSection = () => {
       </Styled.Tagline>
 
       <Styled.ButtonsWrapper>
-        <Button href='https://othent-migration-7i7o.vercel.app' target='_blank'>
+        <Button href='https://transfer.othent.io' target='_blank'>
           Transfer assets
         </Button>
       </Styled.ButtonsWrapper>
