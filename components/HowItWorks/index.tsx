@@ -12,9 +12,9 @@ export default function HowItWorks() {
         blockchain
       </Styled.HeaderText>
 
-      <Button href='https://docs.othent.io/#how-does-othent-work' target='_blank'>
+      {/* <Button href='https://docs.othent.io/#how-does-othent-work' target='_blank'>
         How it works
-      </Button>
+      </Button> */}
 
       <img src='/works-mobile.svg' alt='' className='works-mobile' draggable={false} />
       <img src='/works-desktop.svg' alt='' className='works-desktop' draggable={false} />

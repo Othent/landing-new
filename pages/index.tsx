@@ -52,7 +52,7 @@ export default function Home() {
             headerText='Empower 5 Billion Web2 users with a robust gateway to Web3'
           />
         </SectionTwo>
-        <WeaveTransfer />
+        {/* <WeaveTransfer /> */}
         <SectionThree>
           <Features
             type='simplicity'

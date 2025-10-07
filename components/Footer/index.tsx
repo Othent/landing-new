@@ -6,28 +6,28 @@ const Footer = () => {
     <Styled.Container>
       <LogoSection />
 
-      <ul>
+      {/* <ul>
         <p className={SpaceGrotesk600.className}>Resources</p>
-        {/* <li className={SpaceGrotesk500.className}>
+        <li className={SpaceGrotesk500.className}>
           <a href="https://docs.othent.io/js-sdk/intro" target='_blank'>SDK's</a>
-        </li> */}
-        {/* <li className={SpaceGrotesk500.className}>
+        </li>
+        <li className={SpaceGrotesk500.className}>
           <a href="https://docs.othent.io" target='_blank'>Documentation</a>
-        </li> */}
+        </li>
         <li className={SpaceGrotesk500.className}>
           <a href="/media-kit.zip" download>Media Kit</a>
         </li>
-      </ul>
+      </ul> */}
 
-      <ul>
+      {/* <ul>
         <p className={SpaceGrotesk600.className}>Company</p>
-        {/* <li className={SpaceGrotesk500.className}>
+        <li className={SpaceGrotesk500.className}>
           <a href="https://blog.othent.io" target='_blank'>Blog</a>
-        </li> */}
+        </li>
         <li className={SpaceGrotesk500.className}>
           <a href="mailto:team@communitylabs.com">Careers</a>
         </li>
-      </ul>
+      </ul> */}
 
       <ul>
         <p className={SpaceGrotesk600.className}>Legal</p>
