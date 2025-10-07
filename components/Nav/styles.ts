@@ -25,7 +25,7 @@ export const Banner = styled.header`
 
   width: 100%;
   display: flex;
-  padding: 0.25rem 1rem;
+  padding: 0.5rem 1rem;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;

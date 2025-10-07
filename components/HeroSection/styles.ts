@@ -3,6 +3,7 @@ import Button from '../Button'
 
 export const OthentBrand = styled.span`
   color: #2375ef;
+  letter-spacing: -0.01em;
 `;
 
 export const HeroSection = styled.div`
