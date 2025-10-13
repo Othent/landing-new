@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import Button from '../Button'
 
+export const OthentBrand = styled.span`
+  color: #2375ef;
+  letter-spacing: -0.01em;
+`;
+
 export const HeroSection = styled.div`
   display: flex;
   align-items: left;
@@ -24,7 +29,6 @@ export const HeroSection = styled.div`
   }
 
   h2 {
-
     font-size: 2rem;
     line-height: 40px;
     letter-spacing: 0.02em;

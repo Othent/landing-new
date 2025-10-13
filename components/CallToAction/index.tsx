@@ -53,10 +53,10 @@ const CallToAction = () => {
 
   return (
     <Styled.Container>
-      <Styled.HeaderText className={SpaceGrotesk700.className}>
+      {/* <Styled.HeaderText className={SpaceGrotesk700.className}>
         Start onboarding your users <span>from Web2 to Web3</span>
-      </Styled.HeaderText>
-      <Styled.ButtonsContainer>
+      </Styled.HeaderText> */}
+      {/* <Styled.ButtonsContainer>
         <Button href='https://docs.othent.io' target='_blank'>
           Get Started
         </Button>
@@ -64,7 +64,7 @@ const CallToAction = () => {
           <img src='/discord-colored.svg' alt='discord logo' draggable={false} />
           Join our Discord
         </Button>
-      </Styled.ButtonsContainer>
+      </Styled.ButtonsContainer> */}
 
       <Styled.MailboxContainer>
         <img src='/backdrop.svg' alt='mailbox' className='mailbox-img' draggable={false} />
