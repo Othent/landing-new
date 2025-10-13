@@ -36,6 +36,13 @@ const Nav = () => {
         </Styled.NavLogo>
         <Styled.Menu>
           <a
+            href="https://blog.othent.io"
+            target="_blank"
+            className={`${DMSans700.className} devs`}
+          >
+            Blog
+          </a>
+          <a
             href="mailto:team@communitylabs.com"
             className={DMSans700.className}
           >
