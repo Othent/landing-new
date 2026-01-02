@@ -6,7 +6,7 @@ const Nav = () => {
     <Styled.NavBarContainer>
       <Styled.Banner>
         <span>
-          <strong>Othent</strong> is being deprecated.&nbsp;
+          <strong>Othent</strong> is deprecated.&nbsp;
         </span>
         <span>
           Check out&nbsp;
